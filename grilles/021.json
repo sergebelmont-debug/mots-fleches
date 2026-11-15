@@ -1,0 +1,26 @@
+{
+  "id": "021",
+  "titre": "Entre deux",
+  "theme": "culture-generale",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 8,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Pierre verte", "reponse": "JADE", "affichage": "JADE" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Elle brille la nuit", "reponse": "ETOILE", "affichage": "ÉTOILE" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Montée des eaux", "reponse": "CRUE", "affichage": "CRUE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Rongeur bâtisseur", "reponse": "CASTOR", "affichage": "CASTOR" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Au-dessus de", "reponse": "SUR", "affichage": "SUR" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Ils chantent à deux", "reponse": "DUO", "affichage": "DUO" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Fruit rouge à noyau", "reponse": "CERISE", "affichage": "CERISE" },
+    { "caseDefinition": [2,4], "fleche": "bas", "definition": "Fêté au calendrier", "reponse": "SAINT", "affichage": "SAINT" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Note du diapason", "reponse": "LA", "affichage": "LA" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Calme et confiant", "reponse": "SEREIN", "affichage": "SEREIN" },
+    { "caseDefinition": [4,1], "fleche": "bas", "definition": "Tête du blé", "reponse": "EPI", "affichage": "ÉPI" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Voie en ville", "reponse": "RUE", "affichage": "RUE" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "Dit que non (il)", "reponse": "NIE", "affichage": "NIE" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Participe de pouvoir", "reponse": "PU", "affichage": "PU" },
+    { "caseDefinition": [6,3], "fleche": "droite", "definition": "Négation répétée", "reponse": "NI", "affichage": "NI" },
+    { "caseDefinition": [6,0], "fleche": "bas-puis-droite", "definition": "Somme d'après-midi", "reponse": "SIESTE", "affichage": "SIESTE" }
+  ]
+}

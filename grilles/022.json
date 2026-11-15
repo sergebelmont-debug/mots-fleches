@@ -1,0 +1,30 @@
+{
+  "id": "022",
+  "titre": "Fil rouge",
+  "theme": "culture-generale",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 9,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Titre donné au roi", "reponse": "SIRE", "affichage": "SIRE" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "On y loue une chambre", "reponse": "HOTEL", "affichage": "HÔTEL" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Cuit dans l'huile", "reponse": "FRIT", "affichage": "FRIT" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Case d'une commode", "reponse": "TIROIR", "affichage": "TIROIR" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Pouffé", "reponse": "RI", "affichage": "RI" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "S'esclaffe (il)", "reponse": "RIT", "affichage": "RIT" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Cube à jouer", "reponse": "DE", "affichage": "DÉ" },
+    { "caseDefinition": [3,2], "fleche": "droite", "definition": "Où le soleil se lève", "reponse": "EST", "affichage": "EST" },
+    { "caseDefinition": [2,4], "fleche": "bas", "definition": "Calme et confiant", "reponse": "SEREIN", "affichage": "SEREIN" },
+    { "caseDefinition": [4,1], "fleche": "droite", "definition": "Elle ouvre la porte", "reponse": "CLE", "affichage": "CLÉ" },
+    { "caseDefinition": [3,2], "fleche": "bas", "definition": "Démonstratif", "reponse": "CE", "affichage": "CE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Risque (il)", "reponse": "OSE", "affichage": "OSE" },
+    { "caseDefinition": [4,1], "fleche": "bas", "definition": "Vedette", "reponse": "STAR", "affichage": "STAR" },
+    { "caseDefinition": [5,3], "fleche": "droite", "definition": "Note après do", "reponse": "RE", "affichage": "RÉ" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "Exister", "reponse": "ETRE", "affichage": "ÊTRE" },
+    { "caseDefinition": [6,2], "fleche": "droite", "definition": "Manche au tennis", "reponse": "SET", "affichage": "SET" },
+    { "caseDefinition": [5,3], "fleche": "bas", "definition": "Sa propre personne", "reponse": "SOI", "affichage": "SOI" },
+    { "caseDefinition": [6,0], "fleche": "bas-puis-droite", "definition": "Il coupe la barbe", "reponse": "RASOIR", "affichage": "RASOIR" },
+    { "caseDefinition": [6,2], "fleche": "bas", "definition": "Appris", "reponse": "SU", "affichage": "SU" },
+    { "caseDefinition": [8,0], "fleche": "droite", "definition": "Vestige", "reponse": "RUINE", "affichage": "RUINE" }
+  ]
+}

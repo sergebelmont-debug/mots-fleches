@@ -319,7 +319,7 @@ RÔLE|1|cinema|L'acteur le joue
 ROSE|1|nature|Fleur à épines
 RÔTI|1|cuisine|Viande cuite au four
 ROUE|1||Elle tourne sous l'auto
-RUSE|1||Astuce du renard
+RUSE|1||Stratagème
 SAGE|1||Raisonnable
 SALE|1||Pas propre
 SANG|1||Il coule dans les veines
@@ -547,7 +547,7 @@ RAISIN|1|cuisine|Fruit de la vigne
 RASOIR|1||Il coupe la barbe
 REGARD|1||Coup d'œil
 RELAIS|1|sport|Course avec témoin
-RENARD|1|nature|Animal rusé
+RENARD|1|nature|Canidé roux des bois
 RÉSEAU|2||Ensemble de lignes
 RESTER|1||Ne pas partir
 RÉTINE|2|sciences|Fond de l'œil
@@ -654,3 +654,442 @@ THÉÂTRE|1|cinema|On y joue la comédie
 VANILLE|1|cuisine|Parfum de glace
 VITESSE|1||Elle se mesure en km/h
 VOITURE|1||Automobile
+
+# ---- Supplément : 3 lettres ----
+ÂME|1||Elle a ses états
+ANS|1||Ils font l'âge
+BAI|3|nature|Cheval brun-rouge
+BAN|2||Bravos rythmés
+BIS|1|musique|Rappel au concert
+BON|1||Pas mauvais
+BRU|2||Belle-fille
+CAS|1||Situation
+CRU|1|cuisine|Pas cuit
+DÉS|1||Ils roulent au jeu
+DIX|1||Deux fois cinq
+DOT|2|histoire|Bien de la mariée
+DRU|2||Épais et serré
+DUC|1|histoire|Noble sous le prince
+EGO|2||Le moi
+EUX|1||Ces gens-là
+FIN|1||Conclusion
+FOI|1||Croyance
+FÛT|2||Gros tonneau
+GAI|1||Joyeux
+GRÉ|2||Bon vouloir
+GUÉ|2|nature|Passage dans la rivière
+ICI|1||À cet endroit
+ILS|1||Pronom pluriel
+ION|2|sciences|Atome chargé
+JET|1||Avion privé
+LAS|2||Fatigué
+LES|1||Article pluriel
+LOB|2|sport|Balle par-dessus
+LOT|1||Gain de tombola
+LUI|1||Ce garçon-là
+MAL|1||Contraire du bien
+MES|1||À moi, au pluriel
+MIL|3|nature|Céréale à petits grains
+MOI|1||Ma personne
+MON|1||À moi, au masculin
+MUE|2|nature|Changement de peau
+NEF|2|histoire|Allée centrale d'église
+NIE|1||Dit que non (il)
+NOS|1||À nous, au pluriel
+ONT|1||Ils … (avoir)
+OSE|1||Risque (il)
+PAN|1||Morceau de mur
+PAR|1||À travers
+PIC|1|geo|Sommet pointu
+PIS|2|nature|Mamelle de la vache
+PLI|1||Marque du repassage
+POU|1|nature|Parasite des cheveux
+PUY|2|geo|Volcan d'Auvergne
+RIS|2|cuisine|Abat fin du veau
+RIT|1||S'esclaffe (il)
+SAS|2||Petite pièce étanche
+SES|1||À lui, au pluriel
+SET|1|sport|Manche au tennis
+SIX|1||Demi-douzaine
+SOC|2|nature|Fer de la charrue
+SOI|1||Sa propre personne
+SUR|1||Au-dessus de
+TES|1||À toi, au pluriel
+TOC|1||Faux bijou
+TOI|1||Ta personne
+USE|1||Élime (il)
+VAL|2|geo|Creux entre deux monts
+VAR|1|geo|Département de Toulon|propre
+VIA|1||En passant par
+VIT|1||Existe (il)
+VOS|1||À vous, au pluriel
+ZEN|1||D'un calme oriental
+
+# ---- Supplément : 4 lettres ----
+AGIR|1||Passer à l'action
+AIGU|1|musique|Haut perché, pour un son
+AIRS|1|musique|Mélodies
+AMAS|1||Entassement
+AMIS|1||Copains
+ÂNES|1|nature|Ils portent des bâts
+ANIS|1|cuisine|Parfum du pastis
+ARTS|1||Musique, peinture, danse
+AVAL|2|geo|Vers l'embouchure
+BEAU|1||Joli
+BIEN|1||Contraire du mal
+BLOC|1||Masse compacte
+BOND|1||Grand saut
+BORD|1||Extrémité
+BRAS|1||Il finit par la main
+BRIE|1|cuisine|Fromage de Meaux
+BRIN|1|nature|Petit bout d'herbe
+BRUN|1||Couleur châtain
+CAMP|1||Lieu des tentes
+CENT|1||Dix fois dix
+CHAT|1|nature|Il miaule
+CHEF|1|cuisine|Il dirige la cuisine
+CHOU|1|cuisine|Légume de la potée
+CINQ|1||Doigts d'une main
+CLAN|1|histoire|Tribu écossaise
+COUP|1||Choc
+CUBE|1|sciences|Solide à six faces
+DAIM|2|nature|Cousin du cerf
+DÉFI|1||Provocation
+DEMI|1||Moitié
+DEUX|1||Paire
+DIEU|1||Être suprême
+DÔME|1||Toit arrondi
+DOUX|1||Pas rugueux
+ÉLUS|1||Députés ou sénateurs
+ÉMEU|3|nature|Cousin de l'autruche
+ÉMOI|2||Trouble
+ÉPIS|1|nature|Têtes de blé
+ÉTAI|2||Poutre de soutien
+EURO|1||Il a remplacé le franc
+FACE|1||Côté de la pièce
+FAIT|1||Événement réel
+FARD|2||Maquillage
+FAUX|1||Pas vrai
+FEUX|1||Ils passent au rouge
+FILS|1||Garçon de la famille
+FLOT|1|nature|Vague
+FOND|1||Partie la plus basse
+FORT|1||Costaud
+FOUR|1|cuisine|Le rôti y cuit
+FRIT|1|cuisine|Cuit dans l'huile
+FUIR|1||S'échapper
+GALA|1|musique|Grande soirée
+GANT|1||Il habille la main
+GÈNE|2|sciences|Porteur d'hérédité
+GLAS|2||Cloche du deuil
+GRAS|1|cuisine|Riche en beurre
+GRIS|1||Entre noir et blanc
+GROS|1||Volumineux
+HAIE|1|nature|Clôture végétale
+HAUT|1||Pas bas
+HUIT|1||Avant neuf
+ÎLES|1|geo|Elles forment l'archipel
+INDE|1|geo|Pays du Taj Mahal|propre
+JADE|2||Pierre verte
+JAZZ|1|musique|Musique du swing
+JEAN|1||Pantalon en toile bleue
+JOLI|1||Mignon
+JOUE|1||Pommette
+JUGE|1||Il rend la justice
+JUIN|1||Mois de l'été
+JUPE|1||Elle tourne en dansant
+JURY|1||Il délibère
+KILO|1|sciences|Mille grammes
+LACS|1|geo|Léman et Annecy
+LAID|1||Vilain
+LENT|1||Pas rapide
+LOIN|1||Pas près
+LONG|1||Pas court
+LOTO|1||Jeu de numéros
+LUXE|1||Grand confort
+LYRE|2|musique|Petite harpe antique
+MAÏS|1|cuisine|Céréale du pop-corn
+MÂLE|1|nature|Pas femelle
+MARS|1||Mois du printemps
+MÊME|1||Identique
+MERS|1|geo|Noire, Rouge ou Morte
+MIDI|1||Douze heures
+MONT|1|geo|Blanc dans les Alpes
+MOTO|1||Deux-roues à moteur
+MOTS|1||Ils font les phrases
+MUET|1||Sans voix
+MÛRE|1|cuisine|Fruit de la ronce
+MURS|1||Ils portent le toit
+MUSE|2|musique|Inspiratrice du poète
+NAÏF|1||Crédule
+NIDS|1|nature|Abris des oisillons
+NŒUD|1||Boucle de lacet
+NOIX|1|cuisine|Fruit à coque
+NORD|1|geo|Opposé au sud
+NOUS|1||Toi et moi
+OBUS|2|histoire|Projectile de canon
+OIES|1|nature|Elles ont sauvé Rome
+ONZE|1|sport|Équipe de foot
+PAIR|1||Divisible par deux
+PÂLE|1||Sans couleurs
+PAON|1|nature|Il fait la roue
+PARC|1||Jardin public
+PART|1|cuisine|Portion de gâteau
+PÂTÉ|1|cuisine|Charcuterie en croûte
+PAYS|1|geo|La France en est un
+PION|1||Petite pièce d'échecs
+PIPE|1||Elle se fume
+PIRE|1||Plus mauvais
+PLAN|1||Carte de la ville
+PLUS|1||Signe de l'addition
+PÔLE|1|geo|Nord ou Sud
+POLI|1||Bien élevé
+PORC|1|nature|Cochon
+PRÈS|1||Pas loin
+PUCE|1|nature|Insecte sauteur
+PUIS|1||Ensuite
+PULL|1||Tricot
+QUAI|1||Bord de gare
+RAGE|1||Colère folle
+RANG|1||File
+RAPT|2||Enlèvement
+REÇU|1||Ticket de caisse
+RHUM|1|cuisine|Alcool des Antilles
+RING|1|sport|Carré des boxeurs
+ROIS|1|histoire|Louis XIV et Louis XVI
+ROND|1||Cercle
+ROUX|1||Couleur de renard
+RUES|1||Elles ont des trottoirs
+SEPT|1||Jours de la semaine
+SERF|2|histoire|Paysan du Moyen Âge
+SEUL|1||Sans compagnie
+SORT|1||Destin
+SOUS|1||Pas dessus
+STOP|1||Panneau d'arrêt
+TACT|2||Délicatesse
+TAIE|1||Housse d'oreiller
+TARD|1||Pas de bonne heure
+TAXI|1||Voiture avec chauffeur
+TÊTU|1||Obstiné
+TIEN|1||À toi
+TÔLE|1||Feuille de métal
+TOME|1||Volume d'une série
+TORT|1||Opposé de raison
+TRÈS|1||Extrêmement
+TROC|1||Échange sans argent
+TROP|1||Plus qu'il n'en faut
+TUBA|2|musique|Gros cuivre grave
+UNIR|1||Rassembler
+VERS|1|musique|Lignes du poème
+VINS|1|cuisine|Bordeaux et bourgognes
+VITE|1||Rapidement
+VŒUX|1||Souhaits du Nouvel An
+VOIR|1||Regarder
+VOTE|1||Choix de l'électeur
+VOUS|1||Pronom de politesse
+VRAI|1||Pas faux
+ZÈLE|2||Ardeur au travail
+ZINC|2|sciences|Métal des toits de Paris
+
+# ---- Supplément : 5 lettres ----
+ACIER|1|sciences|Alliage du fer
+AIDER|1||Donner un coup de main
+AÏEUL|2||Grand-père
+ALBUM|1|musique|Recueil de chansons
+ANNÉE|1||Elle a quatre saisons
+ARÔME|1|cuisine|Parfum d'un plat
+ASILE|2||Refuge
+AUTEL|2||Table de l'église
+AVRIL|1||Mois du poisson
+BAGUE|1||Anneau au doigt
+BANDE|1||Groupe d'amis
+BIÈRE|1|cuisine|Boisson à mousse
+BOTTE|1||Chaussure montante
+BOULE|1|sport|Elle vise le cochonnet
+CANAL|1|geo|Voie d'eau creusée
+CANNE|1||Bâton de marche
+CHOSE|1||Truc
+CIDRE|1|cuisine|Boisson de Normandie
+CONTE|1||Histoire de fées
+COUPE|1|sport|Trophée
+CRÈME|1|cuisine|Elle monte en chantilly
+DÉBUT|1||Commencement
+DÎNER|1|cuisine|Repas du soir
+DOIGT|1||La main en a cinq
+DRÔLE|1||Amusant
+ENFER|1||Opposé du paradis
+ENTRE|1||Au milieu de
+ENVIE|1||Désir
+ÉPOUX|1||Homme marié
+ESSOR|2||Envol
+ÉVEIL|1||Sortie du sommeil
+FABLE|1||Récit de La Fontaine
+FARCE|1||Blague
+FOIRE|1||Grand marché
+FOULE|1||Multitude de gens
+FRÈRE|1||Fils des mêmes parents
+FUSÉE|1|sciences|Elle part dans l'espace
+GARDE|1||Surveillant
+GAZON|1|nature|Pelouse
+GENOU|1||Articulation de la jambe
+GENRE|1||Sorte
+GESTE|1||Mouvement de la main
+GRAIN|1|nature|Petite semence
+GRÈVE|1||Arrêt du travail
+HÉROS|1|cinema|Personnage principal
+HÊTRE|2|nature|Arbre à faînes
+HÔTEL|1||On y loue une chambre
+IDIOT|1||Imbécile
+JOUET|1||Cadeau d'enfant
+JUSTE|1||Équitable
+LAMPE|1||Elle éclaire
+LARGE|1||Ample
+LIEUE|3|histoire|Vieille mesure de route
+LIGNE|1||Trait
+LILAS|1|nature|Fleur mauve de printemps
+LISTE|1||Énumération
+LITRE|1|sciences|Contenance d'une brique
+MAIRE|1||Premier élu de la ville
+MALLE|1||Grand coffre de voyage
+MARDI|1||Jour gras
+MÉTRO|1||Train sous la ville
+MILLE|1||Dix fois cent
+MOINE|1|histoire|Religieux du monastère
+MOULE|1|cuisine|Coquillage aux frites
+NAPPE|1||Elle couvre la table
+NAVET|1|cuisine|Légume ou mauvais film
+NEVEU|1||Fils du frère
+NIÈCE|1||Fille de la sœur
+OMBRE|1||Elle nous suit au soleil
+ONGLE|1||Bout du doigt
+ORDRE|1||Rangement
+PANNE|1||Arrêt du moteur
+PATTE|1|nature|Jambe d'animal
+PAUSE|1||Petit arrêt
+PÊCHE|1|cuisine|Fruit à peau de velours
+PEINE|1||Chagrin
+PERLE|1||Bijou de l'huître
+PETIT|1||Pas grand
+PIÈCE|1||Partie du logement
+PINCE|1||Outil à mâchoires
+PLUME|1|nature|Elle habille l'oiseau
+POCHE|1||Elle garde les clés
+POÊLE|1|cuisine|Elle saisit le steak
+POÈTE|1|musique|Il écrit en vers
+POIDS|1|sciences|Il se lit en kilos
+POING|1||Main fermée
+POINT|1||Fin de phrase
+POSTE|1||Elle envoie le courrier
+POULE|1|nature|Elle pond
+PRUNE|1|cuisine|Fruit du prunier
+QUART|1||Quinze minutes
+RÉCIT|1||Histoire racontée
+RÈGLE|1||Elle trace les traits
+RENTE|2||Revenu régulier
+REPAS|1|cuisine|Déjeuner ou dîner
+RICHE|1||Fortuné
+ROSÉE|2|nature|Gouttes du matin
+ROUGE|1||Couleur du sang
+RUBAN|1||Bande de tissu
+RUGBY|1|sport|Sport du ballon ovale
+SALUT|1||Bonjour familier
+SAPIN|1|nature|Arbre de Noël
+SAUCE|1|cuisine|Elle nappe le plat
+SELLE|1|sport|Siège du cavalier
+SIGNE|1||Geste d'adieu
+SOCLE|2||Pied de la statue
+SOLDE|1||Prix cassé
+SOMME|1||Résultat de l'addition
+SOUPE|1|cuisine|Potage
+SPORT|1|sport|Activité physique
+STYLO|1||Il a une bille
+SUITE|1||Ce qui vient après
+TANTE|1||Sœur du père
+TAPIS|1||Il couvre le sol
+TEMPS|1||Il passe
+TEXTE|1||Suite de phrases
+TORSE|1||Buste
+TOTAL|1||Résultat final
+TRAIT|1||Ligne tracée
+TRIBU|1|histoire|Groupe de familles
+TROIS|1||Mousquetaires
+USAGE|1||Emploi
+UTILE|1||Qui sert
+VAGUE|1|nature|Elle déferle
+VALET|1||Carte sous la dame
+VENTE|1||Opposé d'achat
+VERBE|1||Mot qui se conjugue
+VIEUX|1||Âgé
+VIGNE|1|nature|Elle donne le raisin
+VILLA|1||Maison avec jardin
+VIRUS|1|sciences|Microbe de la grippe
+VOLET|1||Il ferme la fenêtre
+ZÈBRE|1|nature|Cheval rayé
+
+# ---- Supplément : 6 lettres ----
+AGNEAU|1|nature|Petit de la brebis
+ARGENT|1||Métal ou monnaie
+BALLON|1|sport|Rond ou ovale
+BANANE|1|cuisine|Fruit du singe
+BOUGIE|1||Elle se souffle
+CAMÉRA|1|cinema|Elle filme
+CAMION|1||Poids lourd
+CANARD|1|nature|Il cancane
+CARNET|1||Petit cahier
+CASTOR|1|nature|Rongeur bâtisseur
+CITRON|1|cuisine|Agrume jaune
+CLASSE|1||Salle de l'école
+COUSIN|1||Fils de l'oncle
+DANGER|1||Péril
+DESSIN|1||Œuvre au crayon
+ÉPAULE|1||Haut du bras
+GÂTEAU|1|cuisine|Dessert d'anniversaire
+GLAÇON|1|cuisine|Cube d'eau gelée
+GUERRE|1|histoire|Contraire de la paix
+LÉGUME|1|cuisine|Poireau ou navet
+MARCHÉ|1||Il a ses étals
+MIETTE|1|cuisine|Petit reste de pain
+MINUIT|1||Heure du crime
+MOUTON|1|nature|Il bêle
+PAPIER|1||Feuille pour écrire
+PARFUM|1||Senteur en flacon
+PIGEON|1|nature|Oiseau des villes
+PILOTE|1||Il conduit l'avion
+PLANTE|1|nature|Végétal
+POIVRE|1|cuisine|Épice du moulin
+POULET|1|cuisine|Volaille du dimanche
+RACINE|1|nature|Elle boit sous terre
+RADEAU|1||Embarcation de fortune
+RIDEAU|1|cinema|Il se lève au théâtre
+ROCHER|1|nature|Gros bloc de pierre
+SAVANT|1|sciences|Grand chercheur
+SOURIS|1|nature|Le chat la chasse
+TAILLE|1||Hauteur du corps
+TALENT|1||Don naturel
+TROUPE|1|cinema|Compagnie d'acteurs
+TULIPE|1|nature|Fleur de Hollande
+VALISE|1||Bagage
+VISITE|1||Venue d'un invité
+VOISIN|1||Il habite à côté
+
+# ---- Supplément : 7 lettres ----
+CABINET|1||Bureau du médecin
+CERVEAU|1|sciences|Organe de la pensée
+CITERNE|1||Grand réservoir
+CORBEAU|1|nature|Oiseau noir du fromage
+FAMILLE|1||Parents et enfants
+LOTERIE|1||Jeu de tirage
+LUCARNE|1||Petite fenêtre du toit
+MINERAI|2|sciences|Roche à métal
+MODERNE|1||De notre époque
+MORCEAU|1||Fragment
+NOUVEAU|1||Tout récent
+PALETTE|1||Plateau du peintre
+PENSION|1||Logis avec repas
+POTERIE|1||Art de l'argile
+ROULEAU|1||Cylindre du peintre
+SALAIRE|1||Paie
+SERPENT|1|nature|Reptile sans pattes
+TAVERNE|1|histoire|Auberge d'autrefois
+TERRAIN|1|sport|Pelouse du match
+TONNEAU|1||Barrique

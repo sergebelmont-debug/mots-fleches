@@ -1,0 +1,26 @@
+{
+  "id": "023",
+  "titre": "Sans filet",
+  "theme": "culture-generale",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 8,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Époux", "reponse": "MARI", "affichage": "MARI" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Elle boit sous terre", "reponse": "RACINE", "affichage": "RACINE" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Elle vient à l'esprit", "reponse": "IDEE", "affichage": "IDÉE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Il cancane", "reponse": "CANARD", "affichage": "CANARD" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "À nous, au pluriel", "reponse": "NOS", "affichage": "NOS" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Bloc de pierre", "reponse": "ROC", "affichage": "ROC" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Venue d'un invité", "reponse": "VISITE", "affichage": "VISITE" },
+    { "caseDefinition": [2,4], "fleche": "bas", "definition": "Fin", "reponse": "TERME", "affichage": "TERME" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Venu au monde", "reponse": "NE", "affichage": "NÉ" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Elle filme", "reponse": "CAMERA", "affichage": "CAMÉRA" },
+    { "caseDefinition": [4,1], "fleche": "bas", "definition": "Elle a ses états", "reponse": "AME", "affichage": "ÂME" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Il porte les voiles", "reponse": "MAT", "affichage": "MÂT" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "On le respire", "reponse": "AIR", "affichage": "AIR" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "À moi, au féminin", "reponse": "MA", "affichage": "MA" },
+    { "caseDefinition": [6,3], "fleche": "droite", "definition": "Note après ré", "reponse": "MI", "affichage": "MI" },
+    { "caseDefinition": [6,0], "fleche": "bas-puis-droite", "definition": "Profession", "reponse": "METIER", "affichage": "MÉTIER" }
+  ]
+}

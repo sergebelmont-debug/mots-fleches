@@ -1,6 +1,6 @@
 # Les Mots Fléchés
 
-Jeu de mots fléchés français pour mobile. Projet en cours : phases 1 à 5 terminées (moteur, validateur, interface, 18 grilles).
+Jeu de mots fléchés français pour mobile. Projet en cours : phases 1 à 5 terminées (moteur, validateur, interface, 30 grilles).
 
 ## Lancer le jeu
 

@@ -1,0 +1,30 @@
+{
+  "id": "024",
+  "titre": "Dernière ligne droite",
+  "theme": "culture-generale",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 9,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Bordeaux et bourgognes", "reponse": "VINS", "affichage": "VINS" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Elle diffuse des tubes", "reponse": "RADIO", "affichage": "RADIO" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Sang des arbres", "reponse": "SEVE", "affichage": "SÈVE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Figure", "reponse": "VISAGE", "affichage": "VISAGE" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Note avant do", "reponse": "SI", "affichage": "SI" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Maison d'oiseau", "reponse": "NID", "affichage": "NID" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Vieilles coutumes", "reponse": "US", "affichage": "US" },
+    { "caseDefinition": [3,2], "fleche": "droite", "definition": "Colère d'autrefois", "reponse": "IRE", "affichage": "IRE" },
+    { "caseDefinition": [2,4], "fleche": "bas", "definition": "Fruit de la vigne", "reponse": "RAISIN", "affichage": "RAISIN" },
+    { "caseDefinition": [4,1], "fleche": "droite", "definition": "Serpent étouffeur", "reponse": "BOA", "affichage": "BOA" },
+    { "caseDefinition": [3,2], "fleche": "bas", "definition": "Avalé, pour un liquide", "reponse": "BU", "affichage": "BU" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Ancienne monnaie", "reponse": "ECU", "affichage": "ÉCU" },
+    { "caseDefinition": [4,1], "fleche": "bas", "definition": "Peau tannée", "reponse": "CUIR", "affichage": "CUIR" },
+    { "caseDefinition": [5,3], "fleche": "droite", "definition": "Conifère des cimetières", "reponse": "IF", "affichage": "IF" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "Réjouissance", "reponse": "FETE", "affichage": "FÊTE" },
+    { "caseDefinition": [6,2], "fleche": "droite", "definition": "Risque (il)", "reponse": "OSE", "affichage": "OSE" },
+    { "caseDefinition": [5,3], "fleche": "bas", "definition": "Contraire de non", "reponse": "OUI", "affichage": "OUI" },
+    { "caseDefinition": [6,0], "fleche": "bas-puis-droite", "definition": "Heure du crime", "reponse": "MINUIT", "affichage": "MINUIT" },
+    { "caseDefinition": [6,2], "fleche": "bas", "definition": "Sans vêtement", "reponse": "NU", "affichage": "NU" },
+    { "caseDefinition": [8,0], "fleche": "droite", "definition": "Vestige", "reponse": "RUINE", "affichage": "RUINE" }
+  ]
+}
