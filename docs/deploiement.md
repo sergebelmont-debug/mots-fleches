@@ -1,5 +1,9 @@
 # Mettre le jeu en ligne
 
+**État actuel : le jeu est en ligne sur GitHub Pages, à l'adresse https://sergebelmont-debug.github.io/mots-fleches/ (dépôt public, première mise en ligne le 16 novembre 2026).**
+
+Pour publier une nouvelle version : onglet **Actions** du dépôt, **Mise en ligne**, **Run workflow**. Rien ne part en ligne automatiquement.
+
 Le jeu est un site « statique » : une fois construit, c'est un simple dossier de fichiers (`dist/`, environ 500 Ko) qui peut être hébergé gratuitement presque partout. Il n'a besoin d'aucun serveur ni d'aucune base de données.
 
 ## Construire le jeu

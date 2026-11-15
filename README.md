@@ -1,6 +1,8 @@
 # Les Mots Fléchés
 
-Jeu de mots fléchés français pour mobile. Les sept phases sont réalisées, à l'exception des classements en ligne. Le jeu n'est pas encore mis en ligne.
+Jeu de mots fléchés français pour mobile. Les sept phases sont réalisées, à l'exception des classements en ligne. 
+
+**Jouer en ligne : https://sergebelmont-debug.github.io/mots-fleches/**
 
 Documents : [rapport de tests](docs/rapport-de-tests.md) · [ajouter des grilles](docs/ajouter-des-grilles.md) · [mise en ligne](docs/deploiement.md)
 

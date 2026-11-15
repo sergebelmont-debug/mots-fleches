@@ -11,6 +11,8 @@
 | Tests du moteur, du validateur, de la progression | `npm test` | 169 réussis sur 169 |
 | Tests de bout en bout, 4 appareils simulés | `npm run test:e2e` | 51 réussis, 5 non applicables, 0 échec (deux passages identiques) |
 | Construction du jeu | `npm run build` | Réussie |
+| Vérification automatique sur GitHub | à chaque envoi | Réussie |
+| Version en ligne (https://sergebelmont-debug.github.io/mots-fleches/) | ouverture en format téléphone, parcours, saisie d'un mot, sauvegarde, service worker | Réussie |
 
 ## Tests réussis
 
