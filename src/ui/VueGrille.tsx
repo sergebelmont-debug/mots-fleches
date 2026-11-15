@@ -5,6 +5,7 @@ import type { Partie } from '../engine/partie';
 interface Props {
   grille: Grille;
   partie: Partie;
+  eclat: ReadonlySet<number>; // cases à illuminer (mot qui vient d'être trouvé)
   surCase: (k: number) => void;
   surMot: (id: number) => void;
 }
@@ -30,7 +31,7 @@ function DessinFleche({ fleche }: { fleche: Fleche }) {
   );
 }
 
-export function VueGrille({ grille, partie, surCase, surMot }: Props) {
+export function VueGrille({ grille, partie, eclat, surCase, surMot }: Props) {
   const actif = new Set(grille.mots[partie.motActif].cases);
   const style = { '--cols': grille.largeur, '--rows': grille.hauteur } as CSSProperties;
 
@@ -71,10 +72,12 @@ export function VueGrille({ grille, partie, surCase, surMot }: Props) {
           k === partie.caseActive ? 'curseur' : '',
           partie.fausses[k] ? 'fausse' : '',
           partie.verrouillees[k] ? 'revelee' : '',
+          eclat.has(k) ? 'eclat' : '',
         ].join(' ');
         return (
           <button key={k} className={classes} onClick={() => surCase(k)} data-case={k} aria-label={`Case ${k}`}>
-            {partie.saisie[k]}
+            {/* La clé change avec la lettre : la petite animation d'apparition rejoue à chaque saisie. */}
+            {partie.saisie[k] && <span key={partie.saisie[k]}>{partie.saisie[k]}</span>}
           </button>
         );
       })}

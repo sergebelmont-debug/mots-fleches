@@ -1,0 +1,22 @@
+{
+  "id": "003",
+  "titre": "Du matin au soir",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "On y soigne", "reponse": "HOPITAL", "affichage": "HÔPITAL" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Grand bois", "reponse": "FORET", "affichage": "FORÊT" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Elle a ses marées", "reponse": "MER", "affichage": "MER" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Rongeur d'égout", "reponse": "RAT", "affichage": "RAT" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Infusion du soir", "reponse": "TISANE", "affichage": "TISANE" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Mise sur un cheval", "reponse": "PARI", "affichage": "PARI" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Il a un matelas", "reponse": "LIT", "affichage": "LIT" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Rouge, blanc ou rosé", "reponse": "VIN", "affichage": "VIN" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Début de journée", "reponse": "MATIN", "affichage": "MATIN" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Ordre de partir", "reponse": "VA", "affichage": "VA" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Pronom du tutoiement", "reponse": "TU", "affichage": "TU" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Astre de la nuit", "reponse": "LUNE", "affichage": "LUNE" }
+  ]
+}

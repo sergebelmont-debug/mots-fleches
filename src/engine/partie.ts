@@ -127,3 +127,29 @@ export function indice(g: Grille, p: Partie): Partie {
 export function estTerminee(g: Grille, p: Partie): boolean {
   return g.cases.every((c, k) => c.type !== 'lettre' || p.saisie[k] === c.lettre);
 }
+
+/** Vrai si toutes les cases du mot contiennent la bonne lettre. */
+export function motJuste(g: Grille, p: Partie, id: number): boolean {
+  return g.mots[id].cases.every((k) => {
+    const c = g.cases[k];
+    return c.type === 'lettre' && p.saisie[k] === c.lettre;
+  });
+}
+
+export const motsJustes = (g: Grille, p: Partie): number[] => g.mots.filter((m) => motJuste(g, p, m.id)).map((m) => m.id);
+
+/** Vrai si une partie sauvegardée correspond bien à cette grille (même taille, curseur valide). */
+export function partieCompatible(g: Grille, p: unknown): p is Partie {
+  const q = p as Partie | null;
+  const n = g.cases.length;
+  return (
+    typeof q === 'object' &&
+    q !== null &&
+    [q.saisie, q.verrouillees, q.fausses].every((t) => Array.isArray(t) && t.length === n) &&
+    Number.isInteger(q.motActif) &&
+    q.motActif >= 0 &&
+    q.motActif < g.mots.length &&
+    g.mots[q.motActif].cases.includes(q.caseActive) &&
+    Number.isInteger(q.indices)
+  );
+}
