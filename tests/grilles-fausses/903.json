@@ -1,0 +1,130 @@
+{
+  "id": "903",
+  "titre": "Accent oublié",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    {
+      "caseDefinition": [
+        0,
+        0
+      ],
+      "fleche": "droite-puis-bas",
+      "definition": "Sans artifice",
+      "reponse": "NATUREL",
+      "affichage": "NATUREL"
+    },
+    {
+      "caseDefinition": [
+        0,
+        0
+      ],
+      "fleche": "bas-puis-droite",
+      "definition": "De bains ou à manger",
+      "reponse": "SALLE",
+      "affichage": "SALLE"
+    },
+    {
+      "caseDefinition": [
+        0,
+        2
+      ],
+      "fleche": "droite-puis-bas",
+      "definition": "Entourée d'eau",
+      "reponse": "ILE",
+      "affichage": "ILE"
+    },
+    {
+      "caseDefinition": [
+        0,
+        2
+      ],
+      "fleche": "bas",
+      "definition": "On y dort",
+      "reponse": "LIT",
+      "affichage": "LIT"
+    },
+    {
+      "caseDefinition": [
+        0,
+        4
+      ],
+      "fleche": "bas",
+      "definition": "Complet, intact",
+      "reponse": "ENTIER",
+      "affichage": "ENTIER"
+    },
+    {
+      "caseDefinition": [
+        2,
+        0
+      ],
+      "fleche": "droite",
+      "definition": "À toi",
+      "reponse": "TIEN",
+      "affichage": "TIEN"
+    },
+    {
+      "caseDefinition": [
+        2,
+        0
+      ],
+      "fleche": "bas-puis-droite",
+      "definition": "Marqué au foot",
+      "reponse": "BUT",
+      "affichage": "BUT"
+    },
+    {
+      "caseDefinition": [
+        3,
+        3
+      ],
+      "fleche": "bas",
+      "definition": "Il brait",
+      "reponse": "ANE",
+      "affichage": "ÂNE"
+    },
+    {
+      "caseDefinition": [
+        4,
+        0
+      ],
+      "fleche": "bas-puis-droite",
+      "definition": "Tire le traîneau",
+      "reponse": "RENNE",
+      "affichage": "RENNE"
+    },
+    {
+      "caseDefinition": [
+        4,
+        2
+      ],
+      "fleche": "droite",
+      "definition": "J'… (avoir)",
+      "reponse": "AI",
+      "affichage": "AI"
+    },
+    {
+      "caseDefinition": [
+        4,
+        2
+      ],
+      "fleche": "bas",
+      "definition": "Ni oui … non",
+      "reponse": "NI",
+      "affichage": "NI"
+    },
+    {
+      "caseDefinition": [
+        6,
+        0
+      ],
+      "fleche": "droite",
+      "definition": "Attacher",
+      "reponse": "LIER",
+      "affichage": "LIER"
+    }
+  ]
+}
