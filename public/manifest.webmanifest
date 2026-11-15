@@ -1,0 +1,16 @@
+{
+  "name": "Les Mots Fléchés",
+  "short_name": "Mots Fléchés",
+  "description": "Jeu de mots fléchés français : 30 grilles, défi du jour, récompenses.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#17111c",
+  "theme_color": "#17111c",
+  "icons": [
+    { "src": "icones/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icones/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

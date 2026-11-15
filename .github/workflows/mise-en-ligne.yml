@@ -1,0 +1,40 @@
+# Mise en ligne sur GitHub Pages. Ne se lance JAMAIS toute seule :
+# il faut cliquer sur « Run workflow » dans l'onglet Actions du dépôt.
+# Prérequis : GitHub Pages activé avec la source « GitHub Actions » (voir docs/deploiement.md).
+name: Mise en ligne
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Tests
+        run: npm test
+      - name: Construction (refusée si une grille est invalide)
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deploiement
+        uses: actions/deploy-pages@v4

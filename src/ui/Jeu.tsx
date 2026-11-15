@@ -47,12 +47,27 @@ export function Jeu(props: Props) {
   const temps = useRef(partie.secondes);
   const terminee = estTerminee(grille, partie);
 
+  const actuelle = useRef(partie);
+  const appliquer = (suivante: Partie) => {
+    actuelle.current = suivante;
+    setPartie(suivante);
+    // Sauvegarde ou fin de grille signalées tout de suite, pas au prochain affichage.
+    if (estTerminee(grille, suivante)) {
+      if (!finSignalee.current) {
+        finSignalee.current = true;
+        props.surTerminee(suivante.indices, temps.current);
+      }
+    } else {
+      finSignalee.current = false;
+      props.surPartie({ ...suivante, secondes: temps.current });
+    }
+  };
   const agir = (f: (p: Partie) => Partie) => {
     setMessage('');
-    setPartie(f);
+    appliquer(f(actuelle.current));
   };
 
-  // À chaque changement : sauvegarde, illumination des mots devenus justes, fin de grille.
+  // À chaque changement : illumination des mots devenus justes.
   useEffect(() => {
     const justes = motsJustes(grille, partie);
     const nouveaux = justes.filter((id) => !justesAvant.current.includes(id));
@@ -61,15 +76,6 @@ export function Jeu(props: Props) {
     if (nouveaux.length > 0 && signalerMotsJustes) {
       setEclat(new Set(nouveaux.flatMap((id) => grille.mots[id].cases)));
       minuterie = setTimeout(() => setEclat(new Set()), 900);
-    }
-    if (estTerminee(grille, partie)) {
-      if (!finSignalee.current) {
-        finSignalee.current = true;
-        props.surTerminee(partie.indices, temps.current);
-      }
-    } else {
-      finSignalee.current = false;
-      props.surPartie({ ...partie, secondes: temps.current });
     }
     return () => clearTimeout(minuterie);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,7 +94,7 @@ export function Jeu(props: Props) {
 
   // Le temps est sauvegardé toutes les 10 secondes, même sans frappe.
   useEffect(() => {
-    if (!terminee && secondes > 0 && secondes % 10 === 0) props.surPartie({ ...partie, secondes });
+    if (!terminee && secondes > 0 && secondes % 10 === 0) props.surPartie({ ...actuelle.current, secondes });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [secondes]);
 
@@ -112,9 +118,9 @@ export function Jeu(props: Props) {
   const etoiles = etoilesPour(partie.indices);
 
   const surVerifier = () => {
-    const p = verifier(grille, partie);
+    const p = verifier(grille, actuelle.current);
     const n = nombreFausses(p);
-    setPartie(p);
+    appliquer(p);
     setMessage(n === 0 ? 'Aucune erreur pour l’instant.' : n === 1 ? '1 lettre à corriger.' : `${n} lettres à corriger.`);
   };
 

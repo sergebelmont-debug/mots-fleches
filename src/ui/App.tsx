@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { GRILLES, IDS } from '../grilles';
 import { partieCompatible, type Partie } from '../engine/partie';
 import { cleDefi, grilleDuDefi, terminerGrille } from '../progression/defi';
@@ -18,7 +18,7 @@ type Ecran = { nom: 'accueil' } | { nom: 'parcours' } | { nom: 'stats' } | { nom
 export function App() {
   const stockage = useMemo(stockageNavigateur, []);
   const aujourdhui = dateDuJour(new Date());
-  const [sauvegarde, setSauvegarde] = useState<Sauvegarde>(() => {
+  const [sauvegarde, definir] = useState<Sauvegarde>(() => {
     const s = charger(stockage);
     // On note le jour de jeu et on oublie les défis commencés les jours précédents.
     const enCours = Object.fromEntries(Object.entries(s.enCours).filter(([cle]) => !cle.startsWith('defi:') || cle === cleDefi(aujourdhui)));
@@ -28,9 +28,20 @@ export function App() {
   const [reglagesOuverts, setReglagesOuverts] = useState(false);
   const [nouvelles, setNouvelles] = useState<string[]>([]);
 
-  useEffect(() => {
+  // Chaque changement est écrit tout de suite dans le navigateur, sans attendre le prochain affichage :
+  // même si la page est fermée aussitôt après une frappe, rien n'est perdu.
+  const courante = useRef(sauvegarde);
+  const premiere = useRef(true);
+  if (premiere.current) {
+    premiere.current = false;
     enregistrer(stockage, sauvegarde);
-  }, [stockage, sauvegarde]);
+  }
+  const setSauvegarde = (f: (s: Sauvegarde) => Sauvegarde) => {
+    const suivante = f(courante.current);
+    courante.current = suivante;
+    enregistrer(stockage, suivante);
+    definir(suivante);
+  };
 
   const aller = (e: Ecran) => {
     setNouvelles([]);
@@ -60,7 +71,8 @@ export function App() {
         surPartie={(p: Partie) => setSauvegarde((s) => ({ ...s, enCours: { ...s.enCours, [cle]: p } }))}
         surTerminee={(indices, secondes) => {
           const fin = { cle, idGrille: id, defiDuJour: enDefi ? aujourdhui : null, indices, secondes };
-          setNouvelles(nouvellesRecompenses(recompenses(sauvegarde, GRILLES, aujourdhui), recompenses(terminerGrille(sauvegarde, fin), GRILLES, aujourdhui)));
+          const avant = courante.current;
+          setNouvelles(nouvellesRecompenses(recompenses(avant, GRILLES, aujourdhui), recompenses(terminerGrille(avant, fin), GRILLES, aujourdhui)));
           setSauvegarde((s) => terminerGrille(s, fin));
         }}
         surRetour={() => aller(enDefi ? { nom: 'accueil' } : { nom: 'parcours' })}

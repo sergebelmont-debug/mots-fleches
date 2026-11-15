@@ -10,7 +10,8 @@
     "test": "vitest run",
     "verifier": "node outils/verifier.ts",
     "generer": "node outils/generer.ts",
-    "lexique": "node outils/controler-lexique.ts"
+    "lexique": "node outils/controler-lexique.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@fontsource/kaushan-script": "^5.3.0",
@@ -19,6 +20,7 @@
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",

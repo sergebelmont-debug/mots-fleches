@@ -1,6 +1,8 @@
 # Les Mots Fléchés
 
-Jeu de mots fléchés français pour mobile. Projet en cours : phases 1 à 6 terminées, hors classements en ligne (moteur, validateur, interface, 30 grilles, statistiques, défi du jour, récompenses).
+Jeu de mots fléchés français pour mobile. Les sept phases sont réalisées, à l'exception des classements en ligne. Le jeu n'est pas encore mis en ligne.
+
+Documents : [rapport de tests](docs/rapport-de-tests.md) · [ajouter des grilles](docs/ajouter-des-grilles.md) · [mise en ligne](docs/deploiement.md)
 
 ## Lancer le jeu
 
@@ -18,6 +20,20 @@ Puis ouvrir l'adresse affichée (par défaut http://localhost:5173).
 
 ```bash
 npm test
+```
+
+### Tests de bout en bout (vrais navigateurs)
+
+À faire une seule fois, pour installer les navigateurs de test :
+
+```bash
+npx playwright install chromium webkit
+```
+
+Puis :
+
+```bash
+npm run test:e2e
 ```
 
 ## Vérifier les grilles
@@ -79,6 +95,8 @@ Voir [docs/ajouter-des-grilles.md](docs/ajouter-des-grilles.md).
 - `donnees/lexique.txt` : mots et définitions utilisables par le générateur.
 - `donnees/gabarits.json` : dispositions de cases.
 - `donnees/noms-propres.json` : noms propres autorisés comme réponses.
+- `tests-e2e/` : tests de bout en bout, joués dans de vrais navigateurs.
+- `public/` : icônes, manifeste et service worker (installation, hors connexion).
 - `tests/` : tests automatiques ; `tests/grilles-fausses/` contient des grilles volontairement erronées.
 
 ## Convention

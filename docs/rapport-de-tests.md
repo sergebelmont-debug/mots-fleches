@@ -1,0 +1,92 @@
+# Rapport de tests
+
+État au 16 novembre 2026. Tous les résultats ci-dessous viennent de commandes réellement exécutées ; chacune peut être relancée.
+
+## Résumé
+
+| Série | Commande | Résultat |
+|---|---|---|
+| Lexique (1 070 mots) | `npm run lexique` | Validé |
+| Grilles (30) | `npm run verifier` | 30 validées, 0 refusée, 0 avertissement |
+| Tests du moteur, du validateur, de la progression | `npm test` | 169 réussis sur 169 |
+| Tests de bout en bout, 4 appareils simulés | `npm run test:e2e` | 51 réussis, 5 non applicables, 0 échec (deux passages identiques) |
+| Construction du jeu | `npm run build` | Réussie |
+
+## Tests réussis
+
+### Validation des grilles (déterministe)
+
+- Chaque règle bloquante est testée avec une grille volontairement fausse : conflit de croisement, longueur incorrecte, mot hors grille, case utilisée deux fois, flèche inconnue ou mal orientée, plus de deux définitions par case, deux mots au même endroit, mot formé sans définition, caractères interdits, accent oublié, faute d'orthographe, réponse en double, définition vide, nom propre non déclaré.
+- Les quatre grilles fausses de `tests/grilles-fausses/` sont refusées avec le bon message.
+- La construction du jeu est refusée si une grille invalide est présente.
+- La même grille vérifiée deux fois donne exactement le même rapport.
+
+### Moteur de jeu
+
+- Sélection d'un mot, d'une case ; changement de sens au croisement ; mot suivant.
+- Saisie, passage automatique au mot suivant, lettres de croisement partagées, caractères non valides ignorés.
+- Effacement d'une lettre, d'un mot ; lettres révélées par indice protégées.
+- Vérification : seules les lettres fausses sont marquées ; la marque disparaît à la correction.
+- **Les 30 grilles sont résolues lettre par lettre** et se terminent correctement.
+- La difficulté ne redescend jamais le long du parcours ; aucun mot de 4 lettres ou plus n'apparaît plus de deux fois dans tout le jeu.
+
+### Progression, sauvegarde, statistiques
+
+- Étoiles, déblocage des niveaux, meilleur résultat conservé.
+- Sauvegarde relue à l'identique ; sauvegarde absente, abîmée ou d'une ancienne version : le jeu démarre quand même.
+- Séries de jours (y compris changement de mois et d'année), défi du jour (même date = même grille), 16 récompenses, résumé statistique.
+
+### De bout en bout, dans de vrais navigateurs
+
+Appareils simulés : Android (Chrome, 412 × 839), iPhone (moteur de Safari, 390 × 664), petit écran (moteur de Safari, 320 × 568), ordinateur (Chrome).
+
+| Scénario | Android | iPhone | Petit écran | Ordinateur |
+|---|---|---|---|---|
+| Accueil : tous les boutons accessibles | ✓ | ✓ | ✓ | ✓ |
+| Parcours : 30 niveaux, un seul ouvert au départ | ✓ | ✓ | ✓ | ✓ |
+| Niveau 1 complet (facile, avec accents) : erreur, vérification, indice, fin, niveau suivant | ✓ | ✓ | ✓ | ✓ |
+| Croisement : changement de sens | ✓ | ✓ | ✓ | ✓ |
+| Effacer une lettre, un mot ; mot suivant | ✓ | ✓ | ✓ | ✓ |
+| Reprise d'une partie après rechargement | ✓ | ✓ | ✓ | ✓ |
+| Mise en page : pas de défilement de page, clavier sous la grille, touches et cases assez grandes | ✓ | ✓ | ✓ | ✓ |
+| Grille intermédiaire (niveau 16) jouée jusqu'au bout | ✓ | ✓ | ✓ | ✓ |
+| Grille difficile 7 × 10 (niveau 30, nombreux croisements) jouée jusqu'au bout, case active toujours visible | ✓ | ✓ | ✓ | ✓ |
+| Défi du jour, statistiques, collection | ✓ | ✓ | ✓ | ✓ |
+| Réglages conservés ; progression effacée après confirmation | ✓ | ✓ | ✓ | ✓ |
+| Sauvegarde abîmée : le jeu démarre | ✓ | ✓ | ✓ | ✓ |
+| Clavier physique | — | — | — | ✓ |
+| Manifeste, icônes, jeu disponible hors connexion | ✓ | — | — | ✓ |
+
+« — » : non applicable ou non vérifié sur cet appareil simulé.
+
+## Défaut trouvé par ces tests et corrigé
+
+- **Dernière lettre perdue** : si la page était fermée ou rechargée dans l'instant suivant une frappe, la dernière lettre n'était pas sauvegardée. La sauvegarde est maintenant écrite au moment même de la frappe. Le test « reprise après rechargement » le vérifie.
+
+Défauts trouvés lors des phases précédentes et corrigés : définitions illisibles sur les grandes grilles (zoom automatique ajouté), deux définitions qui donnaient la réponse d'un mot voisin, deux grilles trop semblables à leurs voisines (retirées).
+
+## Tests échoués
+
+Aucun à ce jour.
+
+## Problèmes connus, non résolus
+
+- **Thèmes** : 28 grilles sur 30 sont en culture générale. Pas de grilles cinéma, chanson, histoire, ni Serge Belmont.
+- **Difficulté** : elle progresse par la taille, la longueur des mots et un vocabulaire un peu plus rare, pas par la subtilité des définitions. Aucune grille « expert ».
+- **Petites répétitions** : une grille contient RI et RIT ; quelques grilles voisines partagent un mot long.
+- **Défi du jour** : il peut tomber sur une grille difficile dès le premier jour d'un nouveau joueur.
+- **Très petits écrans** : sur 320 × 568, la grille défile dès le niveau 1 (trois à quatre rangées visibles à la fois). Jouable, mais moins confortable.
+- **Hors connexion** : disponible seulement à partir de la deuxième visite.
+- **Décor** : dessiné en formes simples, sans illustration ni portrait.
+
+## Ce qui n'a pas été testé
+
+- **Un vrai téléphone.** Tous les tests mobiles sont faits sur des appareils simulés.
+- **Le navigateur intégré de Facebook** et celui de Messenger.
+- **Le partage** par le menu du téléphone et la copie automatique (seul l'affichage du texte à copier a été vérifié).
+- **L'installation sur l'écran d'accueil** d'un vrai téléphone.
+- **Les performances sur un téléphone de gamme moyenne.** Indication seulement : le premier chargement pèse environ 160 Ko compressés.
+- **L'accessibilité** (lecteur d'écran, contrastes mesurés).
+- **La justesse des définitions par un relecteur humain** : les 1 070 définitions n'ont été relues que par leur auteur.
+- **Une série de plusieurs jours réels** : vérifiée par calcul uniquement.
+- **Les classements** : non réalisés.

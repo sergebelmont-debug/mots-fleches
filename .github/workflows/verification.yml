@@ -1,0 +1,32 @@
+# À chaque envoi sur GitHub : contrôle du lexique, validation des grilles, tests, construction du jeu.
+# Si une étape échoue, GitHub affiche une croix rouge sur le commit.
+name: Vérification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Lexique
+        run: npm run lexique
+      - name: Grilles
+        run: npm run verifier
+      - name: Tests du moteur, du validateur et de la progression
+        run: npm test
+      - name: Construction du jeu
+        run: npm run build
+      - name: Navigateurs de test
+        run: npx playwright install --with-deps chromium webkit
+      - name: Tests de bout en bout
+        run: npm run test:e2e
