@@ -406,11 +406,20 @@ p {
   min-height: 0;
   container-type: size;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* Grandes grilles : les cases gardent une taille lisible et la zone défile (au doigt, ou seule pour suivre le curseur). */
+  overflow: auto;
+  touch-action: pan-x pan-y;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  border-radius: 12px;
+}
+.zone-grille::-webkit-scrollbar {
+  display: none;
 }
 .grille {
-  width: min(100cqw, calc(100cqh * var(--cols) / var(--rows)));
+  flex: none;
+  margin: auto;
+  width: max(min(100cqw, calc(100cqh * var(--cols) / var(--rows))), calc(var(--cols) * 62px));
   aspect-ratio: var(--cols) / var(--rows);
   container-type: inline-size;
   display: grid;

@@ -1,0 +1,7 @@
+{
+  "petit": ["DLDLD", "LLLLL", "DLLLL", "LLLDL", "DLDLL", "LLLLL", "DLLLL"],
+  "moyen": ["DLDLDL", "LLLLLL", "DLLLDL", "LLDLLL", "DDLLLD", "LLLDLL", "DLDLLL", "LLLLLL", "DLLLLL"],
+  "grand": ["DLDLDLD", "LLLLLLL", "DLLLDLL", "LLDLLLD", "DLLLLDL", "LLLDLLL", "DDLLLLD", "LLLLDLL", "DLDLLLL", "LLLLLLL"],
+  "petit2": ["DLDLD", "LLLLL", "DLDLL", "LLLLL", "DLDLD", "LLLLL", "DLLLL"],
+  "moyen2": ["DLDLDL", "LLLLLL", "DLLLDL", "LLLLLL", "DDDLLD", "LLLLLL", "DLLDLL", "LLLLLL"]
+}

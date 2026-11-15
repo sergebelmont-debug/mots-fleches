@@ -1,0 +1,26 @@
+{
+  "id": "014",
+  "titre": "Changement d'air",
+  "theme": "culture-generale",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 8,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Elle use le métal", "reponse": "LIME", "affichage": "LIME" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Flotte de guerre", "reponse": "MARINE", "affichage": "MARINE" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Animal", "reponse": "BETE", "affichage": "BÊTE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Littoral", "reponse": "RIVAGE", "affichage": "RIVAGE" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Il vit dans la terre", "reponse": "VER", "affichage": "VER" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Elle a ses marées", "reponse": "MER", "affichage": "MER" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Fruit rouge à noyau", "reponse": "CERISE", "affichage": "CERISE" },
+    { "caseDefinition": [2,4], "fleche": "bas", "definition": "Mettre en terre", "reponse": "SEMER", "affichage": "SEMER" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Venu au monde", "reponse": "NE", "affichage": "NÉ" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Septième art", "reponse": "CINEMA", "affichage": "CINÉMA" },
+    { "caseDefinition": [4,1], "fleche": "bas", "definition": "Entourée d'eau", "reponse": "ILE", "affichage": "ÎLE" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Propre", "reponse": "NET", "affichage": "NET" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "Il brait", "reponse": "ANE", "affichage": "ÂNE" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Article masculin", "reponse": "LE", "affichage": "LE" },
+    { "caseDefinition": [6,3], "fleche": "droite", "definition": "Dans", "reponse": "EN", "affichage": "EN" },
+    { "caseDefinition": [6,0], "fleche": "bas-puis-droite", "definition": "Le facteur l'apporte", "reponse": "LETTRE", "affichage": "LETTRE" }
+  ]
+}

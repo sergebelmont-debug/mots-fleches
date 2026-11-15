@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import type { Fleche, Grille } from '../engine/grille';
 import type { Partie } from '../engine/partie';
 
@@ -34,9 +34,17 @@ function DessinFleche({ fleche }: { fleche: Fleche }) {
 export function VueGrille({ grille, partie, eclat, surCase, surMot }: Props) {
   const actif = new Set(grille.mots[partie.motActif].cases);
   const style = { '--cols': grille.largeur, '--rows': grille.hauteur } as CSSProperties;
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Quand la grille dépasse l'écran, on fait défiler pour garder visibles la définition puis la case active.
+  useEffect(() => {
+    const options: ScrollIntoViewOptions = { block: 'nearest', inline: 'nearest', behavior: 'smooth' };
+    ref.current?.querySelector('.def.active')?.scrollIntoView(options);
+    ref.current?.querySelector('.curseur')?.scrollIntoView(options);
+  }, [partie.caseActive, partie.motActif]);
 
   return (
-    <div className="grille" style={style}>
+    <div className="grille" style={style} ref={ref}>
       {grille.cases.map((c, k) => {
         if (c.type === 'vide') return <div key={k} className="case vide" />;
 

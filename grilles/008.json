@@ -1,0 +1,20 @@
+{
+  "id": "008",
+  "titre": "Jeu de piste",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Sans artifice", "reponse": "NATUREL", "affichage": "NATUREL" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Cours d'eau", "reponse": "RIVIERE", "affichage": "RIVIÈRE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Homme de mer", "reponse": "MARIN", "affichage": "MARIN" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Sans valeur", "reponse": "NUL", "affichage": "NUL" },
+    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Aperçu", "reponse": "VU", "affichage": "VU" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Le marteau en est un", "reponse": "OUTIL", "affichage": "OUTIL" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Abri vitré du jardin", "reponse": "SERRE", "affichage": "SERRE" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Pouffé", "reponse": "RI", "affichage": "RI" },
+    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Dans", "reponse": "EN", "affichage": "EN" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Attache", "reponse": "LIEN", "affichage": "LIEN" }
+  ]
+}

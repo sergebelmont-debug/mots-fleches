@@ -1,0 +1,20 @@
+{
+  "id": "009",
+  "titre": "Pêle-mêle",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "On dort dessus", "reponse": "MATELAS", "affichage": "MATELAS" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "L'eau en coule", "reponse": "ROBINET", "affichage": "ROBINET" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Pièce du canapé", "reponse": "SALON", "affichage": "SALON" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Sans valeur", "reponse": "NUL", "affichage": "NUL" },
+    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Avalé, pour un liquide", "reponse": "BU", "affichage": "BU" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Pas de la porte", "reponse": "SEUIL", "affichage": "SEUIL" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Manier les avirons", "reponse": "RAMER", "affichage": "RAMER" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Note après ré", "reponse": "MI", "affichage": "MI" },
+    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Note après do", "reponse": "RE", "affichage": "RÉ" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Lieu remarquable", "reponse": "SITE", "affichage": "SITE" }
+  ]
+}

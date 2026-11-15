@@ -1,6 +1,6 @@
 # Les Mots Fléchés
 
-Jeu de mots fléchés français pour mobile. Projet en cours : phase 3 terminée (prototype jouable + validateur de grilles).
+Jeu de mots fléchés français pour mobile. Projet en cours : phases 1 à 5 terminées (moteur, validateur, interface, 18 grilles).
 
 ## Lancer le jeu
 
@@ -57,11 +57,15 @@ npm run verifier -- tests/grilles-fausses
 
 ### Avertissements
 
-A-DEFINITION-DOUBLE, A-REPONSE-DANS-DEFINITION, A-DEFINITION-LONGUE, A-SANS-CROISEMENT, A-CASES-VIDES.
+A-DEFINITION-DOUBLE, A-REPONSE-DANS-DEFINITION, A-DEFINITION-LONGUE, A-SANS-CROISEMENT, A-CASES-VIDES, A-REPONSE-DANS-AUTRE-DEFINITION.
 
 ### Limite
 
 Le validateur garantit la structure et l'orthographe. Il ne peut pas juger si une définition est juste ou ambiguë : cela demande une relecture humaine.
+
+## Ajouter des grilles
+
+Voir [docs/ajouter-des-grilles.md](docs/ajouter-des-grilles.md).
 
 ## Organisation
 
@@ -69,7 +73,11 @@ Le validateur garantit la structure et l'orthographe. Il ne peut pas juger si un
 - `src/engine/` : moteur de grille et règles de jeu, sans affichage.
 - `src/validation/` : validateur de grilles, indépendant du moteur et de l'affichage.
 - `src/ui/` : écran de jeu, grille, clavier.
-- `outils/` : commande de vérification et chargement du dictionnaire.
+- `src/progression/` : étoiles et déblocage des niveaux.
+- `src/storage/` : sauvegarde locale.
+- `outils/` : vérification des grilles, contrôle du lexique, génération de grilles.
+- `donnees/lexique.txt` : mots et définitions utilisables par le générateur.
+- `donnees/gabarits.json` : dispositions de cases.
 - `donnees/noms-propres.json` : noms propres autorisés comme réponses.
 - `tests/` : tests automatiques ; `tests/grilles-fausses/` contient des grilles volontairement erronées.
 

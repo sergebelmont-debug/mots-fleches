@@ -162,6 +162,9 @@ describe('avertissements', () => {
   it('signale une définition trop longue', () => {
     expect(alertes(avec('LIER', { definition: 'Attacher solidement avec une corde ou une ficelle' }))).toContain('A-DEFINITION-LONGUE');
   });
+  it('signale une définition qui donne la réponse d’un autre mot', () => {
+    expect(alertes(avec('LIER', { definition: 'Boucler en entier' }))).toContain('A-REPONSE-DANS-AUTRE-DEFINITION');
+  });
   it('un avertissement ne rend pas la grille invalide', () => {
     expect(validerGrille(avec('LIER', { definition: 'Relier deux choses' }), options).valide).toBe(true);
   });

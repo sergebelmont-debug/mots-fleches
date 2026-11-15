@@ -1,0 +1,22 @@
+{
+  "id": "005",
+  "titre": "Tout en douceur",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "On y soigne", "reponse": "HOPITAL", "affichage": "HÔPITAL" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Voisin du poivre", "reponse": "SEL", "affichage": "SEL" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Inscrire", "reponse": "NOTER", "affichage": "NOTER" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Sport à la cible", "reponse": "TIR", "affichage": "TIR" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Ne pas partir", "reponse": "RESTER", "affichage": "RESTER" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Opposé de face", "reponse": "PILE", "affichage": "PILE" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "On le respire", "reponse": "AIR", "affichage": "AIR" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Il relie deux mots", "reponse": "ET", "affichage": "ET" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Saison chaude", "reponse": "ETE", "affichage": "ÉTÉ" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Pâtisserie aux fruits", "reponse": "TARTE", "affichage": "TARTE" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Pouffé", "reponse": "RI", "affichage": "RI" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Attacher", "reponse": "LIER", "affichage": "LIER" }
+  ]
+}

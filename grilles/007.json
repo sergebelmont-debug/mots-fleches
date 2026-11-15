@@ -1,0 +1,22 @@
+{
+  "id": "007",
+  "titre": "De A à Z",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Couplets et refrain", "reponse": "CHANSON", "affichage": "CHANSON" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Première page du journal", "reponse": "UNE", "affichage": "UNE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Art de la voix", "reponse": "CHANT", "affichage": "CHANT" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Copain", "reponse": "AMI", "affichage": "AMI" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Poisson de rivière", "reponse": "TRUITE", "affichage": "TRUITE" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Comme le café sans sucre", "reponse": "AMER", "affichage": "AMER" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Sans motif", "reponse": "UNI", "affichage": "UNI" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Note avant do", "reponse": "SI", "affichage": "SI" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Pas mouillé", "reponse": "SEC", "affichage": "SEC" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Grand bois", "reponse": "FORET", "affichage": "FORÊT" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Pouffé", "reponse": "RI", "affichage": "RI" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Ville de la Côte d'Azur", "reponse": "NICE", "affichage": "NICE" }
+  ]
+}

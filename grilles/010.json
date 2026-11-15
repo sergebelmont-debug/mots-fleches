@@ -1,0 +1,20 @@
+{
+  "id": "010",
+  "titre": "Petit détour",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "On dort dessus", "reponse": "MATELAS", "affichage": "MATELAS" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Argent tiré au guichet", "reponse": "RETRAIT", "affichage": "RETRAIT" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Avancer dans l'eau", "reponse": "NAGER", "affichage": "NAGER" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Voie en ville", "reponse": "RUE", "affichage": "RUE" },
+    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Pronom du tutoiement", "reponse": "TU", "affichage": "TU" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Abri vitré du jardin", "reponse": "SERRE", "affichage": "SERRE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Il a de longues oreilles", "reponse": "LAPIN", "affichage": "LAPIN" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "3,14 et des poussières", "reponse": "PI", "affichage": "PI" },
+    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Venu au monde", "reponse": "NE", "affichage": "NÉ" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Lieu remarquable", "reponse": "SITE", "affichage": "SITE" }
+  ]
+}

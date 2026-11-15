@@ -1,0 +1,22 @@
+{
+  "id": "004",
+  "titre": "Au fil des mots",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Il suit le couplet", "reponse": "REFRAIN", "affichage": "REFRAIN" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Meuble pour dormir", "reponse": "LIT", "affichage": "LIT" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Avoir en main", "reponse": "TENIR", "affichage": "TENIR" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Propre", "reponse": "NET", "affichage": "NET" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Ne pas partir", "reponse": "RESTER", "affichage": "RESTER" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Réjouissance", "reponse": "FETE", "affichage": "FÊTE" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "La peinture en est un", "reponse": "ART", "affichage": "ART" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Il relie deux mots", "reponse": "ET", "affichage": "ET" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Saison chaude", "reponse": "ETE", "affichage": "ÉTÉ" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Les skieurs la dévalent", "reponse": "PISTE", "affichage": "PISTE" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Note avant do", "reponse": "SI", "affichage": "SI" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Dire que non", "reponse": "NIER", "affichage": "NIER" }
+  ]
+}

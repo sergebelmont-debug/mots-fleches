@@ -1,0 +1,22 @@
+{
+  "id": "006",
+  "titre": "Bonne pioche",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Il suit le couplet", "reponse": "REFRAIN", "affichage": "REFRAIN" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Classement", "reponse": "TRI", "affichage": "TRI" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Notre planète", "reponse": "TERRE", "affichage": "TERRE" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Il porte la couronne", "reponse": "ROI", "affichage": "ROI" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Complet, intact", "reponse": "ENTIER", "affichage": "ENTIER" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Herbe séchée", "reponse": "FOIN", "affichage": "FOIN" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Hurlement", "reponse": "CRI", "affichage": "CRI" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "J'… (avoir)", "reponse": "AI", "affichage": "AI" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Nombre d'années", "reponse": "AGE", "affichage": "ÂGE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Il sèche sur le fil", "reponse": "LINGE", "affichage": "LINGE" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Négation répétée", "reponse": "NI", "affichage": "NI" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Dire que non", "reponse": "NIER", "affichage": "NIER" }
+  ]
+}

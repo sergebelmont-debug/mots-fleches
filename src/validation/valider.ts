@@ -233,6 +233,10 @@ export function validerGrille(brut: unknown, opt: Options = {}): Rapport {
     if (m.definition.length > limite)
       avert('A-DEFINITION-LONGUE', `${m.nom} : définition de ${m.definition.length} caractères (au-delà de ${limite}, elle sera difficile à lire dans la case)`);
     if (m.cases.every((k) => lettres.get(k)!.mots.length === 1)) avert('A-SANS-CROISEMENT', `${m.nom} ne croise aucun autre mot`);
+    // Une définition ne doit pas donner la réponse d'un autre mot de la grille.
+    for (const autre of places)
+      if (autre !== m && autre.reponse.length >= 3 && m.definition.split(/[^\p{L}]+/u).some((mot) => normaliser(mot) === autre.reponse))
+        avert('A-REPONSE-DANS-AUTRE-DEFINITION', `la définition « ${m.definition} » (${m.nom}) contient la réponse ${autre.reponse} d'un autre mot`);
   }
   const vides = L * H - lettres.size - defs.size;
   if (vides > 0) avert('A-CASES-VIDES', `${vides} case(s) inutilisée(s) dans la grille`);

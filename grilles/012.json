@@ -1,0 +1,30 @@
+{
+  "id": "012",
+  "titre": "À la campagne",
+  "theme": "nature",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 9,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "L'acteur le joue", "reponse": "ROLE", "affichage": "RÔLE" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Danse d'Argentine", "reponse": "TANGO", "affichage": "TANGO" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Qui existe vraiment", "reponse": "REEL", "affichage": "RÉEL" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Fruit rouge du potager", "reponse": "TOMATE", "affichage": "TOMATE" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Note après ré", "reponse": "MI", "affichage": "MI" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Fibre de toile", "reponse": "LIN", "affichage": "LIN" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Cube à jouer", "reponse": "DE", "affichage": "DÉ" },
+    { "caseDefinition": [3,2], "fleche": "droite", "definition": "Froid qui glace", "reponse": "GEL", "affichage": "GEL" },
+    { "caseDefinition": [2,4], "fleche": "bas", "definition": "Lumière de l'orage", "reponse": "ECLAIR", "affichage": "ÉCLAIR" },
+    { "caseDefinition": [4,1], "fleche": "droite", "definition": "Bloc de pierre", "reponse": "ROC", "affichage": "ROC" },
+    { "caseDefinition": [3,2], "fleche": "bas", "definition": "Note après do", "reponse": "RE", "affichage": "RÉ" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Oiseau voleur", "reponse": "PIE", "affichage": "PIE" },
+    { "caseDefinition": [4,1], "fleche": "bas", "definition": "Toute petite île", "reponse": "ILOT", "affichage": "ÎLOT" },
+    { "caseDefinition": [5,3], "fleche": "droite", "definition": "Note du diapason", "reponse": "LA", "affichage": "LA" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "L'oiseau en a deux", "reponse": "AILE", "affichage": "AILE" },
+    { "caseDefinition": [6,2], "fleche": "droite", "definition": "Mois du muguet", "reponse": "MAI", "affichage": "MAI" },
+    { "caseDefinition": [5,3], "fleche": "bas", "definition": "Elle a ses marées", "reponse": "MER", "affichage": "MER" },
+    { "caseDefinition": [6,0], "fleche": "bas-puis-droite", "definition": "Astre du jour", "reponse": "SOLEIL", "affichage": "SOLEIL" },
+    { "caseDefinition": [6,2], "fleche": "bas", "definition": "Article masculin", "reponse": "LE", "affichage": "LE" },
+    { "caseDefinition": [8,0], "fleche": "droite", "definition": "Notre planète", "reponse": "TERRE", "affichage": "TERRE" }
+  ]
+}

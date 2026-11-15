@@ -1,0 +1,656 @@
+# Lexique du jeu : les mots utilisables dans les grilles, avec leur définition.
+# Une ligne par mot :  MOT (avec accents) | niveau (1 courant, 2 moyen, 3 rare) | thème (facultatif) | définition | propre (si nom propre)
+# La définition doit tenir en 24 caractères. Les lignes commençant par # sont ignorées.
+
+# ---- 2 lettres ----
+AI|1||J'… (avoir)
+AN|1||Douze mois
+AS|1||Carte maîtresse
+AU|1||À le, contracté
+BU|1||Avalé, pour un liquide
+CE|1||Démonstratif
+DÉ|1||Cube à jouer
+DO|1|musique|Première note
+DU|1||De le, contracté
+EN|1||Dans
+ES|1||Tu … (être)
+ET|1||Il relie deux mots
+EU|1||Participe d'avoir
+FA|1|musique|Note entre mi et sol
+IF|2|nature|Conifère des cimetières
+IL|1||Pronom masculin
+JE|1||Moi, sujet
+LA|1|musique|Note du diapason
+LE|1||Article masculin
+LU|1||Parcouru des yeux
+MA|1||À moi, au féminin
+MI|1|musique|Note après ré
+NÉ|1||Venu au monde
+NI|1||Négation répétée
+NU|1||Sans vêtement
+ON|1||Pronom indéfini
+OR|1||Métal précieux
+OS|1||Le chien le ronge
+OU|1||Il marque le choix
+PI|2|sciences|3,14 et des poussières
+PU|1||Participe de pouvoir
+RÉ|1|musique|Note après do
+RI|1||Pouffé
+SI|1|musique|Note avant do
+SU|1||Appris
+TU|1||Pronom du tutoiement
+UN|1||Premier nombre
+US|2||Vieilles coutumes
+UT|2|musique|Ancien nom du do
+VA|1||Ordre de partir
+VU|1||Aperçu
+
+# ---- 3 lettres ----
+ÂGE|1||Nombre d'années
+AIL|1|cuisine|Il parfume l'aïoli
+AIR|1||On le respire
+AMI|1||Copain
+ÂNE|1|nature|Il brait
+ARA|2|nature|Perroquet coloré
+ARC|1|sport|Il lance des flèches
+ARE|3||Cent mètres carrés
+ART|1||La peinture en est un
+AXE|2|sciences|Ligne de rotation
+BAC|1||Examen du lycée
+BAL|1|musique|On y danse
+BAS|1||Il couvre la jambe
+BEC|1|nature|Bouche d'oiseau
+BLÉ|1|nature|Céréale du pain
+BOA|2|nature|Serpent étouffeur
+BOL|1|cuisine|Tasse sans anse
+BUS|1||Transport en commun
+BUT|1|sport|Marqué au foot
+CAP|1|geo|Pointe de terre
+CAR|1||Autobus de tourisme
+CIL|1||Poil de paupière
+CLÉ|1||Elle ouvre la porte
+COL|1|geo|Passage en montagne
+COQ|1|nature|Il chante à l'aube
+COU|1||Il porte la tête
+CRI|1||Hurlement
+DON|1||Cadeau
+DOS|1||Il porte le sac
+DUO|1|musique|Ils chantent à deux
+DUR|1||Pas mou
+EAU|1||Elle coule du robinet
+ÉCU|2|histoire|Ancienne monnaie
+ÉLU|1||Choisi par le vote
+ÉMU|2||Touché
+ÉPI|1|nature|Tête du blé
+ÈRE|2|histoire|Longue époque
+EST|1|geo|Où le soleil se lève
+ÉTÉ|1||Saison chaude
+FÉE|1||Elle a une baguette
+FER|1||Métal du forgeron
+FEU|1||Il brûle
+FIL|1||Il passe dans l'aiguille
+FOU|1||Il n'a plus sa raison
+GAZ|1|sciences|Ni solide ni liquide
+GEL|1|nature|Froid qui glace
+GUI|1|nature|On s'embrasse dessous
+ÎLE|1|geo|Entourée d'eau
+IRE|3||Colère d'autrefois
+JEU|1||Divertissement
+JUS|1|cuisine|Liquide de fruit
+LAC|1|geo|Étendue d'eau douce
+LIE|2|cuisine|Dépôt du vin
+LIN|1|nature|Fibre de toile
+LIT|1||Meuble pour dormir
+LOI|1||Votée par les députés
+LYS|2|histoire|Fleur des rois
+MAI|1||Mois du muguet
+MÂT|1||Il porte les voiles
+MER|1|nature|Elle a ses marées
+MIE|1|cuisine|Intérieur du pain
+MOT|1||Il se cherche ici
+MOU|1||Pas dur
+MUR|1||Cloison
+NET|1||Propre
+NEZ|1||Il sent
+NID|1|nature|Maison d'oiseau
+NIL|2|geo|Fleuve d'Égypte|propre
+NOM|1||Patronyme
+NON|1||Refus
+NUL|1||Sans valeur
+ODE|2|musique|Poème chanté
+OIE|1|nature|Elle cacarde
+OUI|1||Contraire de non
+PAS|1||Enjambée
+PEU|1||Pas beaucoup
+PIE|1|nature|Oiseau voleur
+PIN|1|nature|Arbre des Landes
+POT|1||Récipient de confiture
+PRÉ|1|nature|Petite prairie
+PUB|1||Réclame
+PUR|1||Sans mélange
+RAS|2||Coupé très court
+RAT|1|nature|Rongeur d'égout
+RIZ|1|cuisine|Céréale d'Asie
+ROC|1|nature|Bloc de pierre
+ROI|1|histoire|Il porte la couronne
+RUE|1||Voie en ville
+SAC|1||On le porte à l'épaule
+SEC|1||Pas mouillé
+SEL|1|cuisine|Voisin du poivre
+SKI|1|sport|Il glisse sur la neige
+SOL|1||On marche dessus
+SON|1|musique|Bruit
+SOT|1||Peu malin
+SOU|1|histoire|Ancienne petite pièce
+SUD|1|geo|Opposé au nord
+TAS|1||Amas
+THÉ|1|cuisine|Boisson des Anglais
+TIC|1||Geste nerveux
+TIR|1|sport|Sport à la cible
+TON|1||Nuance de couleur
+TÔT|1||De bonne heure
+TRI|1||Classement
+UNE|1||Première page du journal
+UNI|1||Sans motif
+VER|1|nature|Il vit dans la terre
+VIE|1||Existence
+VIF|1||Plein d'entrain
+VIN|1|cuisine|Rouge, blanc ou rosé
+VIS|1||On la tourne pour fixer
+VOL|1||Larcin
+VUE|1||L'un des cinq sens
+ZOO|1|nature|Parc d'animaux
+
+# ---- 4 lettres ----
+AIDE|1||Coup de main
+AILE|1|nature|L'oiseau en a deux
+AÎNÉ|1||Premier né
+AIRE|2|sciences|Surface
+ALTO|2|musique|Grand violon
+AMER|1|cuisine|Comme le café sans sucre
+AMIE|1||Copine
+ANGE|1||Il porte une auréole
+ANSE|1||Poignée de panier
+ARIA|3|musique|Air d'opéra
+ARME|1||Le fusil en est une
+ASIE|1|geo|Plus grand continent|propre
+ÂTRE|2||Foyer de la cheminée
+AUBE|1||Lever du jour
+AVEU|1||Confession
+AVIS|1||Opinion
+BAIN|1||Il se prend en baignoire
+BANC|1||Siège du jardin public
+BASE|1||Fondement
+BÊTE|1|nature|Animal
+BISE|1||Petit baiser
+BLEU|1||Couleur du ciel
+BOIS|1|nature|Petite forêt
+BOUE|1|nature|Terre mouillée
+BREL|1|musique|Il chantait Amsterdam|propre
+CAFÉ|1|cuisine|Petit noir
+CAGE|1||Prison du canari
+CANE|1|nature|Femelle du canard
+CASE|1||Elle reçoit une lettre
+CAVE|1||Le vin y vieillit
+CERF|1|nature|Il porte des bois
+CIEL|1||Au-dessus de nos têtes
+CIRE|1||Elle fait briller
+CITÉ|1||Ville
+CLOU|1||Le marteau l'enfonce
+CODE|1||Il régit la route
+COIN|1||Angle
+CÔTE|1|geo|Bord de mer
+COUR|1||Lieu de récréation
+CRUE|1|nature|Montée des eaux
+CUIR|1||Peau tannée
+DAME|1||Elle bat le valet
+DATE|1||Jour, mois, année
+DENT|1||Elle peut être de lait
+DIRE|1||Exprimer
+DOSE|1||Quantité de médicament
+DRAP|1||Il couvre le matelas
+DUEL|1|histoire|Combat à deux
+DUNE|1|nature|Colline de sable
+ÉCHO|1||Il répète tout
+ÉDEN|2||Paradis terrestre
+ÉLAN|1|nature|Grand cerf du Nord
+ÉMIR|2|geo|Prince d'Arabie
+ÉPÉE|1|histoire|Arme du chevalier
+ÉTAL|2||Table du marché
+ÉTAT|1||Pays organisé
+ÉTAU|2||Il serre sur l'établi
+ETNA|2|geo|Volcan de Sicile|propre
+ÊTRE|1||Exister
+ÉTUI|1||Boîte à lunettes
+FAIM|1||Envie de manger
+FÊTE|1||Réjouissance
+FIER|1||Orgueilleux
+FILM|1|cinema|Il passe au cinéma
+FOIE|1|cuisine|Gras, il se mange à Noël
+FOIN|1|nature|Herbe séchée
+GAIN|1||Bénéfice
+GARE|1||Les trains s'y arrêtent
+GENS|1||Personnes
+GÎTE|1||Logement de vacances
+GOÛT|1||Sens de la langue
+HIER|1||Veille d'aujourd'hui
+IDÉE|1||Elle vient à l'esprit
+ÎLOT|1|geo|Toute petite île
+IRIS|1|nature|Fleur ou partie de l'œil
+JOIE|1||Grand bonheur
+JOUR|1||Vingt-quatre heures
+LAIE|2|nature|Femelle du sanglier
+LAIT|1|cuisine|La vache le donne
+LAME|1||Tranchant du couteau
+LAVE|1|nature|Elle coule du volcan
+LIEN|1||Attache
+LIER|1||Attacher
+LIEU|1||Endroit
+LIME|1||Elle use le métal
+LION|1|nature|Roi des animaux
+LIRE|1||Parcourir un livre
+LOGE|1|cinema|L'artiste s'y prépare
+LOUP|1|nature|Il hurle à la lune
+LUNE|1|sciences|Astre de la nuit
+MAIN|1||Elle a cinq doigts
+MARE|1|nature|Petite étendue d'eau
+MARI|1||Époux
+MENU|1|cuisine|Liste des plats
+MÈRE|1||Maman
+MIEL|1|cuisine|Produit des abeilles
+MINE|1||On en tire le charbon
+MITE|1|nature|Elle troue les lainages
+MODE|1||Tendance du moment
+MOIS|1||Il y en a douze par an
+NAGE|1|sport|Déplacement dans l'eau
+NAIN|1||Ils sont sept au conte
+NÉON|2|sciences|Gaz des enseignes
+NERF|1||Il transmet la douleur
+NEUF|1||Avant dix
+NICE|1|geo|Ville de la Côte d'Azur|propre
+NIER|1||Dire que non
+NOCE|1||Fête de mariage
+NOËL|1||Fête du 25 décembre|propre
+NOIR|1||Couleur du deuil
+NOTE|1|musique|Signe sur la portée
+NUIT|1||Elle suit le jour
+ŒUF|1|cuisine|La poule le pond
+OGRE|1||Il mange les enfants
+ONDE|2|sciences|Elle porte la radio
+ORAL|1||Épreuve à voix haute
+ORGE|2|nature|Céréale de la bière
+OSER|1||Avoir de l'audace
+ÔTER|1||Enlever
+OUÏE|2||Sens de l'oreille
+OURS|1|nature|Il aime le miel
+PAGE|1||Feuille de livre
+PAIN|1|cuisine|Le boulanger le pétrit
+PAIX|1|histoire|Fin de la guerre
+PARI|1|sport|Mise sur un cheval
+PEAU|1||Elle couvre le corps
+PÈRE|1||Papa
+PEUR|1||Frousse
+PIAF|1|musique|La Môme|propre
+PIED|1||Il est dans la chaussure
+PILE|1||Opposé de face
+PLAT|1|cuisine|Il suit l'entrée
+PNEU|1||Il entoure la jante
+POIL|1||Il pousse sur la peau
+POIS|1|cuisine|Petit légume rond
+PONT|1||Il enjambe la rivière
+PORT|1|geo|Abri des bateaux
+PRIX|1||Coût
+RAIE|1|nature|Poisson plat
+RAIL|1||Le train roule dessus
+RAME|1|sport|Elle pousse la barque
+RARE|1||Peu courant
+RATE|2||Voisine de l'estomac
+RÉEL|1||Qui existe vraiment
+REIN|1||Il filtre le sang
+RÊNE|2||Courroie du cavalier
+RÊVE|1||Songe
+RIDE|1||Pli du visage
+RIEN|1||Pas la moindre chose
+RIME|1|musique|Écho en fin de vers
+RIRE|1||S'esclaffer
+RIVE|1|geo|Bord du fleuve
+ROBE|1||Vêtement féminin
+RÔLE|1|cinema|L'acteur le joue
+ROSE|1|nature|Fleur à épines
+RÔTI|1|cuisine|Viande cuite au four
+ROUE|1||Elle tourne sous l'auto
+RUSE|1||Astuce du renard
+SAGE|1||Raisonnable
+SALE|1||Pas propre
+SANG|1||Il coule dans les veines
+SAUT|1|sport|Bond
+SCIE|1||Outil à dents
+SEAU|1||Récipient à anse
+SÈVE|2|nature|Sang des arbres
+SIRE|2|histoire|Titre donné au roi
+SITE|1||Lieu remarquable
+SOIE|1||Tissu précieux d'un ver
+SOIF|1||Envie de boire
+SOIN|1||Attention portée
+SOIR|1||Fin de journée
+SOLE|1|cuisine|Poisson à la meunière
+STAR|1|cinema|Vedette
+SUIE|2||Noir de cheminée
+TARE|2||Poids de l'emballage
+TAUX|2||Pourcentage
+TAXE|1||Impôt
+TÊTE|1||Elle porte le chapeau
+THON|1|cuisine|Poisson en boîte
+TIGE|1|nature|Elle porte la fleur
+TOIT|1||Il couvre la maison
+TOUR|1||Eiffel a la sienne
+TRAC|1|cinema|Peur de l'artiste
+TRIO|1|musique|Groupe de trois
+TROU|1||Cavité
+TSAR|2|histoire|Empereur de Russie
+TUBE|1|musique|Chanson à succès
+URNE|1||Elle reçoit les votes
+USER|1||Abîmer à force
+VASE|1||On y met des fleurs
+VEAU|1|nature|Petit de la vache
+VÉLO|1|sport|Petite reine
+VENT|1|nature|Il gonfle les voiles
+VERT|1||Couleur de l'herbe
+VIDE|1||Sans rien dedans
+VŒU|1||Souhait
+VOIE|1||Les rails la forment
+VOIX|1|musique|Le chanteur la travaille
+YEUX|1||Ils voient
+ZÉRO|1|sciences|Nul en chiffre
+ZONE|1||Secteur
+
+# ---- 5 lettres ----
+AIGLE|1|nature|Rapace royal
+AIMER|1||Chérir
+ALPES|1|geo|Massif du mont Blanc|propre
+AMOUR|1||Tendre sentiment
+ANCRE|1||Elle retient le bateau
+ANGLE|1|sciences|Il se mesure en degrés
+ARBRE|1|nature|Il a tronc et branches
+ARÈNE|2|histoire|Piste des gladiateurs
+ARÊTE|1|cuisine|Os du poisson
+ASTRE|1|sciences|Étoile ou planète
+ATOME|2|sciences|Grain de matière
+AVION|1||Il décolle de l'aéroport
+BALLE|1|sport|On la frappe au tennis
+BARBE|1||Poils du menton
+CARTE|1||Elle se joue ou se lit
+CHANT|1|musique|Art de la voix
+CHIEN|1|nature|Meilleur ami de l'homme
+CŒUR|1||Il bat dans la poitrine
+CORDE|1|musique|Le guitariste la pince
+CRÊPE|1|cuisine|Reine de la Chandeleur
+DANSE|1|musique|La valse en est une
+ÉCART|1||Différence
+ÉCOLE|1||Les enfants y apprennent
+ÉCRAN|1|cinema|Toile du cinéma
+ÉCROU|2||Il se visse au boulon
+ÉLÈVE|1||Il va en classe
+ENCRE|1||Liquide du stylo
+ÉPICE|1|cuisine|Le poivre en est une
+ÉPINE|1|nature|Piquant de la rose
+ERRER|2||Aller sans but
+ESSAI|1|sport|Points au rugby
+ÉTAGE|1||Niveau d'un immeuble
+ÉTAIN|2|sciences|Métal des vieux pots
+ÉTANG|1|nature|Petit lac
+ÉTAPE|1|sport|Partie du Tour
+ÉTUDE|1||Travail scolaire
+ÉVIER|1||Bac de la cuisine
+FERME|1|nature|Exploitation agricole
+FLEUR|1|nature|Elle s'offre en bouquet
+FORÊT|1|nature|Grand bois
+GLACE|1|cuisine|Dessert en cornet
+HERBE|1|nature|Elle fait le gazon
+HIVER|1||Saison froide
+IMAGE|1||Illustration
+ISSUE|1||Porte de sortie
+LAINE|1||Toison du mouton
+LAPIN|1|nature|Il a de longues oreilles
+LARME|1||Elle coule des yeux
+LASER|1|sciences|Faisceau lumineux
+LEVER|1||Hisser
+LINGE|1||Il sèche sur le fil
+LIVRE|1||Il a des pages
+LOIRE|1|geo|Fleuve des châteaux|propre
+LUTTE|1|sport|Combat au corps à corps
+MARIN|1||Homme de mer
+MATIN|1||Début de journée
+MERCI|1||Mot de politesse
+MERLE|1|nature|Oiseau noir à bec jaune
+MESSE|1||Office du dimanche
+MONDE|1||La planète entière
+NAGER|1|sport|Avancer dans l'eau
+NATTE|1||Tresse
+NEIGE|1|nature|Elle tombe en flocons
+NOTER|1||Inscrire
+NUAGE|1|nature|Il cache le soleil
+OASIS|2|geo|Point d'eau du désert
+OCÉAN|1|geo|Atlantique ou Pacifique
+ODEUR|1||Le nez la perçoit
+OLIVE|1|cuisine|Fruit à huile
+ONCLE|1||Frère du père
+OPÉRA|1|musique|Théâtre chanté
+ORAGE|1|nature|Éclairs et tonnerre
+ORTIE|1|nature|Plante qui pique
+OSIER|2|nature|Brin de panier
+OTAGE|2||Prisonnier contre rançon
+OUEST|1|geo|Où le soleil se couche
+OUTIL|1||Le marteau en est un
+PARIS|1|geo|Ville lumière|propre
+PIANO|1|musique|Clavier noir et blanc
+PISTE|1|sport|Les skieurs la dévalent
+PLAGE|1|geo|Sable au bord de l'eau
+PLUIE|1|nature|Elle mouille
+POIRE|1|cuisine|Fruit de la belle Hélène
+POMME|1|cuisine|Fruit du pommier
+PORTE|1||Elle a une poignée
+PURÉE|1|cuisine|Légumes écrasés
+RADIO|1|musique|Elle diffuse des tubes
+RADIS|1|cuisine|Petit légume rose
+RAMER|1|sport|Manier les avirons
+RATER|1||Manquer
+REINE|1|histoire|Épouse du roi
+RENNE|1|nature|Il tire le traîneau
+RESTE|1||Ce qui n'est pas mangé
+RÊVER|1||Songer
+RIVAL|1||Concurrent
+ROMAN|1||Long récit
+ROUTE|1||Voie pour les voitures
+RUINE|1|histoire|Vestige
+SABLE|1|nature|Grains de la plage
+SAINT|1||Fêté au calendrier
+SALLE|1||De bains ou à manger
+SALON|1||Pièce du canapé
+SCÈNE|1|cinema|Planches de l'artiste
+SEINE|1|geo|Elle traverse Paris|propre
+SEMER|1|nature|Mettre en terre
+SÉRIE|1|cinema|Feuilleton
+SERRE|1|nature|Abri vitré du jardin
+SEUIL|1||Pas de la porte
+SIÈGE|1||On s'assoit dessus
+SINGE|1|nature|Il aime les bananes
+SIROP|1|cuisine|Liquide très sucré
+SŒUR|1||Fille des mêmes parents
+STADE|1|sport|Enceinte du match
+SUCRE|1|cuisine|Il adoucit le café
+TABLE|1||On y prend les repas
+TANGO|1|musique|Danse d'Argentine
+TARTE|1|cuisine|Pâtisserie aux fruits
+TASSE|1|cuisine|Elle reçoit le café
+TENIR|1||Avoir en main
+TENTE|1||Abri du campeur
+TERME|2||Fin
+TERRE|1|sciences|Notre planète
+TIGRE|1|nature|Félin rayé
+TIRER|1||Opposé de pousser
+TITRE|1|musique|Nom d'une chanson
+TRAIN|1||Il roule sur des rails
+TRÊVE|2|histoire|Pause dans les combats
+TRUIE|2|nature|Femelle du porc
+USINE|1||On y fabrique en série
+VALSE|1|musique|Danse à trois temps
+VERRE|1||On y boit
+VESTE|1||Elle couvre la chemise
+VILLE|1|geo|Grande agglomération
+VOILE|1|sport|Le vent la gonfle
+
+# ---- 6 lettres ----
+ACTEUR|1|cinema|Il joue dans un film
+ALERTE|1||Signal de danger
+AMANDE|1|cuisine|Fruit de la frangipane
+ÂNESSE|2|nature|Femelle de l'âne
+ANIMAL|1|nature|Bête
+ARTÈRE|2|sciences|Vaisseau du cœur
+AVENIR|1||Temps futur
+BATEAU|1||Il navigue
+CERISE|1|cuisine|Fruit rouge à noyau
+CHEMIN|1||Petite route de terre
+CHEVAL|1|nature|Monture du cavalier
+CINÉMA|1|cinema|Septième art
+DISQUE|1|musique|Galette de vinyle
+ÉCLAIR|1|nature|Lumière de l'orage
+ÉCURIE|1|nature|Logis des chevaux
+ÉGLISE|1||On y sonne les cloches
+ENTIER|1||Complet, intact
+ENTRÉE|1|cuisine|Premier plat
+ERREUR|1||Faute
+ESPOIR|1||Il fait vivre
+ÉTALON|2|nature|Cheval reproducteur
+ÉTOILE|1|sciences|Elle brille la nuit
+ÉTRIER|2|sport|Appui du cavalier
+ÉTROIT|1||Pas large
+ITALIE|1|geo|Pays en forme de botte|propre
+JARDIN|1|nature|On y cultive des fleurs
+LAITUE|1|cuisine|Salade verte
+LETTRE|1||Le facteur l'apporte
+MAISON|1||Logis
+MARINE|1||Flotte de guerre
+MESURE|1|musique|Division de la partition
+MÉTIER|1||Profession
+MIROIR|1||Il renvoie notre image
+MONTRE|1||Elle se porte au poignet
+MOTEUR|1||Il fait avancer l'auto
+MOULIN|1||Ses ailes tournent
+NATURE|1|nature|Faune et flore
+OISEAU|1|nature|Il a des plumes
+ORANGE|1|cuisine|Agrume ou couleur
+ORTEIL|1||Doigt de pied
+OTARIE|2|nature|Cousine du phoque
+PRINCE|1|histoire|Fils du roi
+RAISIN|1|cuisine|Fruit de la vigne
+RASOIR|1||Il coupe la barbe
+REGARD|1||Coup d'œil
+RELAIS|1|sport|Course avec témoin
+RENARD|1|nature|Animal rusé
+RÉSEAU|2||Ensemble de lignes
+RESTER|1||Ne pas partir
+RÉTINE|2|sciences|Fond de l'œil
+RIVAGE|1|geo|Littoral
+SAISON|1||Le printemps en est une
+SALADE|1|cuisine|Laitue ou scarole
+SENTIR|1||Humer
+SEREIN|2||Calme et confiant
+SERVIR|1||Apporter les plats
+SIESTE|1||Somme d'après-midi
+SIRÈNE|1||Femme-poisson
+SOIRÉE|1||Fête du soir
+SOLEIL|1|sciences|Astre du jour
+SORTIE|1||Issue
+STATUE|1||Sculpture
+TENDRE|1||Doux et affectueux
+TENNIS|1|sport|Sport de raquette
+TENTER|1||Essayer
+TÉTINE|1||Bébé la suce
+TIROIR|1||Case d'une commode
+TISANE|1|cuisine|Infusion du soir
+TOMATE|1|cuisine|Fruit rouge du potager
+TRÉSOR|1||Butin du pirate
+TRISTE|1||Sans joie
+TRUITE|1|cuisine|Poisson de rivière
+VISAGE|1||Figure
+VOYAGE|1||Déplacement lointain
+
+# ---- 7 lettres ----
+ADRESSE|1||Rue et numéro
+ANTENNE|1||Elle capte la télévision
+ARMOIRE|1||Meuble à linge
+ARRIÈRE|1|sport|Défenseur au rugby
+ARTISTE|1|musique|Peintre ou chanteur
+ATELIER|1||Local de l'artisan
+BALANCE|1||Elle pèse
+BALEINE|1|nature|Géant des mers
+CARESSE|1||Geste tendre
+CAROTTE|1|cuisine|Légume orange
+CASCADE|1|nature|Chute d'eau
+CAVERNE|1|histoire|Abri préhistorique
+CHANSON|1|musique|Couplets et refrain
+CHAPEAU|1||Couvre-chef
+CHÂTEAU|1|histoire|Demeure du seigneur
+COLLINE|1|geo|Petite hauteur
+CONCERT|1|musique|Spectacle musical
+COULEUR|1||Le rouge en est une
+DESSERT|1|cuisine|Fin du repas
+ÉLEVAGE|1|nature|Activité du fermier
+ENTENTE|1||Accord
+ESSENCE|1||Carburant
+ESTRADE|1|cinema|Plancher surélevé
+ÉTAGÈRE|1||Planche à livres
+ÉTERNEL|1||Sans fin
+FENÊTRE|1||Ouverture vitrée
+FROMAGE|1|cuisine|Camembert ou brie
+GALERIE|1||Elle expose des tableaux
+GALETTE|1|cuisine|Gâteau des Rois
+GUITARE|1|musique|Instrument à six cordes
+HÔPITAL|1||On y soigne
+HORLOGE|1||Elle sonne les heures
+INSECTE|1|nature|La fourmi en est un
+JOURNAL|1||Quotidien
+LAITIER|1||Il livrait le lait
+LECTURE|1||Passe-temps du lecteur
+LESSIVE|1||Elle lave le linge
+LUMIÈRE|1||Elle chasse l'obscurité
+MANTEAU|1||Vêtement d'hiver
+MARELLE|1||Jeu de cour d'école
+MATELAS|1||On dort dessus
+MATIÈRE|1||Discipline scolaire
+MESSAGE|1||Texte envoyé
+MOUETTE|1|nature|Oiseau du port
+MUSIQUE|1|musique|Art des sons
+NATUREL|1||Sans artifice
+OREILLE|1||Organe de l'ouïe
+PASSAGE|1||Lieu où l'on passe
+PATIENT|1||Il attend le médecin
+PEINTRE|1||Artiste au pinceau
+PLATEAU|1||Il porte les verres
+POISSON|1|nature|Il a des écailles
+RECETTE|1|cuisine|Mode d'emploi du plat
+REFRAIN|1|musique|Il suit le couplet
+RENTRÉE|1||Retour à l'école
+RÉSERVE|1||Stock
+RETRAIT|1||Argent tiré au guichet
+RIVIÈRE|1|geo|Cours d'eau
+ROBINET|1||L'eau en coule
+SALIÈRE|1|cuisine|Compagne de la poivrière
+SARDINE|1|cuisine|Petit poisson en boîte
+SEMAINE|1||Sept jours
+SENTIER|1|nature|Chemin de randonnée
+SÉRIEUX|1||Qui ne plaisante pas
+SERRURE|1||La clé y tourne
+SERVICE|1|sport|Engagement au tennis
+SILENCE|1|musique|Absence de bruit
+STATION|1||Arrêt de métro
+TABLEAU|1||Œuvre du peintre
+TARTINE|1|cuisine|Pain beurré
+TAUREAU|1|nature|Mâle de la vache
+TEMPÊTE|1|nature|Vent violent
+TERRINE|1|cuisine|Pâté en pot
+THÉÂTRE|1|cinema|On y joue la comédie
+VANILLE|1|cuisine|Parfum de glace
+VITESSE|1||Elle se mesure en km/h
+VOITURE|1||Automobile

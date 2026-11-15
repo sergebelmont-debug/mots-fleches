@@ -1,0 +1,20 @@
+{
+  "id": "011",
+  "titre": "À vos crayons",
+  "theme": "culture-generale",
+  "difficulte": "facile",
+  "largeur": 5,
+  "hauteur": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "L'eau en coule", "reponse": "ROBINET", "affichage": "ROBINET" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Chemin de randonnée", "reponse": "SENTIER", "affichage": "SENTIER" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Inscrire", "reponse": "NOTER", "affichage": "NOTER" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Voie en ville", "reponse": "RUE", "affichage": "RUE" },
+    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Sans vêtement", "reponse": "NU", "affichage": "NU" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Les skieurs la dévalent", "reponse": "PISTE", "affichage": "PISTE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Mettre en terre", "reponse": "SEMER", "affichage": "SEMER" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "À moi, au féminin", "reponse": "MA", "affichage": "MA" },
+    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Note après do", "reponse": "RE", "affichage": "RÉ" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Poids de l'emballage", "reponse": "TARE", "affichage": "TARE" }
+  ]
+}
