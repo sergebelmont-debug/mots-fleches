@@ -1,6 +1,8 @@
 // Sauvegarde locale (dans le navigateur) : progression, parties en cours, réglages.
 import type { Partie } from '../engine/partie';
 import { progressionVide, type Progression } from '../progression/progression';
+import type { ResultatDefi } from '../progression/defi';
+import { statsVides, type Stats } from '../progression/statistiques';
 
 export interface Reglages {
   signalerMotsJustes: boolean;
@@ -11,6 +13,8 @@ export interface Sauvegarde {
   progression: Progression;
   enCours: Record<string, Partie>;
   reglages: Reglages;
+  defis: Record<string, ResultatDefi>; // défis du jour réussis, par date
+  stats: Stats;
 }
 
 /** Ce dont on a besoin du stockage du navigateur (permet de tester sans navigateur). */
@@ -26,8 +30,12 @@ export const sauvegardeVide = (): Sauvegarde => ({
   progression: progressionVide(),
   enCours: {},
   reglages: { signalerMotsJustes: true },
+  defis: {},
+  stats: statsVides(),
 });
 
+const FORMAT_JOUR = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
+const nombre = (x: unknown): boolean => typeof x === 'number' && Number.isFinite(x) && x >= 0;
 const estObjet = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null && !Array.isArray(x);
 
 /** Lit la sauvegarde. Absente, illisible ou abîmée, elle donne une sauvegarde vide, jamais un plantage. */
@@ -42,7 +50,16 @@ export function charger(stockage: Stockage | null): Sauvegarde {
     const prog = estObjet(s.progression) && estObjet(s.progression.terminees) ? s.progression.terminees : {};
     for (const [id, r] of Object.entries(prog))
       if (estObjet(r) && Number.isInteger(r.etoiles) && Number.isInteger(r.indices))
-        terminees[id] = { etoiles: Math.min(3, Math.max(1, r.etoiles as number)), indices: r.indices as number };
+        terminees[id] = {
+          etoiles: Math.min(3, Math.max(1, r.etoiles as number)),
+          indices: r.indices as number,
+          ...(nombre(r.secondes) ? { secondes: r.secondes as number } : {}),
+        };
+    const defis: Sauvegarde['defis'] = {};
+    for (const [jour, r] of Object.entries(estObjet(s.defis) ? s.defis : {}))
+      if (FORMAT_JOUR.test(jour) && estObjet(r) && Number.isInteger(r.etoiles) && Number.isInteger(r.indices) && nombre(r.secondes))
+        defis[jour] = { etoiles: Math.min(3, Math.max(1, r.etoiles as number)), indices: r.indices as number, secondes: r.secondes as number };
+    const st = estObjet(s.stats) ? s.stats : {};
     return {
       version: 1,
       progression: { terminees },
@@ -50,6 +67,13 @@ export function charger(stockage: Stockage | null): Sauvegarde {
       reglages: {
         signalerMotsJustes:
           estObjet(s.reglages) && typeof s.reglages.signalerMotsJustes === 'boolean' ? s.reglages.signalerMotsJustes : true,
+      },
+      defis,
+      stats: {
+        jours: Array.isArray(st.jours) ? st.jours.filter((j): j is string => typeof j === 'string' && FORMAT_JOUR.test(j)).sort() : [],
+        partiesTerminees: nombre(st.partiesTerminees) ? (st.partiesTerminees as number) : 0,
+        secondesTotal: nombre(st.secondesTotal) ? (st.secondesTotal as number) : 0,
+        indicesTotal: nombre(st.indicesTotal) ? (st.indicesTotal as number) : 0,
       },
     };
   } catch {

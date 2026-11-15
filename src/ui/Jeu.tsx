@@ -16,31 +16,35 @@ import {
   type Partie,
 } from '../engine/partie';
 import { etoilesPour } from '../progression/progression';
+import { formaterChrono, formaterDuree } from '../progression/statistiques';
 import { Clavier } from './Clavier';
 import { Etoiles } from './Etoiles';
 import { VueGrille } from './VueGrille';
 
 interface Props {
   grille: Grille;
-  numero: number;
+  etiquette: string; // « Niveau 3 » ou « Défi du jour »
   partieInitiale: Partie | null;
   signalerMotsJustes: boolean;
   enPause: boolean;
   aSuivante: boolean;
+  nouvellesRecompenses: string[];
   surPartie: (p: Partie) => void;
-  surTerminee: (indices: number) => void;
+  surTerminee: (indices: number, secondes: number) => void;
   surRetour: () => void;
   surSuivante: () => void;
   surMenu: () => void;
 }
 
 export function Jeu(props: Props) {
-  const { grille, numero, signalerMotsJustes, enPause } = props;
+  const { grille, etiquette, signalerMotsJustes, enPause } = props;
   const [partie, setPartie] = useState<Partie>(() => props.partieInitiale ?? creerPartie(grille));
+  const [secondes, setSecondes] = useState(partie.secondes);
   const [message, setMessage] = useState('');
   const [eclat, setEclat] = useState<ReadonlySet<number>>(new Set());
   const justesAvant = useRef<number[]>(motsJustes(grille, partie));
   const finSignalee = useRef(false);
+  const temps = useRef(partie.secondes);
   const terminee = estTerminee(grille, partie);
 
   const agir = (f: (p: Partie) => Partie) => {
@@ -61,15 +65,32 @@ export function Jeu(props: Props) {
     if (estTerminee(grille, partie)) {
       if (!finSignalee.current) {
         finSignalee.current = true;
-        props.surTerminee(partie.indices);
+        props.surTerminee(partie.indices, temps.current);
       }
     } else {
       finSignalee.current = false;
-      props.surPartie(partie);
+      props.surPartie({ ...partie, secondes: temps.current });
     }
     return () => clearTimeout(minuterie);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [partie]);
+
+  // Chronomètre : il ne tourne que si la grille est à l'écran et en cours.
+  useEffect(() => {
+    if (enPause || terminee) return;
+    const tic = setInterval(() => {
+      if (document.visibilityState !== 'visible') return;
+      temps.current += 1;
+      setSecondes(temps.current);
+    }, 1000);
+    return () => clearInterval(tic);
+  }, [enPause, terminee]);
+
+  // Le temps est sauvegardé toutes les 10 secondes, même sans frappe.
+  useEffect(() => {
+    if (!terminee && secondes > 0 && secondes % 10 === 0) props.surPartie({ ...partie, secondes });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [secondes]);
 
   // Clavier physique (ordinateur).
   useEffect(() => {
@@ -88,6 +109,7 @@ export function Jeu(props: Props) {
   }, [grille, enPause, terminee]);
 
   const mot = grille.mots[partie.motActif];
+  const etoiles = etoilesPour(partie.indices);
 
   const surVerifier = () => {
     const p = verifier(grille, partie);
@@ -96,17 +118,47 @@ export function Jeu(props: Props) {
     setMessage(n === 0 ? 'Aucune erreur pour l’instant.' : n === 1 ? '1 lettre à corriger.' : `${n} lettres à corriger.`);
   };
 
+  const recommencer = () => {
+    temps.current = 0;
+    setSecondes(0);
+    setPartage('');
+    agir(() => creerPartie(grille));
+  };
+
+  // Partage du résultat : menu de partage du téléphone (Facebook, Messenger…), sinon copie du texte.
+  const [partage, setPartage] = useState('');
+  const partager = async () => {
+    const enLigne = !['localhost', '127.0.0.1'].includes(location.hostname);
+    const texte = `J'ai terminé « ${grille.titre} » (${etiquette}) des Mots Fléchés en ${formaterDuree(temps.current)} : ${'★'.repeat(etoiles)}${'☆'.repeat(3 - etoiles)}`;
+    try {
+      if (navigator.share) {
+        await navigator.share(enLigne ? { text: texte, url: location.origin + location.pathname } : { text: texte });
+        setPartage('Résultat partagé.');
+      } else {
+        await navigator.clipboard.writeText(enLigne ? `${texte} ${location.origin + location.pathname}` : texte);
+        setPartage('Résultat copié : collez-le dans Facebook.');
+      }
+    } catch (e) {
+      // Le joueur a fermé le menu de partage : ce n'est pas une erreur.
+      // Sinon, on affiche le texte pour qu'il puisse être copié à la main.
+      setPartage((e as Error).name === 'AbortError' ? '' : `À copier : ${texte}`);
+    }
+  };
+
   return (
     <div className="ecran jeu">
       <header className="barre">
-        <button className="rond" aria-label="Retour au parcours" onClick={props.surRetour}>
+        <button className="rond" aria-label="Retour" onClick={props.surRetour}>
           ←
         </button>
         <span className="barre-titre">
-          Niveau {numero}
+          {etiquette}
           <small>{grille.titre}</small>
         </span>
-        <Etoiles nombre={etoilesPour(partie.indices)} />
+        <span className="chrono" aria-label="Temps écoulé">
+          {formaterChrono(secondes)}
+        </span>
+        <Etoiles nombre={etoiles} />
       </header>
 
       <main className="zone-grille">
@@ -158,19 +210,31 @@ export function Jeu(props: Props) {
           <div className="carte">
             <div className="rayons" aria-hidden="true" />
             <h2>Bravo !</h2>
-            <Etoiles nombre={etoilesPour(partie.indices)} anime />
-            <p>Niveau {numero} terminé</p>
+            <Etoiles nombre={etoiles} anime />
+            <p>
+              {etiquette} terminé en {formaterDuree(secondes)}
+            </p>
             <p className="detail">{partie.indices === 0 ? 'Sans aucun indice.' : `Indices utilisés : ${partie.indices}`}</p>
+            {props.nouvellesRecompenses.length > 0 && (
+              <p className="medaille-gagnee">
+                🏅 {props.nouvellesRecompenses.length > 1 ? 'Nouvelles récompenses' : 'Nouvelle récompense'} :{' '}
+                <strong>{props.nouvellesRecompenses.join(', ')}</strong>
+              </p>
+            )}
             {props.aSuivante && (
               <button className="bouton-or grand" onClick={props.surSuivante}>
                 Grille suivante
               </button>
             )}
+            <button className="bouton-or" onClick={partager}>
+              Partager mon résultat
+            </button>
+            {partage && <p className="detail copiable">{partage}</p>}
             <div className="rangee-boutons">
               <button className="bouton-sombre" onClick={props.surRetour}>
-                Parcours
+                Retour
               </button>
-              <button className="bouton-sombre" onClick={() => agir(() => creerPartie(grille))}>
+              <button className="bouton-sombre" onClick={recommencer}>
                 Rejouer
               </button>
             </div>

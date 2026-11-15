@@ -1,51 +1,70 @@
 import { useEffect, useMemo, useState } from 'react';
 import { GRILLES, IDS } from '../grilles';
 import { partieCompatible, type Partie } from '../engine/partie';
-import { enregistrerResultat, grilleAJouer, grilleSuivante } from '../progression/progression';
+import { cleDefi, grilleDuDefi, terminerGrille } from '../progression/defi';
+import { grilleAJouer, grilleSuivante } from '../progression/progression';
+import { nouvellesRecompenses, recompenses } from '../progression/recompenses';
+import { dateDuJour, enregistrerJour } from '../progression/statistiques';
 import { charger, enregistrer, sauvegardeVide, stockageNavigateur, type Sauvegarde } from '../storage/sauvegarde';
 import { Accueil } from './Accueil';
+import { Collection } from './Collection';
 import { Jeu } from './Jeu';
 import { Parcours } from './Parcours';
 import { Reglages } from './Reglages';
+import { Statistiques } from './Statistiques';
 
-type Ecran = { nom: 'accueil' } | { nom: 'parcours' } | { nom: 'jeu'; id: string };
+type Ecran = { nom: 'accueil' } | { nom: 'parcours' } | { nom: 'stats' } | { nom: 'collection' } | { nom: 'jeu'; id: string } | { nom: 'defi' };
 
 export function App() {
   const stockage = useMemo(stockageNavigateur, []);
-  const [sauvegarde, setSauvegarde] = useState<Sauvegarde>(() => charger(stockage));
+  const aujourdhui = dateDuJour(new Date());
+  const [sauvegarde, setSauvegarde] = useState<Sauvegarde>(() => {
+    const s = charger(stockage);
+    // On note le jour de jeu et on oublie les défis commencés les jours précédents.
+    const enCours = Object.fromEntries(Object.entries(s.enCours).filter(([cle]) => !cle.startsWith('defi:') || cle === cleDefi(aujourdhui)));
+    return { ...s, enCours, stats: enregistrerJour(s.stats, aujourdhui) };
+  });
   const [ecran, setEcran] = useState<Ecran>({ nom: 'accueil' });
   const [reglagesOuverts, setReglagesOuverts] = useState(false);
+  const [nouvelles, setNouvelles] = useState<string[]>([]);
 
   useEffect(() => {
     enregistrer(stockage, sauvegarde);
   }, [stockage, sauvegarde]);
 
-  const jouer = (id: string) => setEcran({ nom: 'jeu', id });
-  const grille = ecran.nom === 'jeu' ? GRILLES.find((g) => g.id === ecran.id) : undefined;
+  const aller = (e: Ecran) => {
+    setNouvelles([]);
+    setEcran(e);
+  };
+  const accueil = () => aller({ nom: 'accueil' });
+  const idDefi = grilleDuDefi(IDS, aujourdhui);
 
   let contenu;
-  if (ecran.nom === 'jeu' && grille) {
-    const sauvee = sauvegarde.enCours[grille.id];
-    const suivante = grilleSuivante(IDS, grille.id);
+  if (ecran.nom === 'jeu' || ecran.nom === 'defi') {
+    const enDefi = ecran.nom === 'defi';
+    const id = enDefi ? idDefi : ecran.id;
+    const grille = GRILLES.find((g) => g.id === id)!;
+    const cle = enDefi ? cleDefi(aujourdhui) : id;
+    const sauvee = sauvegarde.enCours[cle];
+    const suivante = enDefi ? null : grilleSuivante(IDS, id);
     contenu = (
       <Jeu
-        key={grille.id}
+        key={cle}
         grille={grille}
-        numero={IDS.indexOf(grille.id) + 1}
+        etiquette={enDefi ? 'Défi du jour' : `Niveau ${IDS.indexOf(id) + 1}`}
         partieInitiale={partieCompatible(grille, sauvee) ? sauvee : null}
         signalerMotsJustes={sauvegarde.reglages.signalerMotsJustes}
         enPause={reglagesOuverts}
         aSuivante={suivante !== null}
-        surPartie={(p: Partie) => setSauvegarde((s) => ({ ...s, enCours: { ...s.enCours, [grille.id]: p } }))}
-        surTerminee={(indices) =>
-          setSauvegarde((s) => {
-            const enCours = { ...s.enCours };
-            delete enCours[grille.id];
-            return { ...s, enCours, progression: enregistrerResultat(s.progression, grille.id, indices) };
-          })
-        }
-        surRetour={() => setEcran({ nom: 'parcours' })}
-        surSuivante={() => suivante && jouer(suivante)}
+        nouvellesRecompenses={nouvelles}
+        surPartie={(p: Partie) => setSauvegarde((s) => ({ ...s, enCours: { ...s.enCours, [cle]: p } }))}
+        surTerminee={(indices, secondes) => {
+          const fin = { cle, idGrille: id, defiDuJour: enDefi ? aujourdhui : null, indices, secondes };
+          setNouvelles(nouvellesRecompenses(recompenses(sauvegarde, GRILLES, aujourdhui), recompenses(terminerGrille(sauvegarde, fin), GRILLES, aujourdhui)));
+          setSauvegarde((s) => terminerGrille(s, fin));
+        }}
+        surRetour={() => aller(enDefi ? { nom: 'accueil' } : { nom: 'parcours' })}
+        surSuivante={() => suivante && aller({ nom: 'jeu', id: suivante })}
         surMenu={() => setReglagesOuverts(true)}
       />
     );
@@ -55,18 +74,26 @@ export function App() {
         grilles={GRILLES}
         progression={sauvegarde.progression}
         enCours={Object.keys(sauvegarde.enCours)}
-        surJouer={jouer}
-        surRetour={() => setEcran({ nom: 'accueil' })}
+        surJouer={(id) => aller({ nom: 'jeu', id })}
+        surRetour={accueil}
       />
     );
+  } else if (ecran.nom === 'stats') {
+    contenu = <Statistiques sauvegarde={sauvegarde} ids={IDS} aujourdhui={aujourdhui} surRetour={accueil} />;
+  } else if (ecran.nom === 'collection') {
+    contenu = <Collection recompenses={recompenses(sauvegarde, GRILLES, aujourdhui)} surRetour={accueil} />;
   } else {
     contenu = (
       <Accueil
         ids={IDS}
         progression={sauvegarde.progression}
-        partieEnCours={Object.keys(sauvegarde.enCours).length > 0}
-        surJouer={() => jouer(grilleAJouer(IDS, sauvegarde.progression))}
-        surParcours={() => setEcran({ nom: 'parcours' })}
+        partieEnCours={Object.keys(sauvegarde.enCours).some((cle) => !cle.startsWith('defi:'))}
+        defiReussi={!!sauvegarde.defis[aujourdhui]}
+        surJouer={() => aller({ nom: 'jeu', id: grilleAJouer(IDS, sauvegarde.progression) })}
+        surDefi={() => aller({ nom: 'defi' })}
+        surParcours={() => aller({ nom: 'parcours' })}
+        surStats={() => aller({ nom: 'stats' })}
+        surCollection={() => aller({ nom: 'collection' })}
         surReglages={() => setReglagesOuverts(true)}
       />
     );
@@ -80,8 +107,9 @@ export function App() {
           reglages={sauvegarde.reglages}
           surChange={(reglages) => setSauvegarde((s) => ({ ...s, reglages }))}
           surReinitialiser={() => {
-            setSauvegarde((s) => ({ ...sauvegardeVide(), reglages: s.reglages }));
-            setEcran({ nom: 'accueil' });
+            const vide = sauvegardeVide();
+            setSauvegarde((s) => ({ ...vide, reglages: s.reglages, stats: enregistrerJour(vide.stats, aujourdhui) }));
+            aller({ nom: 'accueil' });
             setReglagesOuverts(false);
           }}
           surFermer={() => setReglagesOuverts(false)}

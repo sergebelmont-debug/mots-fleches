@@ -4,6 +4,7 @@
 export interface Resultat {
   etoiles: number;
   indices: number;
+  secondes?: number; // meilleur temps, s'il a été mesuré
 }
 
 export interface Progression {
@@ -16,11 +17,13 @@ export const progressionVide = (): Progression => ({ terminees: {} });
 export const etoilesPour = (indices: number): number => (indices <= 0 ? 3 : indices <= 2 ? 2 : 1);
 
 /** Enregistre une grille terminée ; on garde toujours le meilleur résultat. */
-export function enregistrerResultat(p: Progression, id: string, indices: number): Progression {
+export function enregistrerResultat(p: Progression, id: string, indices: number, secondes?: number): Progression {
   const ancien = p.terminees[id];
-  const nouveau = { etoiles: etoilesPour(indices), indices };
-  if (ancien && ancien.etoiles >= nouveau.etoiles) return p;
-  return { terminees: { ...p.terminees, [id]: nouveau } };
+  const nouveau: Resultat = { etoiles: etoilesPour(indices), indices };
+  const meilleur: Resultat = ancien && ancien.etoiles >= nouveau.etoiles ? { etoiles: ancien.etoiles, indices: ancien.indices } : nouveau;
+  const temps = [ancien?.secondes, secondes].filter((t): t is number => typeof t === 'number');
+  if (temps.length > 0) meilleur.secondes = Math.min(...temps);
+  return { terminees: { ...p.terminees, [id]: meilleur } };
 }
 
 /** La première grille est ouverte ; chaque suivante s'ouvre quand la précédente est terminée. */

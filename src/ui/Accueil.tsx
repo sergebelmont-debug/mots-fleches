@@ -5,14 +5,18 @@ interface Props {
   ids: string[];
   progression: Progression;
   partieEnCours: boolean;
+  defiReussi: boolean;
   surJouer: () => void;
+  surDefi: () => void;
   surParcours: () => void;
+  surStats: () => void;
+  surCollection: () => void;
   surReglages: () => void;
 }
 
-export function Accueil({ ids, progression, partieEnCours, surJouer, surParcours, surReglages }: Props) {
-  const faites = nombreTerminees(ids, progression);
-  const dejaJoue = faites > 0 || partieEnCours;
+export function Accueil(p: Props) {
+  const faites = nombreTerminees(p.ids, p.progression);
+  const dejaJoue = faites > 0 || p.partieEnCours;
   return (
     <div className="ecran accueil">
       <Decor />
@@ -27,25 +31,36 @@ export function Accueil({ ids, progression, partieEnCours, surJouer, surParcours
         <div className="compteurs">
           <div className="compteur">
             <strong>
-              {faites}/{ids.length}
+              {faites}/{p.ids.length}
             </strong>
             <span>grilles terminées</span>
           </div>
           <div className="compteur">
             <strong>
-              <span className="etoile pleine">★</span> {totalEtoiles(progression)}
+              <span className="etoile pleine">★</span> {totalEtoiles(p.progression)}
             </strong>
             <span>étoiles gagnées</span>
           </div>
         </div>
-        <button className="bouton-or grand" onClick={surJouer}>
+        <button className="bouton-or grand" onClick={p.surJouer}>
           {dejaJoue ? 'Continuer' : 'Jouer'}
         </button>
+        <button className={`bouton-sombre defi ${p.defiReussi ? 'reussi' : ''}`} onClick={p.surDefi}>
+          {p.defiReussi ? '✓ Défi du jour réussi' : 'Défi du jour'}
+        </button>
         <div className="rangee-boutons">
-          <button className="bouton-sombre" onClick={surParcours}>
+          <button className="bouton-sombre" onClick={p.surParcours}>
             Parcours
           </button>
-          <button className="bouton-sombre" onClick={surReglages}>
+          <button className="bouton-sombre" onClick={p.surCollection}>
+            Collection
+          </button>
+        </div>
+        <div className="rangee-boutons">
+          <button className="bouton-sombre" onClick={p.surStats}>
+            Statistiques
+          </button>
+          <button className="bouton-sombre" onClick={p.surReglages}>
             Réglages
           </button>
         </div>

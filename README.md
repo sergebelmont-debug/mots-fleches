@@ -1,6 +1,6 @@
 # Les Mots Fléchés
 
-Jeu de mots fléchés français pour mobile. Projet en cours : phases 1 à 5 terminées (moteur, validateur, interface, 30 grilles).
+Jeu de mots fléchés français pour mobile. Projet en cours : phases 1 à 6 terminées, hors classements en ligne (moteur, validateur, interface, 30 grilles, statistiques, défi du jour, récompenses).
 
 ## Lancer le jeu
 
@@ -73,7 +73,7 @@ Voir [docs/ajouter-des-grilles.md](docs/ajouter-des-grilles.md).
 - `src/engine/` : moteur de grille et règles de jeu, sans affichage.
 - `src/validation/` : validateur de grilles, indépendant du moteur et de l'affichage.
 - `src/ui/` : écran de jeu, grille, clavier.
-- `src/progression/` : étoiles et déblocage des niveaux.
+- `src/progression/` : étoiles, déblocage des niveaux, statistiques, défi du jour, récompenses.
 - `src/storage/` : sauvegarde locale.
 - `outils/` : vérification des grilles, contrôle du lexique, génération de grilles.
 - `donnees/lexique.txt` : mots et définitions utilisables par le générateur.

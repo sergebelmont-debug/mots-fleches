@@ -10,6 +10,7 @@ export interface Partie {
   motActif: number;
   caseActive: number;
   indices: number; // nombre d'indices utilisés
+  secondes: number; // temps de jeu écoulé
 }
 
 export function creerPartie(g: Grille): Partie {
@@ -21,6 +22,7 @@ export function creerPartie(g: Grille): Partie {
     motActif: 0,
     caseActive: g.mots[0].cases[0],
     indices: 0,
+    secondes: 0,
   };
 }
 
@@ -150,6 +152,8 @@ export function partieCompatible(g: Grille, p: unknown): p is Partie {
     q.motActif >= 0 &&
     q.motActif < g.mots.length &&
     g.mots[q.motActif].cases.includes(q.caseActive) &&
-    Number.isInteger(q.indices)
+    Number.isInteger(q.indices) &&
+    Number.isFinite(q.secondes) &&
+    q.secondes >= 0
   );
 }

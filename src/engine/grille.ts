@@ -37,6 +37,7 @@ export type Case =
 export interface Grille {
   id: string;
   titre: string;
+  difficulte: string;
   largeur: number;
   hauteur: number;
   cases: Case[];
@@ -100,5 +101,5 @@ export function construireGrille(d: DonneesGrille): { grille: Grille; erreurs: s
     mots.push({ ...m, id, sens: dep.sens, caseDef, cases: idx });
   });
 
-  return { grille: { id: d.id, titre: d.titre, largeur: L, hauteur: H, cases, mots }, erreurs };
+  return { grille: { id: d.id, titre: d.titre, difficulte: d.difficulte, largeur: L, hauteur: H, cases, mots }, erreurs };
 }
