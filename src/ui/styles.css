@@ -1,0 +1,321 @@
+:root {
+  --fond: #2b1d14;
+  --fond-2: #3a281b;
+  --papier: #fbf4e4;
+  --papier-def: #ecdcbd;
+  --encre: #2a1c12;
+  --trait: #8a6a45;
+  --or: #d9a441;
+  --mot: #fde6a8;
+  --curseur: #f5b93c;
+  --faux: #c8402f;
+  --indice: #2f6f5e;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(120% 80% at 50% 0%, var(--fond-2), var(--fond));
+  color: var(--papier);
+  font-family: Georgia, 'Times New Roman', serif;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.app {
+  height: 100dvh;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: max(8px, env(safe-area-inset-top)) 8px max(8px, env(safe-area-inset-bottom));
+  gap: 8px;
+}
+
+.entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding: 2px 4px;
+}
+.marque {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--or);
+  letter-spacing: 0.02em;
+}
+.titre-grille {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* ---- Grille ---- */
+.zone-grille {
+  flex: 1;
+  min-height: 0;
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grille {
+  width: min(100cqw, calc(100cqh * var(--cols) / var(--rows)));
+  aspect-ratio: var(--cols) / var(--rows);
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+  gap: 1px;
+  background: var(--trait);
+  border: 2px solid var(--trait);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+.case {
+  --u: calc(100cqw / var(--cols));
+  min-width: 0;
+  min-height: 0;
+  color: var(--encre);
+}
+.case.vide {
+  background: var(--fond);
+}
+.case.lettre {
+  background: var(--papier);
+  font-family: 'Trebuchet MS', Verdana, sans-serif;
+  font-weight: bold;
+  font-size: calc(var(--u) * 0.56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.12s;
+}
+.case.lettre.dans-mot {
+  background: var(--mot);
+}
+.case.lettre.curseur {
+  background: var(--curseur);
+  box-shadow: inset 0 0 0 2px var(--encre);
+}
+.case.lettre.revelee {
+  color: var(--indice);
+}
+.case.lettre.fausse {
+  color: var(--faux);
+  box-shadow: inset 0 0 0 2px var(--faux);
+}
+
+.case.definition {
+  background: var(--trait);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.def {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: var(--papier-def);
+  color: var(--encre);
+  font-family: 'Trebuchet MS', Verdana, sans-serif;
+  font-size: calc(var(--u) * 0.135);
+  line-height: 1.08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1px 2px;
+  overflow: hidden;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+.def.vers-droite {
+  padding-right: calc(var(--u) * 0.14);
+}
+.def.vers-bas {
+  padding-bottom: calc(var(--u) * 0.13);
+}
+.def.active {
+  background: var(--curseur);
+  font-weight: bold;
+}
+.fleche {
+  position: absolute;
+  width: calc(var(--u) * 0.13);
+  height: calc(var(--u) * 0.13);
+  fill: var(--encre);
+}
+.fleche path {
+  fill: none;
+  stroke: var(--encre);
+  stroke-width: 1.6;
+}
+.fl-droite,
+.fl-droite-puis-bas {
+  right: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.fl-bas,
+.fl-bas-puis-droite {
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---- Définition active ---- */
+.barre-definition {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  min-height: 52px;
+}
+.barre-definition .nav {
+  width: 44px;
+  font-size: 28px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.definition-active {
+  flex: 1;
+  background: var(--papier);
+  color: var(--encre);
+  border-radius: 10px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.definition-active .texte {
+  font-size: 17px;
+  font-weight: bold;
+}
+.definition-active .longueur {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ---- Actions ---- */
+.actions {
+  display: flex;
+  gap: 6px;
+}
+.actions button {
+  flex: 1;
+  min-height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(217, 164, 65, 0.5);
+  font-size: 14px;
+}
+.actions button:active,
+.nav:active {
+  background: rgba(217, 164, 65, 0.35);
+}
+
+/* ---- Clavier ---- */
+.clavier {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: 'Trebuchet MS', Verdana, sans-serif;
+}
+.rangee {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+.touche {
+  flex: 1;
+  max-width: 10%;
+  height: 46px;
+  border-radius: 7px;
+  background: var(--papier);
+  color: var(--encre);
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+.touche.large {
+  max-width: 18%;
+  flex: 1.8;
+  background: var(--papier-def);
+}
+.touche:active {
+  background: var(--curseur);
+  transform: translateY(1px);
+}
+
+/* ---- Fin de grille ---- */
+.victoire {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 12, 6, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: apparaitre 0.3s ease-out;
+}
+.victoire .carte {
+  background: var(--papier);
+  color: var(--encre);
+  border-radius: 16px;
+  padding: 24px 32px;
+  text-align: center;
+  border: 3px solid var(--or);
+}
+.victoire h2 {
+  margin: 0 0 6px;
+  font-size: 30px;
+}
+.victoire p {
+  margin: 4px 0;
+}
+.victoire .detail {
+  opacity: 0.7;
+  font-size: 14px;
+}
+.victoire button {
+  margin-top: 14px;
+  padding: 10px 26px;
+  border-radius: 10px;
+  background: var(--fond);
+  color: var(--papier);
+  font-size: 16px;
+}
+@keyframes apparaitre {
+  from {
+    opacity: 0;
+  }
+}
+
+.ecran-erreur {
+  padding: 20px;
+}
