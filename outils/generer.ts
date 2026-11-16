@@ -22,13 +22,17 @@ const nomGabarit = args.gabarit ?? 'petit';
 const difficulte = args.difficulte ?? 'facile';
 const theme = args.theme ?? '';
 const essais = Number(args.essais ?? 25);
+const pasMax = Number(args.pas ?? 30000); // effort de recherche par essai
+const univers = args.univers ?? ''; // ex. serge-belmont : lit donnees/univers/serge-belmont.txt
+const imposes = (args.imposer ?? '').split(',').map((x) => x.trim()).filter(Boolean); // mots obligatoires
+const dossier = args.dossier ? join('grilles', args.dossier) : 'grilles';
 if (!id || !titre) {
   console.log('Usage : npm run generer -- --id 004 --titre "Titre" [--gabarit petit|moyen|grand] [--difficulte facile] [--theme nature] [--graine 7]');
   process.exit(1);
 }
-const fichier = join(racine, 'grilles', `${id}.json`);
+const fichier = join(racine, dossier, `${id}.json`);
 if (existsSync(fichier) && args.remplacer !== 'oui') {
-  console.log(`grilles/${id}.json existe déjà (ajouter --remplacer oui pour l'écraser).`);
+  console.log(`${dossier}/${id}.json existe déjà (ajouter --remplacer oui pour l'écraser).`);
   process.exit(1);
 }
 const gabarits = JSON.parse(readFileSync(join(racine, 'donnees', 'gabarits.json'), 'utf8')) as Record<string, string[]>;
@@ -58,14 +62,34 @@ const melanger = <T>(a: T[]): T[] => {
 
 // ---- Mots déjà utilisés dans les autres grilles (pour limiter les répétitions) ----
 const usages = new Map<string, number>();
-for (const f of readdirSync(join(racine, 'grilles'))) {
+for (const f of readdirSync(join(racine, dossier))) {
   if (!f.endsWith('.json') || f === `${id}.json`) continue;
-  const g = JSON.parse(readFileSync(join(racine, 'grilles', f), 'utf8')) as { mots: { reponse: string }[] };
+  const g = JSON.parse(readFileSync(join(racine, dossier, f), 'utf8')) as { mots: { reponse: string }[] };
   for (const m of g.mots) usages.set(m.reponse, (usages.get(m.reponse) ?? 0) + 1);
 }
 const usageMax = (longueur: number) => (longueur <= 2 ? 6 : longueur === 3 ? 3 : 2);
 
-const lexique = lireLexique().filter((e) => e.niveau <= niveauMax && (usages.get(e.reponse) ?? 0) < usageMax(e.reponse.length));
+const general = lireLexique();
+const duMonde = new Set<string>();
+let lexique = general.filter((e) => e.niveau <= niveauMax && (usages.get(e.reponse) ?? 0) < usageMax(e.reponse.length));
+if (univers) {
+  const definitions = new Map(general.map((e) => [e.reponse, e.definition]));
+  const propres = lireLexique(join(racine, 'donnees', 'univers', `${univers}.txt`)).map((e) => ({ ...e, definition: e.definition || definitions.get(e.reponse) || '' }));
+  const sansDefinition = propres.filter((e) => !e.definition);
+  if (sansDefinition.length) {
+    console.log(`Univers ${univers} : définition manquante pour ${sansDefinition.map((e) => e.affichage).join(', ')}`);
+    process.exit(1);
+  }
+  for (const e of propres) duMonde.add(e.reponse);
+  // Un mot de l'univers apparaît au plus 2 fois dans ses grilles, sauf s'il est imposé.
+  const permis = propres.filter((e) => imposes.includes(e.reponse) || (usages.get(e.reponse) ?? 0) < 2);
+  lexique = [...permis, ...lexique.filter((e) => !duMonde.has(e.reponse))];
+}
+const inconnus = imposes.filter((m) => !lexique.some((e) => e.reponse === m));
+if (inconnus.length) {
+  console.log(`Mots imposés absents du lexique : ${inconnus.join(', ')}`);
+  process.exit(1);
+}
 const parLongueur = new Map<number, Entree[]>();
 for (const e of lexique) parLongueur.set(e.reponse.length, [...(parLongueur.get(e.reponse.length) ?? []), e]);
 
@@ -123,6 +147,13 @@ if (!affecter(0)) {
   process.exit(1);
 }
 
+for (let l = 0; l < H; l++)
+  for (let c = 0; c < L; c++)
+    if (gabarit[l][c] === 'D' && !charge.get(`${l},${c}`)) {
+      console.log(`Gabarit inutilisable : la case de définition ligne ${l + 1}, colonne ${c + 1} ne sert à aucun mot.`);
+      process.exit(1);
+    }
+
 // ---- Remplissage : on place toujours le mot le plus contraint en premier ----
 const lettres: string[] = new Array(H * L).fill('');
 const pris = new Set<string>();
@@ -130,11 +161,11 @@ const choisis = new Map<Emplacement, Entree>();
 const candidats = (e: Emplacement) =>
   (parLongueur.get(e.cases.length) ?? []).filter((m) => !pris.has(m.reponse) && e.cases.every((k, i) => !lettres[k] || lettres[k] === m.reponse[i]));
 // Ordre de préférence : mots du thème, puis mots les moins utilisés, puis hasard.
-const rang = (m: Entree) => (theme && m.theme === theme ? 0 : 10) + (usages.get(m.reponse) ?? 0) * 2 + (m.niveau - 1);
+const rang = (m: Entree) => (duMonde.has(m.reponse) || (theme && m.theme === theme) ? 0 : 10) + (usages.get(m.reponse) ?? 0) * 2 + (m.niveau - 1);
 let pas = 0;
 const remplir = (restants: Emplacement[]): boolean => {
   if (restants.length === 0) return true;
-  if (pas++ > 30000) return false;
+  if (pas++ > pasMax) return false;
   let meilleur: Emplacement | null = null;
   let liste: Entree[] = [];
   for (const e of restants) {
@@ -160,14 +191,64 @@ const remplir = (restants: Emplacement[]): boolean => {
   return false;
 };
 
+const entreesImposees = imposes.map((m) => lexique.find((e) => e.reponse === m)!);
+let tentatives = 0;
+const placerImposes = (i: number, libres: Emplacement[]): boolean => {
+  if (i === entreesImposees.length) {
+    if (tentatives++ >= essais) return false;
+    pas = 0;
+    return remplir(libres);
+  }
+  const m = entreesImposees[i];
+  for (const e of melanger(libres.filter((x) => x.cases.length === m.reponse.length))) {
+    if (!e.cases.every((k, j) => !lettres[k] || lettres[k] === m.reponse[j])) continue;
+    const avant = e.cases.map((k) => lettres[k]);
+    e.cases.forEach((k, j) => (lettres[k] = m.reponse[j]));
+    pris.add(m.reponse);
+    choisis.set(e, m);
+    if (placerImposes(i + 1, libres.filter((x) => x !== e))) return true;
+    pris.delete(m.reponse);
+    choisis.delete(e);
+    e.cases.forEach((k, j) => (lettres[k] = avant[j]));
+    if (tentatives >= essais) return false;
+  }
+  return false;
+};
+// On recommence, avec un autre tirage, jusqu'à épuiser le nombre d'essais.
+const estDuTheme = (m: Entree) => duMonde.has(m.reponse) || (!!theme && m.theme === theme);
+const chercher = (): boolean => {
+  let ok = false;
+  tentatives = 0;
+  while (!ok && tentatives < essais) {
+    const avant = tentatives;
+    lettres.fill('');
+    pris.clear();
+    choisis.clear();
+    ok = placerImposes(0, melanger([...emplacements]));
+    if (tentatives === avant) break; // aucun emplacement possible pour les mots imposés
+  }
+  return ok;
+};
+// Avec --meilleur N : on cherche N remplissages et on garde celui qui a le plus de mots du thème.
+const tirages = Number(args.meilleur ?? 1);
 let trouve = false;
-for (let t = 0; t < essais && !trouve; t++) {
-  pas = 0;
-  lettres.fill('');
-  pris.clear();
+let record = -1;
+let gardeLettres: string[] = [];
+let gardeChoix = new Map<Emplacement, Entree>();
+for (let t = 0; t < tirages; t++) {
+  if (!chercher()) continue;
+  const score = [...choisis.values()].filter(estDuTheme).length;
+  if (score > record) {
+    record = score;
+    gardeLettres = [...lettres];
+    gardeChoix = new Map(choisis);
+    trouve = true;
+  }
+}
+if (trouve) {
+  gardeLettres.forEach((x, k) => (lettres[k] = x));
   choisis.clear();
-  // Les grands mots d'abord dans l'ordre de départ, mélangés entre eux à chaque essai.
-  trouve = remplir(melanger([...emplacements]));
+  for (const [e, m] of gardeChoix) choisis.set(e, m);
 }
 if (!trouve) {
   console.log(`Aucun remplissage trouvé pour ${id} (gabarit ${nomGabarit}) après ${essais} essais. Essayer une autre --graine, ou enrichir le lexique.`);
@@ -179,7 +260,8 @@ const mots = emplacements.map((e, i) => {
   const m = choisis.get(e)!;
   return { caseDefinition: [affectation[i][0], affectation[i][1]], fleche: affectation[i][2], definition: m.definition, reponse: m.reponse, affichage: m.affichage };
 });
-const grille = { id, titre, theme: theme || 'culture-generale', difficulte, largeur: L, hauteur: H, mots };
+const noires = gabarit.join('').split('X').length - 1;
+const grille = { id, titre, theme: univers || theme || 'culture-generale', difficulte, largeur: L, hauteur: H, ...(noires ? { casesNoires: noires } : {}), mots };
 const rapport = validerGrille(grille, chargerDictionnaire());
 for (let l = 0; l < H; l++) console.log('  ' + [...gabarit[l]].map((x, c) => (x === 'D' ? '#' : lettres[l * L + c])).join(' '));
 if (!rapport.valide) {
@@ -190,6 +272,7 @@ const lignes = mots.map((m) => '    ' + JSON.stringify(m).replace(/":/g, '": ').
 const { mots: _mots, ...tete } = grille;
 void _mots;
 writeFileSync(fichier, JSON.stringify(tete, null, 2).replace(/\n\}$/, ',\n  "mots": [\n' + lignes.join(',\n') + '\n  ]\n}\n'));
-const duTheme = [...choisis.values()].filter((m) => theme && m.theme === theme).length;
-console.log(`Grille ${id} « ${titre} » écrite : ${mots.length} mots${theme ? `, dont ${duTheme} sur le thème « ${theme} »` : ''}. À relire avant publication.`);
+const duTheme = [...choisis.values()].filter((m) => duMonde.has(m.reponse) || (theme && m.theme === theme)).length;
+const nomTheme = univers || theme;
+console.log(`Grille ${id} « ${titre} » écrite : ${mots.length} mots${nomTheme ? `, dont ${duTheme} sur le thème « ${nomTheme} »` : ''}. À relire avant publication.`);
 for (const a of rapport.avertissements) console.log(`    à relire — ${a.message}`);

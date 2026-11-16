@@ -19,6 +19,7 @@ interface Contexte {
   serieRecord: number;
   defis: number;
   finies: (difficulte: string) => boolean;
+  belmont: boolean; // toutes les grilles de l'univers Serge Belmont terminées
 }
 
 const LISTE: { id: string; titre: string; description: string; test: (c: Contexte) => boolean }[] = [
@@ -34,13 +35,19 @@ const LISTE: { id: string; titre: string; description: string; test: (c: Context
   { id: 'facile', titre: 'Échauffement terminé', description: 'Terminer toutes les grilles faciles', test: (c) => c.finies('facile') },
   { id: 'intermediaire', titre: 'Cap franchi', description: 'Terminer toutes les grilles intermédiaires', test: (c) => c.finies('intermediaire') },
   { id: 'difficile', titre: 'Au sommet', description: 'Terminer toutes les grilles difficiles', test: (c) => c.finies('difficile') },
+  { id: 'belmont', titre: 'Fan de Serge', description: 'Terminer les grilles Serge Belmont', test: (c) => c.belmont },
   { id: 'fidele', titre: 'Fidèle', description: 'Jouer 3 jours de suite', test: (c) => c.serieRecord >= 3 },
   { id: 'assidu', titre: 'Assidu', description: 'Jouer 7 jours de suite', test: (c) => c.serieRecord >= 7 },
   { id: 'defi', titre: 'Défi relevé', description: 'Réussir un défi du jour', test: (c) => c.defis >= 1 },
   { id: 'sept-defis', titre: 'Semaine de défis', description: 'Réussir 7 défis du jour', test: (c) => c.defis >= 7 },
 ];
 
-export function recompenses(s: Sauvegarde, grilles: { id: string; difficulte: string }[], aujourdhui: string): Recompense[] {
+export function recompenses(
+  s: Sauvegarde,
+  grilles: { id: string; difficulte: string }[],
+  aujourdhui: string,
+  idsBelmont: string[] = [],
+): Recompense[] {
   const resultats = grilles.map((g) => s.progression.terminees[g.id]).filter((r) => !!r);
   const temps = [...resultats.map((r) => r.secondes), ...Object.values(s.defis).map((d) => d.secondes)].filter(
     (t): t is number => typeof t === 'number' && t > 0,
@@ -53,6 +60,7 @@ export function recompenses(s: Sauvegarde, grilles: { id: string; difficulte: st
     meilleurTemps: temps.length ? Math.min(...temps) : Infinity,
     serieRecord: serie(s.stats.jours, aujourdhui).record,
     defis: Object.keys(s.defis).length,
+    belmont: idsBelmont.length > 0 && idsBelmont.every((id) => !!s.progression.terminees[id]),
     finies: (dif) => {
       const groupe = grilles.filter((g) => g.difficulte === dif);
       return groupe.length > 0 && groupe.every((g) => !!s.progression.terminees[g.id]);

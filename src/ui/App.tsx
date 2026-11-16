@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { GRILLES, IDS } from '../grilles';
+import { BELMONT, GRILLES, IDS, IDS_BELMONT, POCHETTES } from '../grilles';
 import { partieCompatible, type Partie } from '../engine/partie';
 import { cleDefi, grilleDuDefi, terminerGrille } from '../progression/defi';
 import { grilleAJouer, grilleSuivante } from '../progression/progression';
@@ -13,7 +13,7 @@ import { Parcours } from './Parcours';
 import { Reglages } from './Reglages';
 import { Statistiques } from './Statistiques';
 
-type Ecran = { nom: 'accueil' } | { nom: 'parcours' } | { nom: 'stats' } | { nom: 'collection' } | { nom: 'jeu'; id: string } | { nom: 'defi' };
+type Ecran = { nom: 'accueil' } | { nom: 'parcours' } | { nom: 'univers' } | { nom: 'stats' } | { nom: 'collection' } | { nom: 'jeu'; id: string } | { nom: 'defi' };
 
 export function App() {
   const stockage = useMemo(stockageNavigateur, []);
@@ -54,15 +54,17 @@ export function App() {
   if (ecran.nom === 'jeu' || ecran.nom === 'defi') {
     const enDefi = ecran.nom === 'defi';
     const id = enDefi ? idDefi : ecran.id;
-    const grille = GRILLES.find((g) => g.id === id)!;
+    const special = !enDefi && IDS_BELMONT.includes(id);
+    const liste = special ? IDS_BELMONT : IDS;
+    const grille = [...GRILLES, ...BELMONT].find((g) => g.id === id)!;
     const cle = enDefi ? cleDefi(aujourdhui) : id;
     const sauvee = sauvegarde.enCours[cle];
-    const suivante = enDefi ? null : grilleSuivante(IDS, id);
+    const suivante = enDefi ? null : grilleSuivante(liste, id);
     contenu = (
       <Jeu
         key={cle}
         grille={grille}
-        etiquette={enDefi ? 'Défi du jour' : `Niveau ${IDS.indexOf(id) + 1}`}
+        etiquette={enDefi ? 'Défi du jour' : special ? `Serge Belmont ${liste.indexOf(id) + 1}` : `Niveau ${liste.indexOf(id) + 1}`}
         partieInitiale={partieCompatible(grille, sauvee) ? sauvee : null}
         signalerMotsJustes={sauvegarde.reglages.signalerMotsJustes}
         enPause={reglagesOuverts}
@@ -72,10 +74,12 @@ export function App() {
         surTerminee={(indices, secondes) => {
           const fin = { cle, idGrille: id, defiDuJour: enDefi ? aujourdhui : null, indices, secondes };
           const avant = courante.current;
-          setNouvelles(nouvellesRecompenses(recompenses(avant, GRILLES, aujourdhui), recompenses(terminerGrille(avant, fin), GRILLES, aujourdhui)));
+          setNouvelles(
+            nouvellesRecompenses(recompenses(avant, GRILLES, aujourdhui, IDS_BELMONT), recompenses(terminerGrille(avant, fin), GRILLES, aujourdhui, IDS_BELMONT)),
+          );
           setSauvegarde((s) => terminerGrille(s, fin));
         }}
-        surRetour={() => aller(enDefi ? { nom: 'accueil' } : { nom: 'parcours' })}
+        surRetour={() => aller(enDefi ? { nom: 'accueil' } : special ? { nom: 'univers' } : { nom: 'parcours' })}
         surSuivante={() => suivante && aller({ nom: 'jeu', id: suivante })}
         surMenu={() => setReglagesOuverts(true)}
       />
@@ -83,7 +87,22 @@ export function App() {
   } else if (ecran.nom === 'parcours') {
     contenu = (
       <Parcours
+        titre="Parcours"
+        note="D'autres grilles arrivent bientôt."
         grilles={GRILLES}
+        progression={sauvegarde.progression}
+        enCours={Object.keys(sauvegarde.enCours)}
+        surJouer={(id) => aller({ nom: 'jeu', id })}
+        surRetour={accueil}
+      />
+    );
+  } else if (ecran.nom === 'univers') {
+    contenu = (
+      <Parcours
+        titre="Serge Belmont"
+        note="Des grilles autour de ses chansons."
+        grilles={BELMONT}
+        images={POCHETTES}
         progression={sauvegarde.progression}
         enCours={Object.keys(sauvegarde.enCours)}
         surJouer={(id) => aller({ nom: 'jeu', id })}
@@ -93,13 +112,15 @@ export function App() {
   } else if (ecran.nom === 'stats') {
     contenu = <Statistiques sauvegarde={sauvegarde} ids={IDS} aujourdhui={aujourdhui} surRetour={accueil} />;
   } else if (ecran.nom === 'collection') {
-    contenu = <Collection recompenses={recompenses(sauvegarde, GRILLES, aujourdhui)} surRetour={accueil} />;
+    contenu = <Collection recompenses={recompenses(sauvegarde, GRILLES, aujourdhui, IDS_BELMONT)} surRetour={accueil} />;
   } else {
     contenu = (
       <Accueil
         ids={IDS}
         progression={sauvegarde.progression}
-        partieEnCours={Object.keys(sauvegarde.enCours).some((cle) => !cle.startsWith('defi:'))}
+        partieEnCours={Object.keys(sauvegarde.enCours).some((cle) => IDS.includes(cle))}
+        belmont={{ faites: IDS_BELMONT.filter((id) => sauvegarde.progression.terminees[id]).length, total: IDS_BELMONT.length }}
+        surUnivers={() => aller({ nom: 'univers' })}
         defiReussi={!!sauvegarde.defis[aujourdhui]}
         surJouer={() => aller({ nom: 'jeu', id: grilleAJouer(IDS, sauvegarde.progression) })}
         surDefi={() => aller({ nom: 'defi' })}

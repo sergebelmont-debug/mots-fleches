@@ -210,7 +210,7 @@ test('défi du jour, puis statistiques et collection', async ({ page }) => {
   await page.getByRole('button', { name: "Retour à l'accueil" }).click();
 
   await bouton(page, 'Collection').click();
-  await expect(page.locator('.medaille')).toHaveCount(16);
+  await expect(page.locator('.medaille')).toHaveCount(17);
   await expect(page.locator('[data-recompense="defi"]')).toHaveClass(/obtenue/);
   await expect(page.locator('[data-recompense="trente"]')).not.toHaveClass(/obtenue/);
   expect(erreurs).toEqual([]);

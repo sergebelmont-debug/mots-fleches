@@ -19,6 +19,7 @@ export interface DonneesGrille {
   difficulte: string;
   largeur: number;
   hauteur: number;
+  casesNoires?: number; // nombre de cases volontairement noires (gabarits en treillis)
   mots: DonneesMot[];
 }
 

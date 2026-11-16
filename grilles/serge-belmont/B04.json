@@ -1,0 +1,17 @@
+{
+  "id": "B04",
+  "titre": "Sous les lampadaires",
+  "theme": "serge-belmont",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 7,
+  "casesNoires": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Absence de bruit", "reponse": "SILENCE", "affichage": "SILENCE" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Chemin de randonnée", "reponse": "SENTIER", "affichage": "SENTIER" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Ouverture vitrée", "reponse": "FENETRE", "affichage": "FENÊTRE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Femme-poisson", "reponse": "SIRENE", "affichage": "SIRÈNE" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Écrite à l'ami parti", "reponse": "LETTRE", "affichage": "LETTRE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Il est sans réplique", "reponse": "ACTEUR", "affichage": "ACTEUR" }
+  ]
+}

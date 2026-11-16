@@ -8,7 +8,12 @@ import { chargerDictionnaire } from './dictionnaire.ts';
 
 const dossier = process.argv[2] ?? 'grilles';
 const options = chargerDictionnaire();
-const fichiers = readdirSync(dossier).filter((f) => f.endsWith('.json')).sort();
+// Tous les fichiers .json du dossier et de ses sous-dossiers (ex. grilles/serge-belmont/).
+const lister = (d: string, prefixe = ''): string[] =>
+  readdirSync(d, { withFileTypes: true })
+    .flatMap((e) => (e.isDirectory() ? lister(join(d, e.name), `${prefixe}${e.name}/`) : e.name.endsWith('.json') ? [`${prefixe}${e.name}`] : []))
+    .sort();
+const fichiers = lister(dossier);
 const ids = new Map<string, string>();
 let invalides = 0;
 let avertissements = 0;
@@ -20,7 +25,7 @@ for (const f of fichiers) {
   } catch (e) {
     rapport = { id: f, valide: false, avertissements: [], erreurs: [{ code: 'E-FORMAT', message: `fichier illisible (${(e as Error).message})` }] };
   }
-  if (rapport.valide && `${rapport.id}.json` !== f)
+  if (rapport.valide && `${rapport.id}.json` !== f.split('/').pop())
     rapport.erreurs.push({ code: 'E-FORMAT', message: `le fichier ${f} devrait s'appeler ${rapport.id}.json` });
   if (ids.has(rapport.id)) rapport.erreurs.push({ code: 'E-FORMAT', message: `identifiant déjà utilisé par ${ids.get(rapport.id)}` });
   ids.set(rapport.id, f);

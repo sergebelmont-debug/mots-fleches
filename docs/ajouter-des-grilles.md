@@ -73,9 +73,37 @@ Une grille en ERREUR empêche la construction du jeu. Les lignes « à relire »
 
 Le validateur garantit la structure et l'orthographe. **Il ne juge pas la qualité des définitions** : relisez chaque nouvelle grille en vous demandant si chaque définition mène à une seule réponse.
 
+## Grilles d'un univers (Serge Belmont)
+
+Les grilles spéciales sont dans `grilles/serge-belmont/` et leur vocabulaire dans `donnees/univers/serge-belmont.txt` (même format que le lexique ; une définition vide reprend celle du lexique général).
+
+```bash
+npm run generer -- --id B07 --titre "Le Bal" --gabarit treillis4 --difficulte intermediaire --univers serge-belmont --dossier serge-belmont --imposer JUILLET,ROBE --meilleur 2000
+```
+
+| Option | Rôle |
+|---|---|
+| `--univers serge-belmont` | Donne la priorité aux mots de l'univers |
+| `--dossier serge-belmont` | Écrit la grille dans `grilles/serge-belmont/` |
+| `--imposer MOT,MOT` | Mots obligatoires (sans accents) |
+| `--meilleur N` | Essaie N remplissages et garde celui qui contient le plus de mots de l'univers |
+
+Règles propres à cet univers, vérifiées par les tests :
+
+- ne rien inventer : ni titre, ni date, ni fait ; les titres sont écrits exactement ;
+- une définition entre guillemets (« Il a suffi d'un … ») doit compléter un vrai titre ou une vraie citation ;
+- un mot apparaît au plus deux fois dans l'ensemble de ces grilles ;
+- au moins un tiers des mots de chaque grille vient de l'univers.
+
+Pour associer une pochette à une nouvelle grille, ajouter une ligne dans `POCHETTES` (fichier `src/grilles.ts`). Les images sont dans `public/serge/`.
+
+Les gabarits `treillis`, `treillis4`, `treillis5` et `treillis9` sont faits pour ces grilles : les mots s'y croisent moins, ce qui laisse la place aux longs mots imposés. Ils contiennent des cases noires (`X`), que la grille déclare dans son champ `casesNoires`.
+
+Les gabarits serrés (`petit`, `moyen`, `grand`) n'acceptent presque jamais de mot imposé : l'outil répond alors « Aucun remplissage trouvé ».
+
 ## Créer un gabarit
 
-Dans `donnees/gabarits.json`, un gabarit est une liste de lignes où `D` est une case de définition et `L` une case de lettre. Règles :
+Dans `donnees/gabarits.json`, un gabarit est une liste de lignes où `D` est une case de définition, `L` une case de lettre et `X` une case noire. Règles :
 
 - chaque suite de 2 lettres ou plus (horizontale ou verticale) est un mot ;
 - chaque mot doit toucher une case `D` : à gauche ou au-dessus de sa première lettre ;

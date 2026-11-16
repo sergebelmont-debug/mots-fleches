@@ -1,0 +1,21 @@
+{
+  "id": "B06",
+  "titre": "Souvenirs",
+  "theme": "serge-belmont",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 9,
+  "casesNoires": 9,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Grande soirée", "reponse": "GALA", "affichage": "GALA" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Arbres de Porquerolles", "reponse": "PINS", "affichage": "PINS" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Il filtre le sang", "reponse": "REIN", "affichage": "REIN" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Bagage", "reponse": "VALISE", "affichage": "VALISE" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Logis", "reponse": "MAISON", "affichage": "MAISON" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Elles passent", "reponse": "ANNEES", "affichage": "ANNÉES" },
+    { "caseDefinition": [4,1], "fleche": "bas", "definition": "Elle suit le jour", "reponse": "NUIT", "affichage": "NUIT" },
+    { "caseDefinition": [4,3], "fleche": "bas", "definition": "« Mon île aux mille … »", "reponse": "ETES", "affichage": "ÉTÉS" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "Sans compagnie", "reponse": "SEUL", "affichage": "SEUL" },
+    { "caseDefinition": [6,0], "fleche": "bas-puis-droite", "definition": "Il a des plumes", "reponse": "OISEAU", "affichage": "OISEAU" }
+  ]
+}

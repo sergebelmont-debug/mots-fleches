@@ -48,6 +48,7 @@ interface MotPlace {
   n: number; // numéro du mot (à partir de 1)
   nom: string;
   reponse: string;
+  affichage: string;
   definition: string;
   fleche: string;
   sens: 'H' | 'V';
@@ -133,6 +134,7 @@ export function validerGrille(brut: unknown, opt: Options = {}): Rapport {
       n,
       nom,
       reponse,
+      affichage: String(m.affichage ?? reponse),
       definition: String(m.definition ?? ''),
       fleche: m.fleche as string,
       sens: dep.sens,
@@ -235,11 +237,14 @@ export function validerGrille(brut: unknown, opt: Options = {}): Rapport {
     if (m.cases.every((k) => lettres.get(k)!.mots.length === 1)) avert('A-SANS-CROISEMENT', `${m.nom} ne croise aucun autre mot`);
     // Une définition ne doit pas donner la réponse d'un autre mot de la grille.
     for (const autre of places)
-      if (autre !== m && autre.reponse.length >= 3 && m.definition.split(/[^\p{L}]+/u).some((mot) => normaliser(mot) === autre.reponse))
+      if (autre !== m && autre.reponse.length >= 3 && m.definition.split(/[^\p{L}]+/u).some((mot) => mot.toLowerCase() === autre.affichage.toLowerCase()))
         avert('A-REPONSE-DANS-AUTRE-DEFINITION', `la définition « ${m.definition} » (${m.nom}) contient la réponse ${autre.reponse} d'un autre mot`);
   }
   const vides = L * H - lettres.size - defs.size;
-  if (vides > 0) avert('A-CASES-VIDES', `${vides} case(s) inutilisée(s) dans la grille`);
+  const noiresPrevues = g.casesNoires === undefined ? 0 : (g.casesNoires as number);
+  if (g.casesNoires !== undefined && !(estEntier(g.casesNoires) && g.casesNoires >= 0)) err('E-FORMAT', '« casesNoires » doit être un nombre entier positif');
+  else if (vides !== noiresPrevues)
+    avert('A-CASES-VIDES', `${vides} case(s) sans lettre ni définition, alors que la grille en déclare ${noiresPrevues} (champ « casesNoires »)`);
 
   return fin();
 }

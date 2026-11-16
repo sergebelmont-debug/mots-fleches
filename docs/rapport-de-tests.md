@@ -7,9 +7,9 @@
 | Série | Commande | Résultat |
 |---|---|---|
 | Lexique (1 070 mots) | `npm run lexique` | Validé |
-| Grilles (30) | `npm run verifier` | 30 validées, 0 refusée, 0 avertissement |
-| Tests du moteur, du validateur, de la progression | `npm test` | 169 réussis sur 169 |
-| Tests de bout en bout, 4 appareils simulés | `npm run test:e2e` | 51 réussis, 5 non applicables, 0 échec (deux passages identiques) |
+| Grilles (30 du parcours + 6 Serge Belmont) | `npm run verifier` | 36 validées, 0 refusée, 0 avertissement |
+| Tests du moteur, du validateur, de la progression | `npm test` | 198 réussis sur 198 |
+| Tests de bout en bout, 4 appareils simulés | `npm run test:e2e` | 59 réussis, 5 non applicables, 0 échec |
 | Construction du jeu | `npm run build` | Réussie |
 | Vérification automatique sur GitHub | à chaque envoi | Réussie |
 | Version en ligne (https://sergebelmont-debug.github.io/mots-fleches/) | ouverture en format téléphone, parcours, saisie d'un mot, sauvegarde, service worker | Réussie |
@@ -38,6 +38,14 @@
 - Sauvegarde relue à l'identique ; sauvegarde absente, abîmée ou d'une ancienne version : le jeu démarre quand même.
 - Séries de jours (y compris changement de mois et d'année), défi du jour (même date = même grille), 16 récompenses, résumé statistique.
 
+### Univers Serge Belmont
+
+- Les 6 grilles sont validées, sans avertissement, et résolues lettre par lettre.
+- Lexique de l'univers contrôlé (orthographe, accents, longueur des définitions).
+- Chaque définition entre guillemets complète un vrai titre ou une vraie citation de la fiche fournie.
+- SERGE, BELMONT et NOSTALGIA figurent parmi les réponses ; aucun mot n'apparaît plus de deux fois ; au moins un tiers des mots de chaque grille vient de l'univers.
+- Cases noires : déclarées dans chaque grille, signalées si elles ne le sont pas.
+
 ### De bout en bout, dans de vrais navigateurs
 
 Appareils simulés : Android (Chrome, 412 × 839), iPhone (moteur de Safari, 390 × 664), petit écran (moteur de Safari, 320 × 568), ordinateur (Chrome).
@@ -54,6 +62,8 @@ Appareils simulés : Android (Chrome, 412 × 839), iPhone (moteur de Safari, 390
 | Grille intermédiaire (niveau 16) jouée jusqu'au bout | ✓ | ✓ | ✓ | ✓ |
 | Grille difficile 7 × 10 (niveau 30, nombreux croisements) jouée jusqu'au bout, case active toujours visible | ✓ | ✓ | ✓ | ✓ |
 | Défi du jour, statistiques, collection | ✓ | ✓ | ✓ | ✓ |
+| Portrait de Serge Belmont sur l'accueil | ✓ | ✓ | ✓ | ✓ |
+| Univers Serge Belmont : pochettes chargées, grille en treillis jouée jusqu'au bout, grille suivante | ✓ | ✓ | ✓ | ✓ |
 | Réglages conservés ; progression effacée après confirmation | ✓ | ✓ | ✓ | ✓ |
 | Sauvegarde abîmée : le jeu démarre | ✓ | ✓ | ✓ | ✓ |
 | Clavier physique | — | — | — | ✓ |
@@ -73,13 +83,14 @@ Aucun à ce jour.
 
 ## Problèmes connus, non résolus
 
-- **Thèmes** : 28 grilles sur 30 sont en culture générale. Pas de grilles cinéma, chanson, histoire, ni Serge Belmont.
+- **Thèmes** : 28 grilles du parcours sur 30 sont en culture générale. Pas de grilles cinéma, chanson ou histoire.
+- **Univers Serge Belmont** : 6 petites grilles (6 à 10 mots) où la moitié environ des mots vient de l'univers ; le reste est du vocabulaire général. Les mots de plus de 9 lettres (PORQUEROLLES, MARIONNETTISTE, LAMPADAIRES, PHOTOGRAPHIE) et ACCORDÉON n'ont pas pu être placés. Ces grilles contiennent des cases noires.
 - **Difficulté** : elle progresse par la taille, la longueur des mots et un vocabulaire un peu plus rare, pas par la subtilité des définitions. Aucune grille « expert ».
 - **Petites répétitions** : une grille contient RI et RIT ; quelques grilles voisines partagent un mot long.
 - **Défi du jour** : il peut tomber sur une grille difficile dès le premier jour d'un nouveau joueur.
 - **Très petits écrans** : sur 320 × 568, la grille défile dès le niveau 1 (trois à quatre rangées visibles à la fois). Jouable, mais moins confortable.
 - **Hors connexion** : disponible seulement à partir de la deuxième visite.
-- **Décor** : dessiné en formes simples, sans illustration ni portrait.
+- **Décor** : dessiné en formes simples ; seul le portrait vient des pochettes fournies.
 
 ## Ce qui n'a pas été testé
 

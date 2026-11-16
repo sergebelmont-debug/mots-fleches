@@ -1,0 +1,21 @@
+{
+  "id": "B05",
+  "titre": "Le Marionnettiste",
+  "theme": "serge-belmont",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 9,
+  "casesNoires": 9,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Provocation", "reponse": "DEFI", "affichage": "DÉFI" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Feuille de livre", "reponse": "PAGE", "affichage": "PAGE" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Il entoure la jante", "reponse": "PNEU", "affichage": "PNEU" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Jour d'après", "reponse": "DEMAIN", "affichage": "DEMAIN" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Il se lève au théâtre", "reponse": "RIDEAU", "affichage": "RIDEAU" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Senteur en flacon", "reponse": "PARFUM", "affichage": "PARFUM" },
+    { "caseDefinition": [4,1], "fleche": "bas", "definition": "Ils portent des bâts", "reponse": "ANES", "affichage": "ÂNES" },
+    { "caseDefinition": [4,3], "fleche": "bas", "definition": "Liens de la marionnette", "reponse": "FILS", "affichage": "FILS" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "Ils se dressent au port", "reponse": "MATS", "affichage": "MÂTS" },
+    { "caseDefinition": [6,0], "fleche": "bas-puis-droite", "definition": "Image dans la flaque", "reponse": "REFLET", "affichage": "REFLET" }
+  ]
+}

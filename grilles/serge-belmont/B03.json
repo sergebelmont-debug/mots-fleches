@@ -1,0 +1,17 @@
+{
+  "id": "B03",
+  "titre": "Belmont",
+  "theme": "serge-belmont",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 7,
+  "casesNoires": 7,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Artiste au pinceau", "reponse": "PEINTRE", "affichage": "PEINTRE" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Nom du chanteur Serge", "reponse": "BELMONT", "affichage": "BELMONT" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Mois du bal", "reponse": "JUILLET", "affichage": "JUILLET" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Ensemble de lignes", "reponse": "RESEAU", "affichage": "RÉSEAU" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Bête", "reponse": "ANIMAL", "affichage": "ANIMAL" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Fils du roi", "reponse": "PRINCE", "affichage": "PRINCE" }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "B01",
+  "titre": "NostalgIA",
+  "theme": "serge-belmont",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 9,
+  "casesNoires": 10,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "EP de Serge Belmont", "reponse": "NOSTALGIA", "affichage": "NOSTALGIA" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Il gonfle les voiles", "reponse": "VENT", "affichage": "VENT" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "Papa", "reponse": "PERE", "affichage": "PÈRE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Grosse fureur", "reponse": "COLERE", "affichage": "COLÈRE" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Sculpture", "reponse": "STATUE", "affichage": "STATUE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Salle de l'école", "reponse": "CLASSE", "affichage": "CLASSE" },
+    { "caseDefinition": [4,3], "fleche": "bas", "definition": "Vedette", "reponse": "STAR", "affichage": "STAR" },
+    { "caseDefinition": [4,5], "fleche": "bas", "definition": "« Mon île aux mille … »", "reponse": "ETES", "affichage": "ÉTÉS" },
+    { "caseDefinition": [7,0], "fleche": "droite", "definition": "Illustration", "reponse": "IMAGE", "affichage": "IMAGE" }
+  ]
+}

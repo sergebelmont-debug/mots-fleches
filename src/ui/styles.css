@@ -963,3 +963,85 @@ p {
     font-size: 20px;
   }
 }
+
+/* ---- Univers Serge Belmont ---- */
+.portrait {
+  width: clamp(96px, 30vw, 132px);
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--or);
+  box-shadow: 0 0 0 2px #3a2305, 0 8px 22px rgba(0, 0, 0, 0.6), 0 0 34px rgba(245, 169, 59, 0.35);
+}
+.univers {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 16px 4px 5px;
+  text-align: left;
+  font-size: 16px;
+}
+.univers img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--or);
+}
+.univers span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.univers small {
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+.niveau.illustre .pastille {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  padding: 0;
+  overflow: hidden;
+  background: #2a1a17;
+}
+.niveau.illustre .pastille img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.niveau.illustre .pastille span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 30px;
+  padding: 1px 7px 2px 9px;
+  border-radius: 14px 0 0 0;
+  font-size: 18px;
+  color: #3a2305;
+  background: var(--or);
+}
+.niveau.illustre {
+  transform: translate(-50%, -42px);
+}
+.niveau.illustre.ferme .pastille img {
+  filter: grayscale(1) brightness(0.45);
+}
+/* Cases noires des grilles en treillis */
+.case.vide {
+  background: repeating-linear-gradient(45deg, #2a1a17 0 6px, #33211b 6px 12px);
+}
+@media (max-height: 700px) {
+  .portrait {
+    width: 78px;
+  }
+  .univers {
+    min-height: 46px;
+  }
+}

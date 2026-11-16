@@ -87,7 +87,9 @@ Voir [docs/ajouter-des-grilles.md](docs/ajouter-des-grilles.md).
 
 ## Organisation
 
-- `grilles/` : une grille = un fichier JSON (liste de mots, la grille de lettres est recalculée).
+- `grilles/` : une grille = un fichier JSON (liste de mots, la grille de lettres est recalculée). `grilles/serge-belmont/` contient les grilles spéciales.
+- `donnees/univers/` : vocabulaire des univers thématiques.
+- `public/serge/` : portrait et pochettes de Serge Belmont.
 - `src/engine/` : moteur de grille et règles de jeu, sans affichage.
 - `src/validation/` : validateur de grilles, indépendant du moteur et de l'affichage.
 - `src/ui/` : écran de jeu, grille, clavier.

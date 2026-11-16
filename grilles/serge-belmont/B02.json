@@ -1,0 +1,21 @@
+{
+  "id": "B02",
+  "titre": "Serge",
+  "theme": "serge-belmont",
+  "difficulte": "intermediaire",
+  "largeur": 6,
+  "hauteur": 10,
+  "casesNoires": 12,
+  "mots": [
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Prénom du chanteur", "reponse": "SERGE", "affichage": "SERGE" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Faisceau lumineux", "reponse": "LASER", "affichage": "LASER" },
+    { "caseDefinition": [0,4], "fleche": "droite-puis-bas", "definition": "« L'… des orangers »", "reponse": "ODEUR", "affichage": "ODEUR" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "« Il a suffi d'un … »", "reponse": "REGARD", "affichage": "REGARD" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Petit de la brebis", "reponse": "AGNEAU", "affichage": "AGNEAU" },
+    { "caseDefinition": [5,0], "fleche": "bas-puis-droite", "definition": "« Il est … temps »", "reponse": "ENCORE", "affichage": "ENCORE" },
+    { "caseDefinition": [5,1], "fleche": "bas", "definition": "Elle suit le jour", "reponse": "NUIT", "affichage": "NUIT" },
+    { "caseDefinition": [5,3], "fleche": "bas", "definition": "Elles ont sauvé Rome", "reponse": "OIES", "affichage": "OIES" },
+    { "caseDefinition": [5,5], "fleche": "bas", "definition": "Boîte à lunettes", "reponse": "ETUI", "affichage": "ÉTUI" },
+    { "caseDefinition": [7,0], "fleche": "bas-puis-droite", "definition": "Il a des plumes", "reponse": "OISEAU", "affichage": "OISEAU" }
+  ]
+}

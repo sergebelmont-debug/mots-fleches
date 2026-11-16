@@ -1,0 +1,110 @@
+# Univers Serge Belmont : mots et définitions tirés de la fiche fournie par l'auteur.
+# Même format que lexique.txt. Une définition vide signifie : « reprendre celle du lexique général ».
+# Règles : ne rien inventer (ni fait, ni date, ni titre) ; titres écrits exactement ; réponse certaine.
+
+# ---- L'artiste et ses titres ----
+SERGE|1|belmont|Prénom du chanteur|propre
+BELMONT|1|belmont|Nom du chanteur Serge|propre
+NOSTALGIA|1|belmont|EP de Serge Belmont|propre
+ACCORDÉON|1|belmont|Instrument du bal
+VILLAGE|1|belmont|Il l'a vu grandir
+BAL|1|belmont|Titre : « Le … »
+LETTRE|1|belmont|Écrite à l'ami parti
+VIEILLE|1|belmont|« La … Photographie »
+PLACE|1|belmont|« Garde une … pour moi »
+TEMPS|1|belmont|« Il est encore … »
+ENCORE|1|belmont|« Il est … temps »
+PRIÈRE|1|belmont|« Écoute ma … »
+ODEUR|1|belmont|« L'… des orangers »
+AMOUR|1|belmont|« L'… n'a pas d'âge »
+ÂGE|1|belmont|L'amour n'en a pas
+MAINS|1|belmont|« Les … de ma mère »
+MÈRE|1|belmont|« Les Mains de ma … »
+
+# ---- Citations ----
+REGARD|1|belmont|« Il a suffi d'un … »
+ÉTÉS|1|belmont|« Mon île aux mille … »
+VIE|1|belmont|Suis-je vraiment en … ?
+GARÇON|1|belmont|Il ne doit pas grandir
+ACTEUR|1|belmont|Il est sans réplique
+
+# ---- Vocabulaire des chansons, avec une définition propre à l'univers ----
+FILS|1|belmont|Liens de la marionnette
+MIROIR|1|belmont|Il y parle à l'enfant
+ÎLE|1|belmont|Porquerolles en est une
+FLAQUES|1|belmont|Les lumières y tremblent
+MICRO|1|belmont|Vintage, devant Serge
+COSTUME|1|belmont|Sombre, tenue de Serge
+CRAVATE|1|belmont|Serge la noue au col
+JUILLET|1|belmont|Mois du bal
+PINS|1|belmont|Arbres de Porquerolles
+
+# ---- Vocabulaire des chansons, définitions générales ----
+CLOCHER|1|belmont|Tour de l'église
+CIGALES|1|belmont|Chanteuses de l'été
+LAVANDE|1|belmont|Fleur mauve de Provence
+PORTAIL|1|belmont|Grande grille d'entrée
+HORIZON|1|belmont|Ligne entre ciel et mer
+DIAMANT|1|belmont|Pierre la plus dure
+SAISONS|1|belmont|Il y en a quatre
+SOURIRE|1|belmont|Il éclaire le visage
+COURAGE|1|belmont|Bravoure
+REGRETS|1|belmont|Remords
+VOLETS|1|belmont|Ils ferment les fenêtres
+ROSIER|1|belmont|Arbuste à épines
+ORTIES|1|belmont|Herbes qui piquent
+SECRET|1|belmont|Il ne se répète pas
+REFLET|1|belmont|Image dans la flaque
+AURORE|1|belmont|Lueur d'avant le jour
+DEMAIN|1|belmont|Jour d'après
+DESTIN|1|belmont|Ce qui est écrit
+FIÈVRE|1|belmont|Température du malade
+POÈMES|1|belmont|Vers réunis
+COLÈRE|1|belmont|Grosse fureur
+PLAGES|1|belmont|Étendues de sable
+ANNÉES|1|belmont|Elles passent
+RÊVES|1|belmont|Songes de la nuit
+ANGES|1|belmont|Messagers du ciel
+AILES|1|belmont|Elles portent l'oiseau
+DÉCOR|1|belmont|Toile de fond
+VÉLOS|1|belmont|Deux-roues de l'île
+MÂTS|1|belmont|Ils se dressent au port
+
+# ---- Mots des chansons déjà présents dans le lexique général (définition reprise telle quelle) ----
+SILENCE|1|belmont|
+RIDEAU|1|belmont|
+CHEMIN|1|belmont|
+VOIX|1|belmont|
+PÈRE|1|belmont|
+PARFUM|1|belmont|
+MAISON|1|belmont|
+SOLEIL|1|belmont|
+OISEAU|1|belmont|
+CIEL|1|belmont|
+NUIT|1|belmont|
+RUE|1|belmont|
+VENT|1|belmont|
+HIVER|1|belmont|
+PAS|1|belmont|
+CAFÉ|1|belmont|
+ÉCOLE|1|belmont|
+BANC|1|belmont|
+ROUTE|1|belmont|
+COLLINE|1|belmont|
+ROBE|1|belmont|
+DANSE|1|belmont|
+LARME|1|belmont|
+OMBRE|1|belmont|
+PAGE|1|belmont|
+PORT|1|belmont|
+MER|1|belmont|
+BATEAU|1|belmont|
+SENTIER|1|belmont|
+JARDIN|1|belmont|
+TIROIR|1|belmont|
+PLUIE|1|belmont|
+VISAGE|1|belmont|
+PAIN|1|belmont|
+FEU|1|belmont|
+PAIX|1|belmont|
+NOM|1|belmont|
