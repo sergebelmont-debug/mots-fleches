@@ -28,6 +28,15 @@ export function Reglages({ reglages, surChange, surReinitialiser, surFermer }: P
           <i className="interrupteur" aria-hidden="true" />
         </label>
 
+        <label className="reglage">
+          <span>
+            <strong>Agrandir les grilles</strong>
+            <small>Cases plus grandes et définitions plus lisibles, mais la grille défile.</small>
+          </span>
+          <input type="checkbox" checked={reglages.agrandirGrilles} onChange={(e) => surChange({ ...reglages, agrandirGrilles: e.target.checked })} />
+          <i className="interrupteur" aria-hidden="true" />
+        </label>
+
         <div className="reglage colonne">
           <span>
             <strong>Effacer ma progression</strong>

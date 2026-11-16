@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { jouerMot } from './aide';
 import donnees from '../grilles/001.json';
 import { construireGrille, type DonneesGrille } from '../src/engine/grille';
 import {
@@ -158,12 +159,62 @@ describe('vérification, indices, fin de grille', () => {
 
   it('la grille est terminée quand tous les mots sont justes, pas avant', () => {
     let p = creerPartie(g);
-    const debut = (q: Partie, id: number): Partie => ({ ...q, motActif: id, caseActive: g.mots[id].cases[0] });
-    for (const m of g.mots.slice(0, -1)) p = taper(debut(p, m.id), m.reponse);
-    const dernier = g.mots[g.mots.length - 1];
-    p = debut(p, dernier.id);
-    const faux = taper(p, 'LIEZ');
-    expect(estTerminee(g, faux)).toBe(false);
-    expect(estTerminee(g, taper(p, dernier.reponse))).toBe(true);
+    for (const m of g.mots) {
+      expect(estTerminee(g, p)).toBe(false);
+      p = jouerMot(g, p, m.id);
+      if (estTerminee(g, p)) break;
+    }
+    expect(estTerminee(g, p)).toBe(true);
+    // Une seule lettre fausse suffit à ne plus être terminée.
+    const k = g.mots[idMot('LIER')].cases[3];
+    expect(estTerminee(g, { ...p, saisie: p.saisie.map((l, i) => (i === k ? 'Z' : l)) })).toBe(false);
+  });
+});
+
+describe('saut des lettres déjà écrites', () => {
+  const avecSalle = () => taper(selectionnerMot(g, creerPartie(g), idMot('SALLE')), 'SALLE');
+
+  it('en remplissant un mot, le curseur saute la lettre posée par un mot croisé', () => {
+    // SALLE est écrit : le A de NATUREL (2e lettre) est donc déjà en place.
+    const naturel = g.mots[idMot('NATUREL')];
+    let p = selectionnerMot(g, avecSalle(), naturel.id);
+    expect(p.caseActive).toBe(naturel.cases[0]);
+    p = saisirLettre(g, p, 'N');
+    expect(p.caseActive).toBe(naturel.cases[2]); // la case du A est sautée
+    p = taper(p, 'TUREL');
+    expect(lire(p, 'NATUREL')).toBe('NATUREL');
+  });
+
+  it('le joueur ne tape que les lettres manquantes', () => {
+    const p = taper(selectionnerMot(g, avecSalle(), idMot('NATUREL')), 'NTUREL');
+    expect(lire(p, 'NATUREL')).toBe('NATUREL');
+    expect(lire(p, 'SALLE')).toBe('SALLE');
+  });
+
+  it('s’il reste une case vide plus haut dans le mot, le curseur y revient', () => {
+    const renne = g.mots[idMot('RENNE')];
+    let p = selectionnerCase(g, selectionnerMot(g, creerPartie(g), renne.id), renne.cases[2]);
+    p = taper(p, 'NNE'); // fin du mot d'abord
+    expect(p.motActif).toBe(renne.id);
+    expect(p.caseActive).toBe(renne.cases[0]);
+    p = taper(p, 'RE');
+    expect(lire(p, 'RENNE')).toBe('RENNE');
+  });
+
+  it('un mot déjà complet se corrige case après case, sans saut', () => {
+    const salle = g.mots[idMot('SALLE')];
+    let p = selectionnerCase(g, selectionnerMot(g, avecSalle(), salle.id), salle.cases[0]);
+    p = saisirLettre(g, p, 'B');
+    expect(p.motActif).toBe(salle.id);
+    expect(p.caseActive).toBe(salle.cases[1]);
+    p = saisirLettre(g, p, 'E');
+    expect(lire(p, 'SALLE')).toBe('BELLE');
+  });
+
+  it('un indice sur un mot en cours saute aussi les lettres déjà posées', () => {
+    const naturel = g.mots[idMot('NATUREL')];
+    const p = indice(g, selectionnerMot(g, avecSalle(), naturel.id));
+    expect(p.saisie[naturel.cases[0]]).toBe('N');
+    expect(p.caseActive).toBe(naturel.cases[2]);
   });
 });

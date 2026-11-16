@@ -49,10 +49,22 @@ export function motVoisin(g: Grille, p: Partie, pas: 1 | -1): Partie {
   return selectionnerMot(g, p, (p.motActif + pas + n) % n);
 }
 
-function avancer(g: Grille, p: Partie): Partie {
+/**
+ * Déplace le curseur après une frappe.
+ * - Mot en cours de remplissage : on va à la prochaine case VIDE, en sautant les lettres
+ *   déjà posées (par exemple celles d'un mot croisé). Le joueur ne retape donc jamais une lettre.
+ * - Mot qui était déjà complet (le joueur le corrige) : on avance simplement d'une case.
+ */
+function avancer(g: Grille, p: Partie, etaitComplet: boolean): Partie {
   const cases = g.mots[p.motActif].cases;
   const pos = cases.indexOf(p.caseActive);
-  if (pos < cases.length - 1) return { ...p, caseActive: cases[pos + 1] };
+  if (etaitComplet) {
+    if (pos < cases.length - 1) return { ...p, caseActive: cases[pos + 1] };
+  } else {
+    const vide = (k: number) => p.saisie[k] === '';
+    const suivante = cases.slice(pos + 1).find(vide) ?? cases.find(vide);
+    if (suivante !== undefined) return { ...p, caseActive: suivante };
+  }
   if (!motComplet(g, p, p.motActif)) return p;
   // Mot rempli : on saute au prochain mot incomplet, s'il en reste un.
   const n = g.mots.length;
@@ -67,12 +79,13 @@ export function saisirLettre(g: Grille, p: Partie, lettre: string): Partie {
   const l = lettre.toUpperCase();
   if (!/^[A-Z]$/.test(l)) return p;
   const k = p.caseActive;
-  if (p.verrouillees[k]) return avancer(g, p);
+  const etaitComplet = motComplet(g, p, p.motActif);
+  if (p.verrouillees[k]) return avancer(g, p, etaitComplet);
   const saisie = [...p.saisie];
   const fausses = [...p.fausses];
   saisie[k] = l;
   fausses[k] = false;
-  return avancer(g, { ...p, saisie, fausses });
+  return avancer(g, { ...p, saisie, fausses }, etaitComplet);
 }
 
 /** Efface la lettre courante ; si la case est déjà vide, recule et efface. */
@@ -123,7 +136,7 @@ export function indice(g: Grille, p: Partie): Partie {
   saisie[k] = c.lettre;
   verrouillees[k] = true;
   fausses[k] = false;
-  return avancer(g, { ...p, saisie, verrouillees, fausses, indices: p.indices + 1 });
+  return avancer(g, { ...p, saisie, verrouillees, fausses, indices: p.indices + 1 }, motComplet(g, p, p.motActif));
 }
 
 export function estTerminee(g: Grille, p: Partie): boolean {

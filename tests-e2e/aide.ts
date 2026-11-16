@@ -33,12 +33,12 @@ export async function resoudre(page: Page, g: Grille) {
 }
 
 /** Démarre avec une sauvegarde donnée (par exemple : tous les niveaux débloqués). */
-export async function avecSauvegarde(page: Page, terminees: string[]) {
+export async function avecSauvegarde(page: Page, terminees: string[], reglages: Record<string, boolean> = {}) {
   const sauvegarde = {
     version: 1,
     progression: { terminees: Object.fromEntries(terminees.map((id) => [id, { etoiles: 3, indices: 0, secondes: 200 }])) },
     enCours: {},
-    reglages: { signalerMotsJustes: true },
+    reglages: { signalerMotsJustes: true, ...reglages },
   };
   await page.addInitScript(([cle, valeur]) => localStorage.setItem(cle, valeur), [CLE, JSON.stringify(sauvegarde)]);
 }

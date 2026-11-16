@@ -8,8 +8,8 @@
 |---|---|---|
 | Lexique (1 070 mots) | `npm run lexique` | Validé |
 | Grilles (30 du parcours + 6 Serge Belmont) | `npm run verifier` | 36 validées, 0 refusée, 0 avertissement |
-| Tests du moteur, du validateur, de la progression | `npm test` | 198 réussis sur 198 |
-| Tests de bout en bout, 4 appareils simulés | `npm run test:e2e` | 59 réussis, 5 non applicables, 0 échec |
+| Tests du moteur, du validateur, de la progression | `npm test` | 203 réussis sur 203 |
+| Tests de bout en bout, 4 appareils simulés | `npm run test:e2e` | 67 réussis, 5 non applicables, 0 échec |
 | Construction du jeu | `npm run build` | Réussie |
 | Vérification automatique sur GitHub | à chaque envoi | Réussie |
 | Version en ligne (https://sergebelmont-debug.github.io/mots-fleches/) | ouverture en format téléphone, parcours, saisie d'un mot, sauvegarde, service worker | Réussie |
@@ -27,6 +27,7 @@
 
 - Sélection d'un mot, d'une case ; changement de sens au croisement ; mot suivant.
 - Saisie, passage automatique au mot suivant, lettres de croisement partagées, caractères non valides ignorés.
+- **Les lettres déjà posées par un mot croisé sont sautées** : le joueur ne tape que les lettres manquantes ; un mot déjà complet se corrige case après case.
 - Effacement d'une lettre, d'un mot ; lettres révélées par indice protégées.
 - Vérification : seules les lettres fausses sont marquées ; la marque disparaît à la correction.
 - **Les 30 grilles sont résolues lettre par lettre** et se terminent correctement.
@@ -60,7 +61,9 @@ Appareils simulés : Android (Chrome, 412 × 839), iPhone (moteur de Safari, 390
 | Reprise d'une partie après rechargement | ✓ | ✓ | ✓ | ✓ |
 | Mise en page : pas de défilement de page, clavier sous la grille, touches et cases assez grandes | ✓ | ✓ | ✓ | ✓ |
 | Grille intermédiaire (niveau 16) jouée jusqu'au bout | ✓ | ✓ | ✓ | ✓ |
-| Grille difficile 7 × 10 (niveau 30, nombreux croisements) jouée jusqu'au bout, case active toujours visible | ✓ | ✓ | ✓ | ✓ |
+| Lettres déjà posées sautées pendant la saisie | ✓ | ✓ | ✓ | ✓ |
+| Grille difficile 7 × 10 (niveau 30) entièrement visible, sans défilement | ✓ | ✓ | ✓ | ✓ |
+| Même grille avec le réglage « Agrandir les grilles » : jouée jusqu'au bout, case active toujours visible | ✓ | ✓ | ✓ | ✓ |
 | Défi du jour, statistiques, collection | ✓ | ✓ | ✓ | ✓ |
 | Portrait de Serge Belmont sur l'accueil | ✓ | ✓ | ✓ | ✓ |
 | Univers Serge Belmont : pochettes chargées, grille en treillis jouée jusqu'au bout, grille suivante | ✓ | ✓ | ✓ | ✓ |
@@ -88,7 +91,7 @@ Aucun à ce jour.
 - **Difficulté** : elle progresse par la taille, la longueur des mots et un vocabulaire un peu plus rare, pas par la subtilité des définitions. Aucune grille « expert ».
 - **Petites répétitions** : une grille contient RI et RIT ; quelques grilles voisines partagent un mot long.
 - **Défi du jour** : il peut tomber sur une grille difficile dès le premier jour d'un nouveau joueur.
-- **Très petits écrans** : sur 320 × 568, la grille défile dès le niveau 1 (trois à quatre rangées visibles à la fois). Jouable, mais moins confortable.
+- **Lisibilité des définitions dans les cases** : la grille entière tient désormais à l'écran, sans défilement. Contrepartie : sur les grandes grilles, le texte des définitions dans les cases est très petit (environ 6 px sur un téléphone de 375 × 667). La définition du mot sélectionné s'affiche en grand sous la grille, et le réglage « Agrandir les grilles » rétablit de grandes cases avec défilement.
 - **Hors connexion** : disponible seulement à partir de la deuxième visite.
 - **Décor** : dessiné en formes simples ; seul le portrait vient des pochettes fournies.
 

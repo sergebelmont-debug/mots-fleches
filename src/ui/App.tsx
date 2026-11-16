@@ -67,6 +67,7 @@ export function App() {
         etiquette={enDefi ? 'Défi du jour' : special ? `Serge Belmont ${liste.indexOf(id) + 1}` : `Niveau ${liste.indexOf(id) + 1}`}
         partieInitiale={partieCompatible(grille, sauvee) ? sauvee : null}
         signalerMotsJustes={sauvegarde.reglages.signalerMotsJustes}
+        agrandir={sauvegarde.reglages.agrandirGrilles}
         enPause={reglagesOuverts}
         aSuivante={suivante !== null}
         nouvellesRecompenses={nouvelles}

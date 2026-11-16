@@ -26,6 +26,7 @@ interface Props {
   etiquette: string; // « Niveau 3 » ou « Défi du jour »
   partieInitiale: Partie | null;
   signalerMotsJustes: boolean;
+  agrandir: boolean;
   enPause: boolean;
   aSuivante: boolean;
   nouvellesRecompenses: string[];
@@ -167,7 +168,7 @@ export function Jeu(props: Props) {
         <Etoiles nombre={etoiles} />
       </header>
 
-      <main className="zone-grille">
+      <main className={`zone-grille ${props.agrandir ? 'agrandie' : ''}`}>
         <VueGrille
           grille={grille}
           partie={partie}

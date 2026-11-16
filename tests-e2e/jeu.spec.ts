@@ -139,6 +139,11 @@ test('mise en page : pas de défilement de page, clavier sous la grille, touches
       basClavier: boite('.clavier').bottom,
       toucheMin: [Math.min(...touches.map((t) => t.width)), Math.min(...touches.map((t) => t.height))],
       caseLargeur: boite('.case.lettre').width,
+      grille: { haut: boite('.grille').top, bas: boite('.grille').bottom },
+      defilement: (() => {
+        const z = document.querySelector('.zone-grille')!;
+        return [z.scrollWidth - z.clientWidth, z.scrollHeight - z.clientHeight];
+      })(),
     };
   });
   expect(mesures.hauteurPage).toBeLessThanOrEqual(mesures.ecran[1]);
@@ -148,12 +153,54 @@ test('mise en page : pas de défilement de page, clavier sous la grille, touches
   expect(mesures.basZone - mesures.hautZone).toBeGreaterThan(150); // la grille garde une vraie place
   expect(mesures.toucheMin[0]).toBeGreaterThanOrEqual(26);
   expect(mesures.toucheMin[1]).toBeGreaterThanOrEqual(40);
-  expect(mesures.caseLargeur).toBeGreaterThanOrEqual(56); // définitions lisibles
+  // Toute la grille est visible d'un coup : rien à faire défiler dans la zone de la grille.
+  expect(mesures.grille.haut).toBeGreaterThanOrEqual(mesures.hautZone - 1);
+  expect(mesures.grille.bas).toBeLessThanOrEqual(mesures.basZone + 1);
+  expect(mesures.defilement).toEqual([0, 0]);
+  expect(mesures.caseLargeur).toBeGreaterThanOrEqual(38);
 });
 
-test('grande grille (7 × 10) : cases lisibles et case active toujours visible', async ({ page }) => {
-  const erreurs = surveiller(page);
+test('saisie : les lettres déjà posées par un mot croisé sont sautées', async ({ page }) => {
+  await page.goto('/');
+  await bouton(page, 'Jouer').click();
+  await attendreJeu(page);
+  const salle = g1.mots[idMot(g1, 'SALLE')];
+  const naturel = g1.mots[idMot(g1, 'NATUREL')];
+  await page.locator(`[data-mot="${salle.id}"]`).click();
+  await taper(page, 'SALLE');
+  await page.locator(`[data-mot="${naturel.id}"]`).click();
+  await taper(page, 'N');
+  // Le curseur est passé directement à la 3e case : le A est déjà là.
+  await expect(page.locator(`[data-case="${naturel.cases[2]}"]`)).toHaveClass(/curseur/);
+  await taper(page, 'TUREL');
+  for (let i = 0; i < 7; i++) await expect(page.locator(`[data-case="${naturel.cases[i]}"]`)).toHaveText('NATUREL'[i]);
+  for (let i = 0; i < 5; i++) await expect(page.locator(`[data-case="${salle.cases[i]}"]`)).toHaveText('SALLE'[i]);
+});
+
+test('grande grille (7 × 10) : entièrement visible sans défilement', async ({ page }) => {
   await avecSauvegarde(page, tousLesIds.slice(0, 29));
+  await page.goto('/');
+  await bouton(page, 'Parcours').click();
+  await page.locator('[data-niveau="030"]').click();
+  await attendreJeu(page);
+  await page.waitForTimeout(600);
+  const m = await page.evaluate(() => {
+    const z = document.querySelector('.zone-grille')!;
+    const g = document.querySelector('.grille')!.getBoundingClientRect();
+    const r = z.getBoundingClientRect();
+    return { dedans: g.top >= r.top - 1 && g.bottom <= r.bottom + 1 && g.left >= r.left - 1 && g.right <= r.right + 1, reste: [z.scrollWidth - z.clientWidth, z.scrollHeight - z.clientHeight], bas: g.bottom, ecran: innerHeight };
+  });
+  expect(m.dedans).toBe(true);
+  expect(m.reste).toEqual([0, 0]);
+  expect(m.bas).toBeLessThan(m.ecran);
+  // La dernière rangée de la grille est visible sans rien toucher.
+  const g = grille('030');
+  await expect(page.locator(`[data-case="${g.mots[g.mots.length - 1].cases[0]}"]`)).toBeInViewport({ ratio: 1 });
+});
+
+test('grande grille avec le réglage « Agrandir les grilles » : cases lisibles, case active toujours visible', async ({ page }) => {
+  const erreurs = surveiller(page);
+  await avecSauvegarde(page, tousLesIds.slice(0, 29), { agrandirGrilles: true });
   await page.goto('/');
   await bouton(page, 'Parcours').click();
   await page.locator('[data-niveau="030"]').click();
@@ -226,7 +273,7 @@ test('réglages : le choix est conservé, et la progression s’efface après co
   await page.reload();
   await expect(page.locator('.compteur').first()).toContainText('1/30');
   await bouton(page, 'Réglages').click();
-  await page.locator('.reglage .interrupteur').click();
+  await page.locator('.reglage .interrupteur').first().click();
   await bouton(page, 'Effacer…').click();
   await bouton(page, 'Annuler').click();
   await bouton(page, 'Fermer').click();

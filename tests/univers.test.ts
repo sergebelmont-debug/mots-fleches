@@ -5,7 +5,8 @@ import base from '../grilles/001.json';
 import { chargerDictionnaire } from '../outils/dictionnaire.ts';
 import { controlerLexique, lireLexique } from '../outils/lexique.ts';
 import { construireGrille, type DonneesGrille } from '../src/engine/grille';
-import { creerPartie, estTerminee, saisirLettre, type Partie } from '../src/engine/partie';
+import { creerPartie, estTerminee, type Partie } from '../src/engine/partie';
+import { jouerMot } from './aide';
 import { terminerGrille } from '../src/progression/defi';
 import { recompenses } from '../src/progression/recompenses';
 import { sauvegardeVide } from '../src/storage/sauvegarde';
@@ -63,10 +64,7 @@ describe('grilles de l’univers Serge Belmont', () => {
     const { grille: g, erreurs } = construireGrille(lire(f));
     expect(erreurs).toEqual([]);
     let p: Partie = creerPartie(g);
-    for (const m of g.mots) {
-      p = { ...p, motActif: m.id, caseActive: m.cases[0] };
-      for (const l of m.reponse) p = saisirLettre(g, p, l);
-    }
+    for (const m of g.mots) p = jouerMot(g, p, m.id);
     expect(estTerminee(g, p)).toBe(true);
   });
 

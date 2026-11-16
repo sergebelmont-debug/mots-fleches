@@ -419,7 +419,8 @@ p {
 .grille {
   flex: none;
   margin: auto;
-  width: max(min(100cqw, calc(100cqh * var(--cols) / var(--rows))), calc(var(--cols) * 62px));
+  /* Par défaut la grille entière tient dans la place disponible, sans défilement. */
+  width: min(100cqw, calc(100cqh * var(--cols) / var(--rows)));
   aspect-ratio: var(--cols) / var(--rows);
   container-type: inline-size;
   display: grid;
@@ -1044,4 +1045,103 @@ p {
   .univers {
     min-height: 46px;
   }
+}
+
+/* ---- Réglage « Agrandir les grilles » : cases d'au moins 62 px, la grille défile ---- */
+.zone-grille.agrandie .grille {
+  width: max(min(100cqw, calc(100cqh * var(--cols) / var(--rows))), calc(var(--cols) * 62px));
+}
+
+/* ---- Écran de jeu compact : le plus de place possible pour la grille ---- */
+.jeu {
+  gap: 5px;
+  padding: max(5px, env(safe-area-inset-top)) 6px max(5px, env(safe-area-inset-bottom));
+}
+.jeu .barre {
+  padding: 3px 10px 3px 3px;
+  gap: 8px;
+  border-width: 1px;
+}
+.jeu .rond {
+  width: 32px;
+  height: 32px;
+  font-size: 17px;
+}
+.jeu .barre-titre {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.jeu .barre-titre small {
+  font-size: 11px;
+}
+.jeu .chrono {
+  font-size: 13px;
+}
+.jeu .barre .etoile {
+  font-size: 15px;
+}
+.jeu .barre-definition {
+  min-height: 38px;
+  gap: 5px;
+}
+.jeu .barre-definition .nav {
+  width: 36px;
+  font-size: 24px;
+  border-radius: 9px;
+}
+.jeu .definition-active {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  align-content: center;
+  column-gap: 8px;
+  padding: 3px 8px;
+  border-radius: 9px;
+  border-width: 1px;
+}
+.jeu .definition-active .texte {
+  font-size: 15px;
+  line-height: 1.1;
+}
+.jeu .definition-active .longueur {
+  font-size: 10px;
+}
+.jeu .actions {
+  gap: 5px;
+}
+.jeu .actions button {
+  min-height: 32px;
+  font-size: 13px;
+  border-width: 1px;
+  box-shadow: 0 2px 0 #140c07;
+}
+.jeu .actions .bouton-or {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 2px 0 #6b4308;
+}
+.jeu .clavier {
+  gap: 4px;
+}
+.jeu .rangee {
+  gap: 3px;
+}
+.jeu .touche {
+  height: 40px;
+  font-size: 17px;
+  border-radius: 6px;
+  box-shadow: 0 2px 0 #6b4308;
+}
+.jeu .grille {
+  border-width: 2px;
+  border-radius: 7px;
+}
+/* Définitions un peu plus grosses par rapport à la case, pour rester déchiffrables en petit. */
+.jeu .def {
+  font-size: calc(var(--u) * 0.152);
+  line-height: 1.02;
+  padding: 0 1px;
 }

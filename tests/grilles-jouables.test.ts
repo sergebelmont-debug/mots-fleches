@@ -2,7 +2,8 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { construireGrille, type DonneesGrille } from '../src/engine/grille';
-import { creerPartie, estTerminee, motsJustes, saisirLettre, verifier, nombreFausses, type Partie } from '../src/engine/partie';
+import { creerPartie, estTerminee, motsJustes, verifier, nombreFausses, type Partie } from '../src/engine/partie';
+import { jouerMot } from './aide';
 
 const fichiers = readdirSync('grilles').filter((f) => f.endsWith('.json')).sort();
 const RANG: Record<string, number> = { facile: 0, intermediaire: 1, difficile: 2, expert: 3 };
@@ -16,11 +17,15 @@ describe('chaque grille du jeu se joue jusqu’au bout', () => {
     g.cases.forEach((c) => c.type === 'lettre' && expect(c.mots.length).toBeGreaterThan(0));
     // On tape chaque mot, lettre par lettre, comme un joueur.
     let p: Partie = creerPartie(g);
-    g.mots.forEach((m, i) => {
-      p = { ...p, motActif: m.id, caseActive: m.cases[0] };
-      for (const l of m.reponse) p = saisirLettre(g, p, l);
-      if (i < g.mots.length - 1 && g.cases.some((c, k) => c.type === 'lettre' && p.saisie[k] === '')) expect(estTerminee(g, p)).toBe(false);
-    });
+    let frappes = 0;
+    for (const m of g.mots) {
+      const avant = p.saisie.filter(Boolean).length;
+      p = jouerMot(g, p, m.id);
+      frappes += p.saisie.filter(Boolean).length - avant;
+      if (g.cases.some((c, k) => c.type === 'lettre' && p.saisie[k] === '')) expect(estTerminee(g, p)).toBe(false);
+    }
+    // Aucune lettre retapée : une frappe par case, pas une de plus.
+    expect(frappes).toBe(g.cases.filter((c) => c.type === 'lettre').length);
     expect(nombreFausses(verifier(g, p))).toBe(0);
     expect(motsJustes(g, p).length).toBe(g.mots.length);
     expect(estTerminee(g, p)).toBe(true);
