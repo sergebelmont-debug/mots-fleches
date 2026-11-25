@@ -47,7 +47,14 @@ export async function avecSauvegarde(page: Page, terminees: string[], reglages: 
 export function surveiller(page: Page): string[] {
   const erreurs: string[] = [];
   page.on('pageerror', (e) => erreurs.push(String(e)));
-  page.on('console', (m) => m.type() === 'error' && erreurs.push(m.text()));
+  page.on('console', (m) => {
+    if (m.type() !== 'error') return;
+    // Téléchargement d'une musique interrompu par un rechargement ou un changement de page :
+    // le moteur de Safari l'écrit dans la console, sans conséquence pour le jeu.
+    const surMusique = /\/musique\//.test(m.text()) || /\/musique\//.test(m.location().url ?? '');
+    if (surMusique) return;
+    erreurs.push(m.text());
+  });
   return erreurs;
 }
 
