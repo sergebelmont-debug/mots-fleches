@@ -8,6 +8,8 @@ export interface Reglages {
   signalerMotsJustes: boolean;
   /** Faux (par défaut) : la grille entière tient à l'écran. Vrai : cases agrandies, la grille défile. */
   agrandirGrilles: boolean;
+  /** Musique de fond (activée par défaut). */
+  musique: boolean;
 }
 
 export interface Sauvegarde {
@@ -31,7 +33,7 @@ export const sauvegardeVide = (): Sauvegarde => ({
   version: 1,
   progression: progressionVide(),
   enCours: {},
-  reglages: { signalerMotsJustes: true, agrandirGrilles: false },
+  reglages: { signalerMotsJustes: true, agrandirGrilles: false, musique: true },
   defis: {},
   stats: statsVides(),
 });
@@ -70,6 +72,7 @@ export function charger(stockage: Stockage | null): Sauvegarde {
         signalerMotsJustes:
           estObjet(s.reglages) && typeof s.reglages.signalerMotsJustes === 'boolean' ? s.reglages.signalerMotsJustes : true,
         agrandirGrilles: estObjet(s.reglages) && s.reglages.agrandirGrilles === true,
+        musique: !(estObjet(s.reglages) && s.reglages.musique === false),
       },
       defis,
       stats: {

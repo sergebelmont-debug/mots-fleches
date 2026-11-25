@@ -117,3 +117,10 @@ Voir [docs/ajouter-des-grilles.md](docs/ajouter-des-grilles.md).
 ## Convention
 
 Dans les cases : majuscules sans accents (ÎLE s'écrit ILE, CŒUR s'écrit COEUR). Dans les définitions : français normal.
+
+## Musique
+
+- Les morceaux sont dans `public/musique/` (MP3 à 96 kb/s, volume égalisé). Ils ont été produits à partir des WAV fournis avec `node outils/musiques.cjs <dossier des WAV> <chemin de ffmpeg>` (ffmpeg n'est pas une dépendance du projet).
+- La répartition est dans `donnees/musiques.json`, calculée par `node outils/repartir-musiques.cjs` : Nuit Douce pour les menus (elle continue d'un écran à l'autre), un morceau par niveau (qui repart du début à chaque niveau), jamais deux fois de suite le même style.
+- Les grilles Serge Belmont jouent pour l'instant la musique du menu.
+- Le joueur peut couper la musique dans les Réglages.

@@ -17,6 +17,8 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const requete = e.request;
   if (requete.method !== 'GET' || new URL(requete.url).origin !== self.location.origin) return;
+  // Musiques : lues par morceaux par le navigateur (requêtes partielles), trop lourdes pour le cache.
+  if (/\/musique\//.test(requete.url)) return;
   e.respondWith(
     (async () => {
       const cache = await caches.open(CACHE);

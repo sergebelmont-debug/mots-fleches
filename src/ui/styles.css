@@ -1303,3 +1303,23 @@ p {
   color: #7a4512;
   font-weight: 700;
 }
+
+/* ---- Réglages : la fenêtre défile si l'écran est trop petit pour tout afficher ---- */
+.carte.reglages {
+  max-height: 100%;
+  overflow-y: auto;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+}
+@media (max-height: 700px) {
+  .carte.reglages {
+    gap: 9px;
+    padding: 14px 14px;
+  }
+  .carte.reglages h2 {
+    font-size: 32px;
+  }
+  .reglage {
+    padding: 7px 10px;
+  }
+}

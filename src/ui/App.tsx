@@ -8,6 +8,7 @@ import { dateDuJour, enregistrerJour } from '../progression/statistiques';
 import { charger, enregistrer, sauvegardeVide, stockageNavigateur, type Sauvegarde } from '../storage/sauvegarde';
 import { synchroniser } from '../en-ligne/classement';
 import { statistiques } from '../en-ligne/statistiques';
+import { cibleMusique, lecteur } from '../musique/pistes';
 import { Accueil } from './Accueil';
 import { Classement } from './Classement';
 import { Collection } from './Collection';
@@ -71,6 +72,17 @@ export function App() {
   };
   const accueil = () => aller({ nom: 'accueil' });
   const idDefi = grilleDuDefi(IDS, aujourdhui);
+
+  // Musique : celle du niveau en jeu, sinon celle du menu (qui continue sans recommencer d'un écran à l'autre).
+  const niveauEnJeu =
+    ecran.nom === 'defi' ? { id: idDefi, cle: cleDefi(aujourdhui) } : ecran.nom === 'jeu' && IDS.includes(ecran.id) ? { id: ecran.id, cle: ecran.id } : null;
+  const cible = cibleMusique(niveauEnJeu);
+  const musiqueActive = sauvegarde.reglages.musique;
+  useEffect(() => {
+    lecteur().activer(musiqueActive);
+    lecteur().jouer(cible);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cible.type, cible.piste, cible.type === 'niveau' ? cible.cle : '', musiqueActive]);
 
   let contenu;
   if (ecran.nom === 'jeu' || ecran.nom === 'defi') {

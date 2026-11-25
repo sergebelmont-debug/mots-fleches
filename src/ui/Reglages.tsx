@@ -19,6 +19,15 @@ export function Reglages({ reglages, surChange, surReinitialiser, surFermer }: P
 
         <label className="reglage">
           <span>
+            <strong>Musique</strong>
+            <small>Nuit Douce dans les menus, une musique différente à chaque niveau.</small>
+          </span>
+          <input type="checkbox" checked={reglages.musique} onChange={(e) => surChange({ ...reglages, musique: e.target.checked })} />
+          <i className="interrupteur" aria-hidden="true" />
+        </label>
+
+        <label className="reglage">
+          <span>
             <strong>Signaler les mots justes</strong>
             <small>Un mot entièrement correct s'illumine dès qu'il est complet.</small>
           </span>

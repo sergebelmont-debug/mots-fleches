@@ -273,7 +273,7 @@ test('réglages : le choix est conservé, et la progression s’efface après co
   await page.reload();
   await expect(page.locator('.compteur').first()).toContainText('1/30');
   await bouton(page, 'Réglages').click();
-  await page.locator('.reglage .interrupteur').first().click();
+  await page.locator('.reglage', { hasText: 'Signaler les mots justes' }).locator('.interrupteur').click();
   await bouton(page, 'Effacer…').click();
   await bouton(page, 'Annuler').click();
   await bouton(page, 'Fermer').click();
