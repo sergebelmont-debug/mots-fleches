@@ -1,6 +1,6 @@
 # Mettre le jeu en ligne
 
-**État actuel : le jeu est en ligne sur GitHub Pages, à l'adresse https://sergebelmont-debug.github.io/mots-fleches/ (dépôt public, première mise en ligne le 16 novembre 2026).**
+**État actuel : le jeu est en ligne sur GitHub Pages, à l'adresse https://sergebelmont.com/mots-fleches/ (dépôt public, première mise en ligne le 16 novembre 2026).**
 
 Pour publier une nouvelle version : onglet **Actions** du dépôt, **Mise en ligne**, **Run workflow**. Rien ne part en ligne automatiquement.
 
@@ -22,7 +22,7 @@ npm run preview
 
 ## Option A — GitHub Pages (tout reste sur GitHub)
 
-Adresse obtenue : `https://sergebelmont-debug.github.io/mots-fleches/`
+Adresse obtenue : `https://sergebelmont.com/mots-fleches/`
 
 À savoir : avec un compte GitHub gratuit, GitHub Pages ne fonctionne que si le **dépôt est public**. Le code du jeu (y compris les réponses des grilles) devient alors visible par tous. Avec un compte payant (GitHub Pro), le dépôt peut rester privé.
 
