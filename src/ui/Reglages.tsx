@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { statistiques } from '../en-ligne/statistiques';
+import { volumeReglable } from '../musique/lecteur';
 import type { Reglages as TypeReglages } from '../storage/sauvegarde';
 
 interface Props {
@@ -12,32 +13,35 @@ interface Props {
 export function Reglages({ reglages, surChange, surReinitialiser, surFermer }: Props) {
   const [confirmer, setConfirmer] = useState(false);
   const [mesure, setMesure] = useState(() => !statistiques.refusees);
+  const [avecVolume] = useState(volumeReglable);
   return (
     <div className="voile" role="dialog" aria-label="Réglages" onClick={surFermer}>
       <div className="carte reglages" onClick={(e) => e.stopPropagation()}>
         <h2>Réglages</h2>
 
-        <label className="reglage">
-          <span>
+        <div className="reglage colonne musique">
+          <label className="ligne-musique">
             <strong>Musique</strong>
-            <small>Nuit Douce dans les menus, une musique différente à chaque niveau.</small>
-          </span>
-          <input type="checkbox" checked={reglages.musique} onChange={(e) => surChange({ ...reglages, musique: e.target.checked })} />
-          <i className="interrupteur" aria-hidden="true" />
-        </label>
-
-        <label className="reglage">
-          <span>
-            <strong>Signaler les mots justes</strong>
-            <small>Un mot entièrement correct s'illumine dès qu'il est complet.</small>
-          </span>
-          <input
-            type="checkbox"
-            checked={reglages.signalerMotsJustes}
-            onChange={(e) => surChange({ ...reglages, signalerMotsJustes: e.target.checked })}
-          />
-          <i className="interrupteur" aria-hidden="true" />
-        </label>
+            <input type="checkbox" checked={reglages.musique} onChange={(e) => surChange({ ...reglages, musique: e.target.checked })} />
+            <i className="interrupteur" aria-hidden="true" />
+          </label>
+          {avecVolume && (
+            <label className="ligne-volume">
+              <span aria-hidden="true">🔈</span>
+              <input
+                type="range"
+                min={0}
+                max={100}
+                step={5}
+                aria-label="Volume de la musique"
+                disabled={!reglages.musique}
+                value={Math.round(reglages.volume * 100)}
+                onChange={(e) => surChange({ ...reglages, volume: Number(e.target.value) / 100 })}
+              />
+              <span aria-hidden="true">🔊</span>
+            </label>
+          )}
+        </div>
 
         <label className="reglage">
           <span>

@@ -25,7 +25,6 @@ interface Props {
   grille: Grille;
   etiquette: string; // « Niveau 3 » ou « Défi du jour »
   partieInitiale: Partie | null;
-  signalerMotsJustes: boolean;
   agrandir: boolean;
   enPause: boolean;
   aSuivante: boolean;
@@ -38,7 +37,7 @@ interface Props {
 }
 
 export function Jeu(props: Props) {
-  const { grille, etiquette, signalerMotsJustes, enPause } = props;
+  const { grille, etiquette, enPause } = props;
   const [partie, setPartie] = useState<Partie>(() => props.partieInitiale ?? creerPartie(grille));
   const [secondes, setSecondes] = useState(partie.secondes);
   const [message, setMessage] = useState('');
@@ -74,7 +73,7 @@ export function Jeu(props: Props) {
     const nouveaux = justes.filter((id) => !justesAvant.current.includes(id));
     justesAvant.current = justes;
     let minuterie: ReturnType<typeof setTimeout> | undefined;
-    if (nouveaux.length > 0 && signalerMotsJustes) {
+    if (nouveaux.length > 0) {
       setEclat(new Set(nouveaux.flatMap((id) => grille.mots[id].cases)));
       minuterie = setTimeout(() => setEclat(new Set()), 900);
     }

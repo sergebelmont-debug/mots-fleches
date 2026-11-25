@@ -267,13 +267,14 @@ test('réglages : le choix est conservé, et la progression s’efface après co
   await page.goto('/');
   await page.evaluate(
     ([cle]) =>
-      localStorage.setItem(cle, JSON.stringify({ version: 1, progression: { terminees: { '001': { etoiles: 3, indices: 0 } } }, enCours: {}, reglages: { signalerMotsJustes: true } })),
+      localStorage.setItem(cle, JSON.stringify({ version: 1, progression: { terminees: { '001': { etoiles: 3, indices: 0 } } }, enCours: {}, reglages: {} })),
     [CLE],
   );
   await page.reload();
   await expect(page.locator('.compteur').first()).toContainText('1/30');
   await bouton(page, 'Réglages').click();
-  await page.locator('.reglage', { hasText: 'Signaler les mots justes' }).locator('.interrupteur').click();
+  await expect(page.locator('.reglage', { hasText: 'Signaler les mots justes' })).toHaveCount(0); // toujours actif, plus de réglage
+  await page.locator('.reglage', { hasText: 'Agrandir les grilles' }).locator('.interrupteur').click();
   await bouton(page, 'Effacer…').click();
   await bouton(page, 'Annuler').click();
   await bouton(page, 'Fermer').click();
@@ -285,7 +286,7 @@ test('réglages : le choix est conservé, et la progression s’efface après co
   await page.reload();
   await expect(page.locator('.compteur').first()).toContainText('0/30');
   const sauvee = await page.evaluate(([cle]) => JSON.parse(localStorage.getItem(cle)!), [CLE]);
-  expect(sauvee.reglages.signalerMotsJustes).toBe(false);
+  expect(sauvee.reglages.agrandirGrilles).toBe(true);
 });
 
 test('une sauvegarde abîmée ne bloque pas le jeu', async ({ page }) => {

@@ -75,7 +75,8 @@ describe('sauvegarde', () => {
     const s = sauvegardeVide();
     s.progression = enregistrerResultat(s.progression, '001', 1);
     s.enCours['002'] = saisirLettre(g, selectionnerMot(g, creerPartie(g), 1), 'S');
-    s.reglages.signalerMotsJustes = false;
+    s.reglages.musique = false;
+    s.reglages.volume = 0.35;
     expect(enregistrer(st, s)).toBe(true);
     expect(charger(st)).toEqual(s);
   });

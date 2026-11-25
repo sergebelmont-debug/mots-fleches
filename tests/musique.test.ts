@@ -127,6 +127,16 @@ describe('lecteur de musique', () => {
     expect(niveau.currentTime).toBe(0);
   });
 
+  it('le volume s’applique aux deux lecteurs, borné entre 0 et 1', () => {
+    const { l, menu, niveau } = monter();
+    l.regler(0.3);
+    expect([menu.volume, niveau.volume]).toEqual([0.3, 0.3]);
+    l.regler(7);
+    expect(menu.volume).toBe(1);
+    l.regler(-1);
+    expect(niveau.volume).toBe(0);
+  });
+
   it('le réglage coupe et relance la musique', () => {
     const { l, menu } = monter();
     l.jouer(MENU);
@@ -170,6 +180,11 @@ describe('réglage Musique dans la sauvegarde', () => {
   it('activée par défaut, y compris pour une ancienne sauvegarde', () => {
     expect(sauvegardeVide().reglages.musique).toBe(true);
     expect(charger(faux(JSON.stringify({ version: 1, reglages: { signalerMotsJustes: false } }))).reglages.musique).toBe(true);
+  });
+  it('volume à 60 % par défaut ; une valeur abîmée revient à 60 %', () => {
+    expect(sauvegardeVide().reglages.volume).toBe(0.6);
+    expect(charger(faux(JSON.stringify({ version: 1, reglages: { volume: 0.25 } }))).reglages.volume).toBe(0.25);
+    for (const v of [3, -1, 'fort', null]) expect(charger(faux(JSON.stringify({ version: 1, reglages: { volume: v } }))).reglages.volume).toBe(0.6);
   });
   it('le choix « coupée » est conservé', () => {
     expect(charger(faux(JSON.stringify({ version: 1, reglages: { musique: false } }))).reglages.musique).toBe(false);

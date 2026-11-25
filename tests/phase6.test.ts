@@ -170,7 +170,7 @@ describe('sauvegarde étendue', () => {
     st.d.set(CLE, JSON.stringify({ version: 1, progression: { terminees: { '001': { etoiles: 3, indices: 0 } } }, enCours: {}, reglages: { signalerMotsJustes: false } }));
     const s = charger(st);
     expect(s.progression.terminees).toEqual({ '001': { etoiles: 3, indices: 0 } });
-    expect(s.reglages.signalerMotsJustes).toBe(false);
+    expect(s.reglages).toEqual({ agrandirGrilles: false, musique: true, volume: 0.6 });
     expect(s.defis).toEqual({});
     expect(s.stats).toEqual(statsVides());
   });

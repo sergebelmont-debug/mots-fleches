@@ -5,12 +5,15 @@ import type { ResultatDefi } from '../progression/defi';
 import { statsVides, type Stats } from '../progression/statistiques';
 
 export interface Reglages {
-  signalerMotsJustes: boolean;
   /** Faux (par défaut) : la grille entière tient à l'écran. Vrai : cases agrandies, la grille défile. */
   agrandirGrilles: boolean;
   /** Musique de fond (activée par défaut). */
   musique: boolean;
+  /** Volume de la musique, de 0 à 1 (sans effet sur iPhone, où seul l'interrupteur compte). */
+  volume: number;
 }
+
+export const VOLUME_PAR_DEFAUT = 0.6;
 
 export interface Sauvegarde {
   version: 1;
@@ -33,7 +36,7 @@ export const sauvegardeVide = (): Sauvegarde => ({
   version: 1,
   progression: progressionVide(),
   enCours: {},
-  reglages: { signalerMotsJustes: true, agrandirGrilles: false, musique: true },
+  reglages: { agrandirGrilles: false, musique: true, volume: VOLUME_PAR_DEFAUT },
   defis: {},
   stats: statsVides(),
 });
@@ -69,10 +72,10 @@ export function charger(stockage: Stockage | null): Sauvegarde {
       progression: { terminees },
       enCours: estObjet(s.enCours) ? (s.enCours as Record<string, Partie>) : {},
       reglages: {
-        signalerMotsJustes:
-          estObjet(s.reglages) && typeof s.reglages.signalerMotsJustes === 'boolean' ? s.reglages.signalerMotsJustes : true,
         agrandirGrilles: estObjet(s.reglages) && s.reglages.agrandirGrilles === true,
         musique: !(estObjet(s.reglages) && s.reglages.musique === false),
+        volume:
+          estObjet(s.reglages) && nombre(s.reglages.volume) && (s.reglages.volume as number) <= 1 ? (s.reglages.volume as number) : VOLUME_PAR_DEFAUT,
       },
       defis,
       stats: {

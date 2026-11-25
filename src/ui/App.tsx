@@ -78,6 +78,8 @@ export function App() {
     ecran.nom === 'defi' ? { id: idDefi, cle: cleDefi(aujourdhui) } : ecran.nom === 'jeu' && IDS.includes(ecran.id) ? { id: ecran.id, cle: ecran.id } : null;
   const cible = cibleMusique(niveauEnJeu);
   const musiqueActive = sauvegarde.reglages.musique;
+  const volume = sauvegarde.reglages.volume;
+  useEffect(() => lecteur().regler(volume), [volume]);
   useEffect(() => {
     lecteur().activer(musiqueActive);
     lecteur().jouer(cible);
@@ -100,7 +102,6 @@ export function App() {
         grille={grille}
         etiquette={enDefi ? 'Défi du jour' : special ? `Serge Belmont ${liste.indexOf(id) + 1}` : `Niveau ${liste.indexOf(id) + 1}`}
         partieInitiale={partieCompatible(grille, sauvee) ? sauvee : null}
-        signalerMotsJustes={sauvegarde.reglages.signalerMotsJustes}
         agrandir={sauvegarde.reglages.agrandirGrilles}
         enPause={reglagesOuverts}
         aSuivante={suivante !== null}

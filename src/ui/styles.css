@@ -1323,3 +1323,48 @@ p {
     padding: 7px 10px;
   }
 }
+
+/* ---- Réglage de la musique : interrupteur et curseur de volume ---- */
+.reglage.musique {
+  gap: 8px;
+}
+.ligne-musique {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ligne-musique input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.ligne-musique input:checked + .interrupteur {
+  background: var(--indice);
+}
+.ligne-musique input:checked + .interrupteur::after {
+  transform: translateX(22px);
+}
+.ligne-volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ligne-volume input[type='range'] {
+  flex: 1;
+  accent-color: var(--or-fonce);
+  height: 28px;
+}
+.ligne-volume input:disabled {
+  opacity: 0.4;
+}
+/* Le curseur de volume doit rester visible (les autres cases des réglages sont masquées derrière leur interrupteur). */
+.reglage .ligne-volume input[type='range'] {
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+  min-width: 0;
+}
+.reglage .ligne-volume input[type='range']:disabled {
+  opacity: 0.4;
+}

@@ -50,12 +50,26 @@ test.describe('musique', () => {
     expect(erreurs).toEqual([]);
   });
 
+  test('le curseur de volume change le volume de la musique, et il est retenu', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('.titre-jeu').click();
+    await bouton(page, 'Réglages').click();
+    await expect(page.locator('.reglage', { hasText: 'Signaler les mots justes' })).toHaveCount(0);
+    const curseur = page.getByRole('slider', { name: 'Volume de la musique' });
+    await curseur.fill('20');
+    const volume = () => page.evaluate(() => document.querySelector<HTMLAudioElement>('audio[data-musique="menu"]')!.volume);
+    await expect.poll(volume).toBeCloseTo(0.2);
+    await bouton(page, 'Fermer').click();
+    await page.reload();
+    await expect.poll(volume).toBeCloseTo(0.2);
+  });
+
   test('le réglage Musique coupe le son, et le choix est retenu', async ({ page }) => {
     await page.goto('/');
     await page.locator('.titre-jeu').click();
     await expect.poll(async () => (await etat(page)).menu!.joue).toBe(true);
     await bouton(page, 'Réglages').click();
-    await page.locator('.reglage', { hasText: 'Musique' }).locator('.interrupteur').click();
+    await page.locator('.ligne-musique .interrupteur').click();
     await expect.poll(async () => (await etat(page)).menu!.joue).toBe(false);
     await bouton(page, 'Fermer').click();
     await page.reload();

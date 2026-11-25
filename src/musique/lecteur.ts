@@ -30,7 +30,16 @@ export interface Environnement {
 
 export type Cible = { type: 'menu'; piste: string } | { type: 'niveau'; piste: string; cle: string };
 
-const VOLUME = 0.55;
+/** Vrai si le navigateur laisse régler le volume (ce n'est pas le cas sur iPhone et iPad). */
+export function volumeReglable(): boolean {
+  try {
+    const a = document.createElement('audio');
+    a.volume = 0.5;
+    return a.volume === 0.5;
+  } catch {
+    return false;
+  }
+}
 
 export class Lecteur {
   private readonly menu: ElementAudio;
@@ -39,6 +48,7 @@ export class Lecteur {
   private actif = true;
   private visible = true;
   private enAttenteDeGeste = false;
+  private volume = 0.6;
 
   constructor(
     private readonly env: Environnement,
@@ -51,7 +61,7 @@ export class Lecteur {
       [this.niveau, 'niveau'],
     ] as const) {
       a.loop = true;
-      a.volume = VOLUME;
+      a.volume = this.volume;
       a.preload = role === 'menu' ? 'auto' : 'none';
       if (a.dataset) a.dataset.musique = role;
     }
@@ -80,6 +90,13 @@ export class Lecteur {
       this.niveau.currentTime = 0;
     }
     this.appliquer();
+  }
+
+  /** Règle le volume (0 à 1). Sans effet sur iPhone, où le système l'impose. */
+  regler(volume: number): void {
+    this.volume = Math.min(1, Math.max(0, volume));
+    this.menu.volume = this.volume;
+    this.niveau.volume = this.volume;
   }
 
   /** Active ou coupe la musique (réglage du joueur). */
