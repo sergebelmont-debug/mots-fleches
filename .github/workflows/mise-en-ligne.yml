@@ -18,6 +18,9 @@ concurrency:
 jobs:
   publier:
     runs-on: ubuntu-latest
+    # Clé de déchiffrement des musiques : secret GitHub, jamais écrit dans le dépôt.
+    env:
+      VITE_MUSIQUE_CLE: ${{ secrets.MUSIQUE_CLE }}
     timeout-minutes: 15
     environment:
       name: github-pages

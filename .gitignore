@@ -3,3 +3,9 @@ dist
 *.log
 test-results
 playwright-report
+
+# Musique : sources en clair et clé de chiffrement, jamais dans le dépôt
+musique-source/
+.env.local
+*.mp3
+*.wav

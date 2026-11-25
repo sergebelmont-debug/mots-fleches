@@ -120,7 +120,12 @@ Dans les cases : majuscules sans accents (ÎLE s'écrit ILE, CŒUR s'écrit COEU
 
 ## Musique
 
-- Les morceaux sont dans `public/musique/` (MP3 à 96 kb/s, volume égalisé). Ils ont été produits à partir des WAV fournis avec `node outils/musiques.cjs <dossier des WAV> <chemin de ffmpeg>` (ffmpeg n'est pas une dépendance du projet).
-- La répartition est dans `donnees/musiques.json`, calculée par `node outils/repartir-musiques.cjs` : Nuit Douce pour les menus (elle continue d'un écran à l'autre), un morceau par niveau (qui repart du début à chaque niveau), jamais deux fois de suite le même style.
-- Les grilles Serge Belmont jouent pour l'instant la musique du menu.
-- Le joueur peut couper la musique dans les Réglages.
+Les morceaux ne sont **jamais publiés en clair** : le dépôt et le site ne contiennent que des fichiers chiffrés (`public/musique/*.bin`, AES-256-GCM). Le jeu les télécharge, les déchiffre en mémoire et les lit depuis une adresse locale ; il n'existe aucune adresse de MP3 à télécharger.
+
+- **Sources en clair** : `musique-source/*.mp3`, sur ton ordinateur uniquement (dossier ignoré par git, comme tout fichier .mp3 ou .wav).
+- **Clé** : `VITE_MUSIQUE_CLE` dans `.env.local` (sur ton ordinateur, ignoré par git) et secret GitHub `MUSIQUE_CLE` (utilisé pour construire le site). Les deux doivent être identiques. Sans clé, le jeu fonctionne mais sans musique.
+- **Ajouter ou remplacer un morceau** : convertir les WAV avec `node outils/musiques.cjs <dossier des WAV> <chemin de ffmpeg>`, placer les MP3 dans `musique-source/`, puis `node outils/chiffrer-musiques.cjs` et `node outils/repartir-musiques.cjs`.
+- **Répartition** (`donnees/musiques.json`) : Nuit Douce pour les menus (elle continue d'un écran à l'autre), un morceau par niveau (qui repart du début à chaque niveau), jamais deux fois de suite le même style. Les grilles Serge Belmont jouent pour l'instant la musique du menu.
+- **Réglages** : le joueur peut couper la musique et régler son volume (sur iPhone, seul l'interrupteur existe : le système interdit de régler le volume depuis une page web).
+
+Limites : on peut toujours enregistrer le son pendant qu'il joue, et une personne très technique pourrait retrouver la clé dans le code du site. Le chiffrement empêche le téléchargement direct, pas la copie déterminée.

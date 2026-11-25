@@ -20,7 +20,7 @@ const TITRES = {
 };
 const AMBIANCE = { 'soir-d-ete': 'soiree', 'soiree-de-paris': 'soiree' };
 
-const pistes = fs.readdirSync(path.join(racine, 'public', 'musique')).filter((f) => f.endsWith('.mp3')).map((f) => f.replace('.mp3', '')).sort();
+const pistes = fs.readdirSync(path.join(racine, 'public', 'musique')).filter((f) => f.endsWith('.bin')).map((f) => f.replace('.bin', '')).sort();
 const style = (p) => p.replace(/-\d+$/, '');
 const ambiance = (s) => AMBIANCE[s] ?? s;
 const titre = (p) => `${TITRES[style(p)]}${/-(\d+)$/.test(p) ? ` (${p.match(/-(\d+)$/)[1]})` : ''}`;

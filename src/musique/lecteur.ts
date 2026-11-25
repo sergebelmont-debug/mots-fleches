@@ -49,10 +49,15 @@ export class Lecteur {
   private visible = true;
   private enAttenteDeGeste = false;
   private volume = 0.6;
+  /** Ce qui est réellement chargé dans chaque élément (la source arrive après déchiffrement). */
+  private chargeMenu = '';
+  private chargeNiveau = '';
+  private demande = 0;
 
   constructor(
     private readonly env: Environnement,
-    private readonly chemin: (piste: string) => string,
+    /** Adresse lisible d'un morceau (ici : déchiffré en mémoire, d'où une promesse). */
+    private readonly chemin: (piste: string) => string | Promise<string>,
   ) {
     this.menu = env.creerAudio();
     this.niveau = env.creerAudio();
@@ -78,18 +83,30 @@ export class Lecteur {
       avant !== null && avant.type === cible.type && avant.piste === cible.piste && (cible.type === 'menu' || (avant.type === 'niveau' && avant.cle === cible.cle));
     if (memeChose) return;
     this.cible = cible;
-    if (cible.type === 'menu') {
-      const src = this.chemin(cible.piste);
-      if (!this.menu.src.endsWith(src)) {
-        this.menu.src = src;
-        this.menu.currentTime = 0;
-      }
-    } else {
-      // Un niveau repart toujours du début, même si c'est le même morceau que le niveau précédent.
-      this.niveau.src = this.chemin(cible.piste);
-      this.niveau.currentTime = 0;
+    const numero = ++this.demande;
+    const element = cible.type === 'menu' ? this.menu : this.niveau;
+    const charge = `${cible.piste}|${cible.type === 'niveau' ? cible.cle : ''}`;
+    // Le menu reprend là où il était s'il a déjà son morceau ; un niveau repart toujours du début.
+    if (cible.type === 'menu' && this.chargeMenu === charge) {
+      this.appliquer();
+      return;
     }
-    this.appliquer();
+    if (cible.type === 'menu') this.chargeMenu = '';
+    else this.chargeNiveau = '';
+    this.appliquer(); // met tout de suite en pause ce qui ne doit plus jouer
+    Promise.resolve(this.chemin(cible.piste))
+      .then((src) => {
+        if (numero !== this.demande) return; // le joueur a déjà changé d'écran
+        element.src = src;
+        element.currentTime = 0;
+        if (element.dataset) element.dataset.piste = cible.piste;
+        if (cible.type === 'menu') this.chargeMenu = charge;
+        else this.chargeNiveau = charge;
+        this.appliquer();
+      })
+      .catch(() => {
+        /* musique indisponible (clé absente, réseau coupé) : le jeu continue sans */
+      });
   }
 
   /** Règle le volume (0 à 1). Sans effet sur iPhone, où le système l'impose. */
@@ -107,7 +124,10 @@ export class Lecteur {
 
   /** Met en lecture l'élément voulu et met l'autre en pause, selon l'état. */
   private appliquer(): void {
-    const voulu = this.cible === null ? null : this.cible.type === 'menu' ? this.menu : this.niveau;
+    const c = this.cible;
+    const pret = c !== null && (c.type === 'menu' ? this.chargeMenu === `${c.piste}|` : this.chargeNiveau === `${c.piste}|${c.cle}`);
+    // Tant que le bon morceau n'est pas chargé, rien ne joue (pas même l'ancien morceau).
+    const voulu = !pret || c === null ? null : c.type === 'menu' ? this.menu : this.niveau;
     for (const a of [this.menu, this.niveau]) if (a !== voulu && !a.paused) a.pause();
     if (!voulu) return;
     if (!this.actif || !this.visible) {

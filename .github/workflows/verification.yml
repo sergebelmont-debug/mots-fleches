@@ -10,6 +10,9 @@ on:
 jobs:
   verifier:
     runs-on: ubuntu-latest
+    # Clé de déchiffrement des musiques : secret GitHub, jamais écrit dans le dépôt.
+    env:
+      VITE_MUSIQUE_CLE: ${{ secrets.MUSIQUE_CLE }}
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4

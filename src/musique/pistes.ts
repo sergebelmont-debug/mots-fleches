@@ -1,11 +1,45 @@
-// Quelle musique joue où. Les données viennent de donnees/musiques.json
-// (fichier produit par outils/repartir-musiques.cjs ; les MP3 sont dans public/musique/).
+// Quelle musique joue où, et comment on l'obtient.
+// Les données viennent de donnees/musiques.json (outils/repartir-musiques.cjs).
+// Les morceaux sont publiés chiffrés (public/musique/*.bin, outils/chiffrer-musiques.cjs) : ils sont
+// téléchargés, déchiffrés en mémoire, puis lus depuis une adresse locale (blob:). Aucun MP3 n'est en ligne.
 import donnees from '../../donnees/musiques.json';
+import { dechiffrer } from './chiffre';
 import { environnementNavigateur, Lecteur, type Cible } from './lecteur';
 
 export const MUSIQUES = donnees as { menu: string; titres: Record<string, string>; niveaux: Record<string, string> };
 
-export const cheminPiste = (piste: string) => `musique/${piste}.mp3`;
+/** Clé injectée au moment de la construction du site (secret GitHub, ou fichier .env.local en local). */
+const CLE: string | undefined = import.meta.env.VITE_MUSIQUE_CLE;
+
+/** Morceaux déjà déchiffrés : celui du menu est gardé ; pour les niveaux, seuls les plus récents. */
+const memoire = new Map<string, Promise<string>>();
+const GARDES = 3;
+
+export function urlPiste(piste: string): Promise<string> {
+  const deja = memoire.get(piste);
+  if (deja) {
+    memoire.delete(piste);
+    memoire.set(piste, deja); // le plus récent en dernier
+    return deja;
+  }
+  if (!CLE) return Promise.reject(new Error('Clé des musiques absente'));
+  const promesse = fetch(`musique/${piste}.bin`)
+    .then((r) => {
+      if (!r.ok) throw new Error(`Musique introuvable : ${piste}`);
+      return r.arrayBuffer();
+    })
+    .then((chiffre) => dechiffrer(chiffre, CLE))
+    .then((mp3) => URL.createObjectURL(new Blob([mp3], { type: 'audio/mpeg' })));
+  promesse.catch(() => memoire.delete(piste));
+  memoire.set(piste, promesse);
+  // On libère les morceaux de niveau les plus anciens (jamais celui du menu).
+  const niveaux = [...memoire.keys()].filter((p) => p !== MUSIQUES.menu);
+  for (const ancien of niveaux.slice(0, Math.max(0, niveaux.length - GARDES))) {
+    void memoire.get(ancien)?.then((url) => URL.revokeObjectURL(url), () => undefined);
+    memoire.delete(ancien);
+  }
+  return promesse;
+}
 
 /**
  * Musique d'un écran :
@@ -21,6 +55,6 @@ export function cibleMusique(niveau: { id: string; cle: string } | null): Cible 
 let unique: Lecteur | null = null;
 /** Un seul lecteur pour toute la page (créé au premier besoin). */
 export function lecteur(): Lecteur {
-  unique ??= new Lecteur(environnementNavigateur(), cheminPiste);
+  unique ??= new Lecteur(environnementNavigateur(), urlPiste);
   return unique;
 }
