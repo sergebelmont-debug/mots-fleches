@@ -6,15 +6,15 @@
   "largeur": 5,
   "hauteur": 7,
   "mots": [
-    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Quotidien", "reponse": "JOURNAL", "affichage": "JOURNAL" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Camembert ou brie", "reponse": "FROMAGE", "affichage": "FROMAGE" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Fleuve des châteaux", "reponse": "LOIRE", "affichage": "LOIRE" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Longue époque", "reponse": "ERE", "affichage": "ÈRE" },
-    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Métal précieux", "reponse": "OR", "affichage": "OR" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Elle monte en chantilly", "reponse": "CREME", "affichage": "CRÈME" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Danse d'Argentine", "reponse": "TANGO", "affichage": "TANGO" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Négation répétée", "reponse": "NI", "affichage": "NI" },
-    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Il marque le choix", "reponse": "OU", "affichage": "OU" },
-    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Endroit", "reponse": "LIEU", "affichage": "LIEU" }
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Il livrait le lait", "reponse": "LAITIER", "affichage": "LAITIER" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Local de l'artisan", "reponse": "ATELIER", "affichage": "ATELIER" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Elle se joue ou se lit", "reponse": "CARTE", "affichage": "CARTE" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Saison chaude", "reponse": "ETE", "affichage": "ÉTÉ" },
+    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Il relie deux mots", "reponse": "ET", "affichage": "ET" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Qui sert", "reponse": "UTILE", "affichage": "UTILE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Hisser", "reponse": "LEVER", "affichage": "LEVER" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Ordre de partir", "reponse": "VA", "affichage": "VA" },
+    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Île de … (Charente)", "reponse": "RE", "affichage": "RÉ" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Peu courant", "reponse": "RARE", "affichage": "RARE" }
   ]
 }

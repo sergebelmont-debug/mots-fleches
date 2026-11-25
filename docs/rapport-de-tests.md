@@ -1,15 +1,16 @@
 # Rapport de tests
 
-État au 16 novembre 2026. Tous les résultats ci-dessous viennent de commandes réellement exécutées ; chacune peut être relancée.
+État au 25 novembre 2026. Tous les résultats ci-dessous viennent de commandes réellement exécutées ; chacune peut être relancée.
 
 ## Résumé
 
 | Série | Commande | Résultat |
 |---|---|---|
-| Lexique (1 070 mots) | `npm run lexique` | Validé |
+| Lexique (1 244 mots) | `npm run lexique` | Validé |
 | Grilles (30 du parcours + 6 Serge Belmont) | `npm run verifier` | 36 validées, 0 refusée, 0 avertissement |
-| Tests du moteur, du validateur, de la progression | `npm test` | 203 réussis sur 203 |
-| Tests de bout en bout, 4 appareils simulés | `npm run test:e2e` | 67 réussis, 5 non applicables, 0 échec |
+| Répétitions entre les niveaux du parcours | `npm run verifier` | Aucun problème |
+| Tests du moteur, du validateur, de la progression | `npm test` | 215 réussis sur 215 |
+| Tests de bout en bout, 4 appareils simulés | `npm run test:e2e` | 67 réussis, 5 non applicables, 0 échec  |
 | Construction du jeu | `npm run build` | Réussie |
 | Vérification automatique sur GitHub | à chaque envoi | Réussie |
 | Version en ligne (https://sergebelmont-debug.github.io/mots-fleches/) | ouverture en format téléphone, parcours, saisie d'un mot, sauvegarde, service worker | Réussie |
@@ -22,6 +23,20 @@
 - Les quatre grilles fausses de `tests/grilles-fausses/` sont refusées avec le bon message.
 - La construction du jeu est refusée si une grille invalide est présente.
 - La même grille vérifiée deux fois donne exactement le même rapport.
+
+### Répétitions entre les niveaux
+
+Règles vérifiées automatiquement, et bloquantes (une grille qui les enfreint empêche la construction du jeu) :
+
+- un mot de 4 lettres ou plus n'apparaît qu'une seule fois dans les 30 niveaux ;
+- un mot de 3 lettres apparaît au plus 2 fois, à au moins 10 niveaux d'écart ;
+- un mot de 2 lettres apparaît au plus 5 fois, jamais dans deux niveaux qui se suivent ;
+- deux niveaux qui se suivent n'ont donc **aucun** mot en commun ;
+- un petit mot qui revient change le plus souvent de définition (plusieurs définitions par petit mot dans le lexique).
+
+Avant cette correction : 48 mots longs revenaient deux fois, et 28 mots étaient partagés entre deux niveaux consécutifs.
+
+Contrôles ajoutés à l'intérieur d'une grille : deux mots de la même famille (USE et USER), et une définition qui donne un petit mot voisin (DO défini par « Ut moderne » quand UT est dans la grille).
 
 ### Moteur de jeu
 
@@ -78,6 +93,8 @@ Appareils simulés : Android (Chrome, 412 × 839), iPhone (moteur de Safari, 390
 
 - **Dernière lettre perdue** : si la page était fermée ou rechargée dans l'instant suivant une frappe, la dernière lettre n'était pas sauvegardée. La sauvegarde est maintenant écrite au moment même de la frappe. Le test « reprise après rechargement » le vérifie.
 
+Signalés par le joueur et corrigés : mots qui reviennent d'un niveau à l'autre (voir « Répétitions entre les niveaux ») ; TRI défini par « Classement » (remplacé par « Séparation des déchets »). La relecture qui a suivi a corrigé onze autres définitions approximatives ou ambiguës (IL et LE définis tous deux comme « masculin », MARS « Mois du printemps », SU « Appris »…).
+
 Défauts trouvés lors des phases précédentes et corrigés : définitions illisibles sur les grandes grilles (zoom automatique ajouté), deux définitions qui donnaient la réponse d'un mot voisin, deux grilles trop semblables à leurs voisines (retirées).
 
 ## Tests échoués
@@ -89,7 +106,7 @@ Aucun à ce jour.
 - **Thèmes** : 28 grilles du parcours sur 30 sont en culture générale. Pas de grilles cinéma, chanson ou histoire.
 - **Univers Serge Belmont** : 6 petites grilles (6 à 10 mots) où la moitié environ des mots vient de l'univers ; le reste est du vocabulaire général. Les mots de plus de 9 lettres (PORQUEROLLES, MARIONNETTISTE, LAMPADAIRES, PHOTOGRAPHIE) et ACCORDÉON n'ont pas pu être placés. Ces grilles contiennent des cases noires.
 - **Difficulté** : elle progresse par la taille, la longueur des mots et un vocabulaire un peu plus rare, pas par la subtilité des définitions. Aucune grille « expert ».
-- **Petites répétitions** : une grille contient RI et RIT ; quelques grilles voisines partagent un mot long.
+- **Univers Serge Belmont** : les règles anti-répétition ne s'appliquent qu'au parcours principal. Dans l'univers, un mot apparaît au plus deux fois (NUIT, OISEAU et ÉTÉS reviennent une fois).
 - **Défi du jour** : il peut tomber sur une grille difficile dès le premier jour d'un nouveau joueur.
 - **Lisibilité des définitions dans les cases** : la grille entière tient désormais à l'écran, sans défilement. Contrepartie : sur les grandes grilles, le texte des définitions dans les cases est très petit (environ 6 px sur un téléphone de 375 × 667). La définition du mot sélectionné s'affiche en grand sous la grille, et le réglage « Agrandir les grilles » rétablit de grandes cases avec défilement.
 - **Hors connexion** : disponible seulement à partir de la deuxième visite.

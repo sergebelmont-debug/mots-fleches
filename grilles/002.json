@@ -6,17 +6,17 @@
   "largeur": 5,
   "hauteur": 7,
   "mots": [
-    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Elles filment", "reponse": "CAMERAS", "affichage": "CAMÉRAS" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Faisceau lumineux", "reponse": "LASER", "affichage": "LASER" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Métal du forgeron", "reponse": "FER", "affichage": "FER" },
-    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Voisin du poivre", "reponse": "SEL", "affichage": "SEL" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Fond de l'œil", "reponse": "RETINE", "affichage": "RÉTINE" },
-    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Maman", "reponse": "MERE", "affichage": "MÈRE" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Froid qui glace", "reponse": "GEL", "affichage": "GEL" },
-    { "caseDefinition": [3,3], "fleche": "bas", "definition": "On marche dessus", "reponse": "SOL", "affichage": "SOL" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Pièce du canapé", "reponse": "SALON", "affichage": "SALON" },
-    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Note avant do", "reponse": "SI", "affichage": "SI" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Note du diapason", "reponse": "LA", "affichage": "LA" },
-    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Pas propre", "reponse": "SALE", "affichage": "SALE" }
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "On dort dessus", "reponse": "MATELAS", "affichage": "MATELAS" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Demi-douzaine", "reponse": "SIX", "affichage": "SIX" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Ville lumière", "reponse": "PARIS", "affichage": "PARIS" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Rongeur d'égout", "reponse": "RAT", "affichage": "RAT" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Somme d'après-midi", "reponse": "SIESTE", "affichage": "SIESTE" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Voiture avec chauffeur", "reponse": "TAXI", "affichage": "TAXI" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Propre", "reponse": "NET", "affichage": "NET" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Le chien le ronge", "reponse": "OS", "affichage": "OS" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Contraire de non", "reponse": "OUI", "affichage": "OUI" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Bonjour familier", "reponse": "SALUT", "affichage": "SALUT" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Parcouru des yeux", "reponse": "LU", "affichage": "LU" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Noir de cheminée", "reponse": "SUIE", "affichage": "SUIE" }
   ]
 }

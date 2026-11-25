@@ -7,6 +7,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { motAutorise, numeroNiveau } from '../src/validation/repetitions.ts';
 import { validerGrille } from '../src/validation/valider.ts';
 import { chargerDictionnaire } from './dictionnaire.ts';
 import { lireLexique, type Entree } from './lexique.ts';
@@ -61,20 +62,32 @@ const melanger = <T>(a: T[]): T[] => {
 };
 
 // ---- Mots déjà utilisés dans les autres grilles (pour limiter les répétitions) ----
-const usages = new Map<string, number>();
+// Règles : voir src/validation/repetitions.ts (mots longs une seule fois, petits mots espacés).
+const niveauCourant = numeroNiveau(id);
+const dejaPlaces = new Map<string, number[]>(); // mot → niveaux où il apparaît déjà
+const emploisDefinition = new Map<string, number>(); // « MOT|définition » → nombre d'emplois
 for (const f of readdirSync(join(racine, dossier))) {
   if (!f.endsWith('.json') || f === `${id}.json`) continue;
-  const g = JSON.parse(readFileSync(join(racine, dossier, f), 'utf8')) as { mots: { reponse: string }[] };
-  for (const m of g.mots) usages.set(m.reponse, (usages.get(m.reponse) ?? 0) + 1);
+  const g = JSON.parse(readFileSync(join(racine, dossier, f), 'utf8')) as { id: string; mots: { reponse: string; definition: string }[] };
+  for (const m of g.mots) {
+    dejaPlaces.set(m.reponse, [...(dejaPlaces.get(m.reponse) ?? []), numeroNiveau(g.id)]);
+    emploisDefinition.set(`${m.reponse}|${m.definition}`, (emploisDefinition.get(`${m.reponse}|${m.definition}`) ?? 0) + 1);
+  }
 }
-const usageMax = (longueur: number) => (longueur <= 2 ? 6 : longueur === 3 ? 3 : 2);
+const usages = new Map([...dejaPlaces].map(([mot, l]) => [mot, l.length]));
+const autorise = (e: Entree) => motAutorise(e.reponse.length, niveauCourant, dejaPlaces.get(e.reponse) ?? []);
 
 const general = lireLexique();
 const duMonde = new Set<string>();
-let lexique = general.filter((e) => e.niveau <= niveauMax && (usages.get(e.reponse) ?? 0) < usageMax(e.reponse.length));
+let lexique = general.filter((e) => e.niveau <= niveauMax && autorise(e));
 if (univers) {
   const definitions = new Map(general.map((e) => [e.reponse, e.definition]));
-  const propres = lireLexique(join(racine, 'donnees', 'univers', `${univers}.txt`)).map((e) => ({ ...e, definition: e.definition || definitions.get(e.reponse) || '' }));
+  const toutes = new Map(general.map((e) => [e.reponse, e.definitions]));
+  const propres = lireLexique(join(racine, 'donnees', 'univers', `${univers}.txt`)).map((e) => ({
+    ...e,
+    definition: e.definition || definitions.get(e.reponse) || '',
+    definitions: e.definitions.length ? e.definitions : (toutes.get(e.reponse) ?? []),
+  }));
   const sansDefinition = propres.filter((e) => !e.definition);
   if (sansDefinition.length) {
     console.log(`Univers ${univers} : définition manquante pour ${sansDefinition.map((e) => e.affichage).join(', ')}`);
@@ -162,6 +175,11 @@ const candidats = (e: Emplacement) =>
   (parLongueur.get(e.cases.length) ?? []).filter((m) => !pris.has(m.reponse) && e.cases.every((k, i) => !lettres[k] || lettres[k] === m.reponse[i]));
 // Ordre de préférence : mots du thème, puis mots les moins utilisés, puis hasard.
 const rang = (m: Entree) => (duMonde.has(m.reponse) || (theme && m.theme === theme) ? 0 : 10) + (usages.get(m.reponse) ?? 0) * 2 + (m.niveau - 1);
+// Emplacements qui partagent au moins une case (pour juger l'effet d'un mot sur ses voisins).
+const croisements = new Map<Emplacement, Emplacement[]>(
+  emplacements.map((e) => [e, emplacements.filter((x) => x !== e && x.cases.some((k) => e.cases.includes(k)))]),
+);
+const LARGEUR = Number(args.largeur ?? 40); // nombre de mots examinés par emplacement
 let pas = 0;
 const remplir = (restants: Emplacement[]): boolean => {
   if (restants.length === 0) return true;
@@ -177,8 +195,25 @@ const remplir = (restants: Emplacement[]): boolean => {
     }
   }
   const suite = restants.filter((e) => e !== meilleur);
-  const ordre = melanger(liste).sort((a, b) => rang(a) - rang(b));
-  for (const m of ordre) {
+  // On essaie d'abord les mots qui laissent le plus de choix aux emplacements qu'ils croisent
+  // (et on écarte ceux qui en bloquent un). Les mots du thème gardent la priorité.
+  const voisins = croisements.get(meilleur!)!.filter((x) => suite.includes(x));
+  const notes = melanger(liste)
+    .sort((a, b) => rang(a) - rang(b))
+    .slice(0, LARGEUR)
+    .map((m) => {
+      const avant = meilleur!.cases.map((k) => lettres[k]);
+      meilleur!.cases.forEach((k, i) => (lettres[k] = m.reponse[i]));
+      pris.add(m.reponse);
+      let marge = Infinity;
+      for (const x of voisins) marge = Math.min(marge, candidats(x).length);
+      pris.delete(m.reponse);
+      meilleur!.cases.forEach((k, i) => (lettres[k] = avant[i]));
+      return { m, marge };
+    })
+    .filter((n) => n.marge > 0)
+    .sort((a, b) => Math.floor(rang(a.m) / 10) - Math.floor(rang(b.m) / 10) || b.marge - a.marge);
+  for (const { m } of notes) {
     const avant = meilleur!.cases.map((k) => lettres[k]);
     meilleur!.cases.forEach((k, i) => (lettres[k] = m.reponse[i]));
     pris.add(m.reponse);
@@ -258,7 +293,9 @@ if (!trouve) {
 // ---- Écriture, seulement si le validateur accepte la grille ----
 const mots = emplacements.map((e, i) => {
   const m = choisis.get(e)!;
-  return { caseDefinition: [affectation[i][0], affectation[i][1]], fleche: affectation[i][2], definition: m.definition, reponse: m.reponse, affichage: m.affichage };
+  const possibles = m.definitions?.length ? m.definitions : [m.definition];
+  const definition = [...possibles].sort((a, b) => (emploisDefinition.get(`${m.reponse}|${a}`) ?? 0) - (emploisDefinition.get(`${m.reponse}|${b}`) ?? 0))[0];
+  return { caseDefinition: [affectation[i][0], affectation[i][1]], fleche: affectation[i][2], definition, reponse: m.reponse, affichage: m.affichage };
 });
 const noires = gabarit.join('').split('X').length - 1;
 const grille = { id, titre, theme: univers || theme || 'culture-generale', difficulte, largeur: L, hauteur: H, ...(noires ? { casesNoires: noires } : {}), mots };

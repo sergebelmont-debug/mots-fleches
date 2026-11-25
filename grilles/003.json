@@ -7,16 +7,16 @@
   "hauteur": 7,
   "mots": [
     { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "On y soigne", "reponse": "HOPITAL", "affichage": "HÔPITAL" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Grand bois", "reponse": "FORET", "affichage": "FORÊT" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Elle a ses marées", "reponse": "MER", "affichage": "MER" },
-    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Rongeur d'égout", "reponse": "RAT", "affichage": "RAT" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Infusion du soir", "reponse": "TISANE", "affichage": "TISANE" },
-    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Mise sur un cheval", "reponse": "PARI", "affichage": "PARI" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Il a un matelas", "reponse": "LIT", "affichage": "LIT" },
-    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Rouge, blanc ou rosé", "reponse": "VIN", "affichage": "VIN" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Début de journée", "reponse": "MATIN", "affichage": "MATIN" },
-    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Ordre de partir", "reponse": "VA", "affichage": "VA" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Pronom du tutoiement", "reponse": "TU", "affichage": "TU" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Métal du forgeron", "reponse": "FER", "affichage": "FER" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Gouttes du matin", "reponse": "ROSEE", "affichage": "ROSÉE" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "On le porte à l'épaule", "reponse": "SAC", "affichage": "SAC" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Elle brille la nuit", "reponse": "ETOILE", "affichage": "ÉTOILE" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Portion de gâteau", "reponse": "PART", "affichage": "PART" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Geste nerveux", "reponse": "TIC", "affichage": "TIC" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "3,14 et des poussières", "reponse": "PI", "affichage": "PI" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Morceau de mur", "reponse": "PAN", "affichage": "PAN" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Voie d'eau creusée", "reponse": "CANAL", "affichage": "CANAL" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Sans vêtement", "reponse": "NU", "affichage": "NU" },
     { "caseDefinition": [6,0], "fleche": "droite", "definition": "Astre de la nuit", "reponse": "LUNE", "affichage": "LUNE" }
   ]
 }

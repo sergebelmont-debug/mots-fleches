@@ -6,15 +6,15 @@
   "largeur": 5,
   "hauteur": 7,
   "mots": [
-    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "L'eau en coule", "reponse": "ROBINET", "affichage": "ROBINET" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Chemin de randonnée", "reponse": "SENTIER", "affichage": "SENTIER" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Inscrire", "reponse": "NOTER", "affichage": "NOTER" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Voie en ville", "reponse": "RUE", "affichage": "RUE" },
-    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Sans vêtement", "reponse": "NU", "affichage": "NU" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Les skieurs la dévalent", "reponse": "PISTE", "affichage": "PISTE" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Mettre en terre", "reponse": "SEMER", "affichage": "SEMER" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "À moi, au féminin", "reponse": "MA", "affichage": "MA" },
-    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Note après do", "reponse": "RE", "affichage": "RÉ" },
-    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Poids de l'emballage", "reponse": "TARE", "affichage": "TARE" }
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Elle pèse", "reponse": "BALANCE", "affichage": "BALANCE" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Oiseau noir du fromage", "reponse": "CORBEAU", "affichage": "CORBEAU" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Pelouse", "reponse": "GAZON", "affichage": "GAZON" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Conteste (il)", "reponse": "NIE", "affichage": "NIE" },
+    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Il a … aux éclats", "reponse": "RI", "affichage": "RI" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Poils du menton", "reponse": "BARBE", "affichage": "BARBE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Atlantique ou Pacifique", "reponse": "OCEAN", "affichage": "OCÉAN" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Deux … deux font quatre", "reponse": "ET", "affichage": "ET" },
+    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Négation répétée", "reponse": "NI", "affichage": "NI" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Boîte à lunettes", "reponse": "ETUI", "affichage": "ÉTUI" }
   ]
 }

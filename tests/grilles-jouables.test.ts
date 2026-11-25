@@ -50,9 +50,4 @@ describe('progression de la difficulté', () => {
     expect(moyenne('intermediaire', cases)).toBeGreaterThan(moyenne('facile', cases));
     expect(moyenne('difficile', cases)).toBeGreaterThan(moyenne('intermediaire', cases));
   });
-  it('aucun mot de 4 lettres ou plus n’apparaît plus de deux fois dans tout le jeu', () => {
-    const n = new Map<string, number>();
-    for (const g of grilles) for (const m of g.mots) n.set(m.reponse, (n.get(m.reponse) ?? 0) + 1);
-    expect([...n].filter(([mot, k]) => mot.length >= 4 && k > 2)).toEqual([]);
-  });
 });

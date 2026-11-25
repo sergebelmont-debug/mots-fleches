@@ -6,15 +6,17 @@
   "largeur": 5,
   "hauteur": 7,
   "mots": [
-    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Argent tiré au guichet", "reponse": "RETRAIT", "affichage": "RETRAIT" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "De notre époque", "reponse": "MODERNE", "affichage": "MODERNE" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Personnage principal", "reponse": "HEROS", "affichage": "HÉROS" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Au-dessus de", "reponse": "SUR", "affichage": "SUR" },
-    { "caseDefinition": [2,2], "fleche": "droite", "definition": "De le, contracté", "reponse": "DU", "affichage": "DU" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Aller sans but", "reponse": "ERRER", "affichage": "ERRER" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Clavier noir et blanc", "reponse": "PIANO", "affichage": "PIANO" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "J'… (avoir)", "reponse": "AI", "affichage": "AI" },
-    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Pronom indéfini", "reponse": "ON", "affichage": "ON" },
-    { "caseDefinition": [6,0], "fleche": "droite", "definition": "À toi", "reponse": "TIEN", "affichage": "TIEN" }
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Flageolet en est un", "reponse": "HARICOT", "affichage": "HARICOT" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Avion privé", "reponse": "JET", "affichage": "JET" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Légume ou mauvais film", "reponse": "NAVET", "affichage": "NAVET" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Tu … (aller)", "reponse": "VAS", "affichage": "VAS" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Bébé la suce", "reponse": "TETINE", "affichage": "TÉTINE" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Voisine de l'estomac", "reponse": "RATE", "affichage": "RATE" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Rappel au concert", "reponse": "BIS", "affichage": "BIS" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "À … chemin", "reponse": "MI", "affichage": "MI" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Mois du muguet", "reponse": "MAI", "affichage": "MAI" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Long récit", "reponse": "ROMAN", "affichage": "ROMAN" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "… chérie", "reponse": "MA", "affichage": "MA" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Housse d'oreiller", "reponse": "TAIE", "affichage": "TAIE" }
   ]
 }

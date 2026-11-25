@@ -41,6 +41,9 @@ export function normaliser(s: string): string {
     .replace(/[^A-Z]/g, '');
 }
 
+/** Petits mots grammaticaux qui ne « donnent » pas une réponse quand ils figurent dans une définition. */
+const MOTS_DE_LIAISON = new Set(['à', 'au', 'ce', 'de', 'dé', 'du', 'en', 'et', 'il', 'je', 'la', 'le', 'ma', 'ne', 'ni', 'on', 'ou', 'sa', 'se', 'si', 'ta', 'tu', 'un', 'y']);
+
 const estEntier = (x: unknown): x is number => typeof x === 'number' && Number.isInteger(x);
 const estTexte = (x: unknown): x is string => typeof x === 'string' && x.trim().length > 0;
 
@@ -236,9 +239,18 @@ export function validerGrille(brut: unknown, opt: Options = {}): Rapport {
       avert('A-DEFINITION-LONGUE', `${m.nom} : définition de ${m.definition.length} caractères (au-delà de ${limite}, elle sera difficile à lire dans la case)`);
     if (m.cases.every((k) => lettres.get(k)!.mots.length === 1)) avert('A-SANS-CROISEMENT', `${m.nom} ne croise aucun autre mot`);
     // Une définition ne doit pas donner la réponse d'un autre mot de la grille.
-    for (const autre of places)
-      if (autre !== m && autre.reponse.length >= 3 && m.definition.split(/[^\p{L}]+/u).some((mot) => mot.toLowerCase() === autre.affichage.toLowerCase()))
+    // Pour les mots de 2 lettres, on ignore les petits mots de liaison (« la », « de »…), présents partout.
+    const motsDef = m.definition.split(/[^\p{L}]+/u).map((x) => x.toLowerCase());
+    for (const autre of places) {
+      if (autre === m) continue;
+      const cherche = autre.affichage.toLowerCase();
+      const compte = autre.reponse.length >= 3 || !MOTS_DE_LIAISON.has(cherche);
+      if (compte && motsDef.includes(cherche))
         avert('A-REPONSE-DANS-AUTRE-DEFINITION', `la définition « ${m.definition} » (${m.nom}) contient la réponse ${autre.reponse} d'un autre mot`);
+      // Deux mots de la même famille dans une grille (USE et USER, ÎLE et ÎLES) : peu élégant.
+      if (m.reponse.length >= 3 && autre.reponse.length > m.reponse.length && autre.reponse.startsWith(m.reponse))
+        avert('A-MEME-FAMILLE', `${m.nom} et ${autre.nom} se ressemblent trop (même début de mot)`);
+    }
   }
   const vides = L * H - lettres.size - defs.size;
   const noiresPrevues = g.casesNoires === undefined ? 0 : (g.casesNoires as number);

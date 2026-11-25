@@ -1,8 +1,10 @@
 // Commande : npm run verifier            → vérifie toutes les grilles de grilles/
 //            npm run verifier -- dossier  → vérifie les grilles d'un autre dossier
-// Se termine en échec (code 1) si une seule grille contient une erreur bloquante.
+// Se termine en échec (code 1) si une seule grille contient une erreur bloquante,
+// ou si les grilles du parcours principal répètent trop les mêmes mots.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { problemesRepetition } from '../src/validation/repetitions.ts';
 import { validerGrille, type Rapport } from '../src/validation/valider.ts';
 import { chargerDictionnaire } from './dictionnaire.ts';
 
@@ -15,13 +17,16 @@ const lister = (d: string, prefixe = ''): string[] =>
     .sort();
 const fichiers = lister(dossier);
 const ids = new Map<string, string>();
+const lisibles: { id: string; mots: { reponse: string }[]; principal: boolean }[] = [];
 let invalides = 0;
 let avertissements = 0;
 
 for (const f of fichiers) {
   let rapport: Rapport;
   try {
-    rapport = validerGrille(JSON.parse(readFileSync(join(dossier, f), 'utf8')), options);
+    const donnees = JSON.parse(readFileSync(join(dossier, f), 'utf8'));
+    rapport = validerGrille(donnees, options);
+    if (Array.isArray(donnees?.mots)) lisibles.push({ id: String(donnees.id), mots: donnees.mots, principal: !f.includes('/') });
   } catch (e) {
     rapport = { id: f, valide: false, avertissements: [], erreurs: [{ code: 'E-FORMAT', message: `fichier illisible (${(e as Error).message})` }] };
   }
@@ -42,7 +47,19 @@ for (const f of fichiers) {
   }
 }
 
+// Répétitions de mots entre les niveaux du parcours principal (règles : src/validation/repetitions.ts).
+const principal = lisibles.filter((g) => g.principal);
+const repetitions = principal.length > 1 ? problemesRepetition(principal) : [];
+if (principal.length > 1) {
+  console.log('');
+  if (repetitions.length === 0) console.log('Répétitions entre les niveaux : AUCUN PROBLÈME');
+  for (const r of repetitions) console.log(`Répétitions : ERREUR — ${r}`);
+}
+
 console.log('');
-console.log(`${fichiers.length} grille(s) vérifiée(s) : ${fichiers.length - invalides} validée(s), ${invalides} refusée(s), ${avertissements} avertissement(s).`);
+console.log(
+  `${fichiers.length} grille(s) vérifiée(s) : ${fichiers.length - invalides} validée(s), ${invalides} refusée(s), ` +
+    `${repetitions.length} problème(s) de répétition, ${avertissements} avertissement(s).`,
+);
 if (fichiers.length === 0) console.log(`Aucune grille trouvée dans « ${dossier} ».`);
-process.exit(invalides > 0 || fichiers.length === 0 ? 1 : 0);
+process.exit(invalides > 0 || repetitions.length > 0 || fichiers.length === 0 ? 1 : 0);

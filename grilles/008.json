@@ -6,15 +6,15 @@
   "largeur": 5,
   "hauteur": 7,
   "mots": [
-    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Sans artifice", "reponse": "NATUREL", "affichage": "NATUREL" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Cours d'eau", "reponse": "RIVIERE", "affichage": "RIVIÈRE" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Homme de mer", "reponse": "MARIN", "affichage": "MARIN" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Sans valeur", "reponse": "NUL", "affichage": "NUL" },
-    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Aperçu", "reponse": "VU", "affichage": "VU" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Le marteau en est un", "reponse": "OUTIL", "affichage": "OUTIL" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Abri vitré du jardin", "reponse": "SERRE", "affichage": "SERRE" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Pouffé", "reponse": "RI", "affichage": "RI" },
-    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Dans", "reponse": "EN", "affichage": "EN" },
-    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Attache", "reponse": "LIEN", "affichage": "LIEN" }
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Roche à métal", "reponse": "MINERAI", "affichage": "MINERAI" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Discipline scolaire", "reponse": "MATIERE", "affichage": "MATIÈRE" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Fleur mauve de printemps", "reponse": "LILAS", "affichage": "LILAS" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Au-dessus de", "reponse": "SUR", "affichage": "SUR" },
+    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Pronom du tutoiement", "reponse": "TU", "affichage": "TU" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Avoir en main", "reponse": "TENIR", "affichage": "TENIR" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Premier élu de la ville", "reponse": "MAIRE", "affichage": "MAIRE" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Pronom sujet masculin", "reponse": "IL", "affichage": "IL" },
+    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Tu … (être)", "reponse": "ES", "affichage": "ES" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Elles forment l'archipel", "reponse": "ILES", "affichage": "ÎLES" }
   ]
 }

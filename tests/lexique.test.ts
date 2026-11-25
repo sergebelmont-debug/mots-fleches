@@ -9,6 +9,7 @@ const entree = (affichage: string, definition: string, plus: Partial<Entree> = {
   niveau: 1,
   theme: '',
   definition,
+  definitions: [definition],
   propre: false,
   ligne: 1,
   ...plus,

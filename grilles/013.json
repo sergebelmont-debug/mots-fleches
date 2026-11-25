@@ -6,17 +6,15 @@
   "largeur": 5,
   "hauteur": 7,
   "mots": [
-    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Pelouse du match", "reponse": "TERRAIN", "affichage": "TERRAIN" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Article pluriel", "reponse": "LES", "affichage": "LES" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Hisser", "reponse": "LEVER", "affichage": "LEVER" },
-    { "caseDefinition": [0,2], "fleche": "bas", "definition": "L'un des cinq sens", "reponse": "VUE", "affichage": "VUE" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Canidé roux des bois", "reponse": "RENARD", "affichage": "RENARD" },
-    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Stratagème", "reponse": "RUSE", "affichage": "RUSE" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Petite prairie", "reponse": "PRE", "affichage": "PRÉ" },
-    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Note entre mi et sol", "reponse": "FA", "affichage": "FA" },
-    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Métal du forgeron", "reponse": "FER", "affichage": "FER" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Donner un coup de main", "reponse": "AIDER", "affichage": "AIDER" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Première note", "reponse": "DO", "affichage": "DO" },
-    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Opposé au sud", "reponse": "NORD", "affichage": "NORD" }
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Reptile sans pattes", "reponse": "SERPENT", "affichage": "SERPENT" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Spectacle musical", "reponse": "CONCERT", "affichage": "CONCERT" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Personnage principal", "reponse": "HEROS", "affichage": "HÉROS" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Il a … sang et eau", "reponse": "SUE", "affichage": "SUÉ" },
+    { "caseDefinition": [2,2], "fleche": "droite", "definition": "Sans vêtement", "reponse": "NU", "affichage": "NU" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Le poivre en est une", "reponse": "EPICE", "affichage": "ÉPICE" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Liquide du stylo", "reponse": "ENCRE", "affichage": "ENCRE" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Démonstratif", "reponse": "CE", "affichage": "CE" },
+    { "caseDefinition": [4,4], "fleche": "bas", "definition": "Participe d'avoir", "reponse": "EU", "affichage": "EU" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Obstiné", "reponse": "TETU", "affichage": "TÊTU" }
   ]
 }

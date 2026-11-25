@@ -9,12 +9,15 @@ export interface Entree {
   affichage: string; // forme correcte (ÎLE)
   niveau: number; // 1 courant, 2 moyen, 3 rare
   theme: string; // '' si aucun
-  definition: string;
+  definition: string; // première définition
+  /** Toutes les définitions possibles (séparées par « ; » dans le fichier). Le générateur varie entre elles. */
+  definitions: string[];
   propre: boolean;
   ligne: number;
 }
 
 export const LONGUEUR_MAX_DEFINITION = 24;
+export const SEPARATEUR_DEFINITIONS = ' ; ';
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 export function lireLexique(chemin = join(racine, 'donnees', 'lexique.txt')): Entree[] {
@@ -25,7 +28,20 @@ export function lireLexique(chemin = join(racine, 'donnees', 'lexique.txt')): En
       const l = brut.trim();
       if (!l || l.startsWith('#')) return;
       const [affichage = '', niveau = '', theme = '', definition = '', propre = ''] = l.split('|').map((x) => x.trim());
-      entrees.push({ reponse: normaliser(affichage), affichage, niveau: Number(niveau), theme, definition, propre: propre === 'propre', ligne: i + 1 });
+      const definitions = definition
+        .split(SEPARATEUR_DEFINITIONS.trim())
+        .map((d) => d.trim())
+        .filter(Boolean);
+      entrees.push({
+        reponse: normaliser(affichage),
+        affichage,
+        niveau: Number(niveau),
+        theme,
+        definition: definitions[0] ?? '',
+        definitions,
+        propre: propre === 'propre',
+        ligne: i + 1,
+      });
     });
   return entrees;
 }
@@ -39,14 +55,17 @@ export function controlerLexique(entrees: Entree[], dictionnaire: ReadonlySet<st
     const ou = `ligne ${e.ligne} (${e.affichage})`;
     if (!/^[A-Z]{2,}$/.test(e.reponse)) pb.push(`${ou} : mot invalide`);
     if (![1, 2, 3].includes(e.niveau)) pb.push(`${ou} : niveau invalide`);
-    if (!e.definition) pb.push(`${ou} : définition vide`);
-    if (e.definition.length > LONGUEUR_MAX_DEFINITION) pb.push(`${ou} : définition trop longue (${e.definition.length} caractères)`);
-    if (e.reponse.length >= 3 && normaliser(e.definition).includes(e.reponse)) pb.push(`${ou} : la réponse figure dans la définition`);
+    const definitions = e.definitions ?? [e.definition];
+    if (definitions.length === 0 || !e.definition) pb.push(`${ou} : définition vide`);
+    for (const d of definitions) {
+      if (d.length > LONGUEUR_MAX_DEFINITION) pb.push(`${ou} : définition « ${d} » trop longue (${d.length} caractères)`);
+      if (e.reponse.length >= 3 && normaliser(d).includes(e.reponse)) pb.push(`${ou} : la réponse figure dans la définition « ${d} »`);
+      const cle = normaliser(d);
+      if (defs.has(cle)) pb.push(`${ou} : même définition que ${defs.get(cle)} (« ${d} »)`);
+      defs.set(cle, e.affichage);
+    }
     if (vus.has(e.reponse)) pb.push(`${ou} : mot déjà présent ligne ${vus.get(e.reponse)}`);
     vus.set(e.reponse, e.ligne);
-    const cle = normaliser(e.definition);
-    if (defs.has(cle)) pb.push(`${ou} : même définition que ${defs.get(cle)}`);
-    defs.set(cle, e.affichage);
     if (e.propre) {
       if (!nomsPropres.has(e.affichage)) pb.push(`${ou} : nom propre absent de donnees/noms-propres.json`);
     } else if (!dictionnaire.has(e.affichage.toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae'))) {

@@ -6,17 +6,17 @@
   "largeur": 5,
   "hauteur": 7,
   "mots": [
-    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Quotidien", "reponse": "JOURNAL", "affichage": "JOURNAL" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Elle a une baguette", "reponse": "FEE", "affichage": "FÉE" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Cadeau d'enfant", "reponse": "JOUET", "affichage": "JOUET" },
-    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Élime (il)", "reponse": "USE", "affichage": "USE" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Sans joie", "reponse": "TRISTE", "affichage": "TRISTE" },
-    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Abîmer à force", "reponse": "USER", "affichage": "USER" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Bon vouloir", "reponse": "GRE", "affichage": "GRÉ" },
-    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Tu … (être)", "reponse": "ES", "affichage": "ES" },
-    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Ces gens-là", "reponse": "EUX", "affichage": "EUX" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Bonjour familier", "reponse": "SALUT", "affichage": "SALUT" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Parcouru des yeux", "reponse": "LU", "affichage": "LU" },
-    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Grand confort", "reponse": "LUXE", "affichage": "LUXE" }
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Logis avec repas", "reponse": "PENSION", "affichage": "PENSION" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Marque du repassage", "reponse": "PLI", "affichage": "PLI" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Elle trace les traits", "reponse": "REGLE", "affichage": "RÈGLE" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Passage dans la rivière", "reponse": "GUE", "affichage": "GUÉ" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Appui du cavalier", "reponse": "ETRIER", "affichage": "ÉTRIER" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Elle suit le jour", "reponse": "NUIT", "affichage": "NUIT" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Risque (il)", "reponse": "OSE", "affichage": "OSE" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "J'… faim", "reponse": "AI", "affichage": "AI" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Elle a ses états", "reponse": "AME", "affichage": "ÂME" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Résultat de l'addition", "reponse": "SOMME", "affichage": "SOMME" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Note après ré", "reponse": "MI", "affichage": "MI" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Dire que non", "reponse": "NIER", "affichage": "NIER" }
   ]
 }

@@ -153,6 +153,18 @@ describe('contenu linguistique', () => {
 });
 
 describe('avertissements', () => {
+  it('signale deux mots de la même famille dans une grille (USE et USER)', () => {
+    const g = mini('use', 'user');
+    g.largeur = 5;
+    expect(alertes(g)).toContain('A-MEME-FAMILLE');
+    expect(alertes(mini('ni', 'nie'))).not.toContain('A-MEME-FAMILLE'); // les mots de 2 lettres ne comptent pas
+  });
+  it('signale un petit mot donné par une autre définition (DO et « Ut moderne »)', () => {
+    expect(alertes(mini('do', 'ut', 'Ut moderne', 'Ancien nom'))).toContain('A-REPONSE-DANS-AUTRE-DEFINITION');
+  });
+  it('ignore les petits mots de liaison dans les définitions', () => {
+    expect(alertes(mini('la', 'et', 'Note de la gamme', 'Et cetera'))).not.toContain('A-REPONSE-DANS-AUTRE-DEFINITION');
+  });
   it('signale deux définitions identiques', () => {
     expect(alertes(mini('ni', 'et', 'Petit mot', 'petit mot'))).toContain('A-DEFINITION-DOUBLE');
   });

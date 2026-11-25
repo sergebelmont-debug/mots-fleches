@@ -18,8 +18,12 @@ const fichiers = readdirSync(DOSSIER).filter((f) => f.endsWith('.json')).sort();
 const lire = (f: string) => JSON.parse(readFileSync(join(DOSSIER, f), 'utf8')) as DonneesGrille;
 
 // Lexique de l'univers ; une définition vide reprend celle du lexique général.
-const general = new Map(lireLexique().map((e) => [e.reponse, e.definition]));
-const univers = lireLexique('donnees/univers/serge-belmont.txt').map((e) => ({ ...e, definition: e.definition || general.get(e.reponse) || '' }));
+const general = new Map(lireLexique().map((e) => [e.reponse, e]));
+const univers = lireLexique('donnees/univers/serge-belmont.txt').map((e) => ({
+  ...e,
+  definition: e.definition || general.get(e.reponse)?.definition || '',
+  definitions: e.definitions.length ? e.definitions : (general.get(e.reponse)?.definitions ?? []),
+}));
 const motsUnivers = new Set(univers.map((e) => e.reponse));
 
 // Titres autorisés par la fiche de l'auteur : aucun autre ne doit apparaître entre guillemets.

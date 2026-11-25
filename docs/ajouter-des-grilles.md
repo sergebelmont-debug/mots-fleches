@@ -26,11 +26,26 @@ Options :
 
 L'outil :
 
-- limite les répétitions (un mot de 4 lettres ou plus apparaît au plus 2 fois dans tout le jeu) ;
+- respecte les règles anti-répétition du parcours (voir ci-dessous) ;
+- choisit, pour un petit mot qui revient, la définition qui a le moins servi ;
 - passe la grille au validateur et **n'écrit rien si elle est refusée** ;
 - indique combien de mots du thème il a réussi à placer. S'il y en a peu, ne donnez pas à la grille un titre thématique.
 
 S'il répond « Aucun remplissage trouvé », essayez une autre `--graine`, un autre gabarit, ou enrichissez le lexique.
+
+### Règles anti-répétition
+
+Vérifiées par `npm run verifier` sur le parcours principal : une grille qui les enfreint bloque la construction du jeu.
+
+| Longueur du mot | Règle |
+|---|---|
+| 4 lettres et plus | une seule fois dans tout le parcours |
+| 3 lettres | au plus 2 fois, à au moins 10 niveaux d'écart |
+| 2 lettres | au plus 5 fois, jamais dans deux niveaux qui se suivent |
+
+Les règles sont dans `src/validation/repetitions.ts`.
+
+Dans une même grille, le validateur signale aussi deux mots de la même famille (USE et USER) et une définition qui donne la réponse d'un autre mot (DO défini par « Ut moderne » quand UT est aussi dans la grille).
 
 ## 2. Enrichir le lexique
 
@@ -42,6 +57,8 @@ PARIS|1|geo|Ville lumière|propre
 ```
 
 Dans l'ordre : le mot **avec ses accents**, le niveau (1 courant, 2 moyen, 3 rare), le thème (facultatif), la définition (24 caractères au plus), et `propre` pour un nom propre.
+
+Un mot peut avoir plusieurs définitions, séparées par « ; » : `NI|1||Négation répétée ; … vu ni connu`. C'est utile pour les petits mots, qui reviennent forcément.
 
 Un nom propre doit aussi être ajouté à `donnees/noms-propres.json`.
 

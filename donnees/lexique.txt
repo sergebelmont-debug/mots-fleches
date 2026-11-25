@@ -3,47 +3,47 @@
 # La définition doit tenir en 24 caractères. Les lignes commençant par # sont ignorées.
 
 # ---- 2 lettres ----
-AI|1||J'… (avoir)
-AN|1||Douze mois
-AS|1||Carte maîtresse
-AU|1||À le, contracté
-BU|1||Avalé, pour un liquide
-CE|1||Démonstratif
-DÉ|1||Cube à jouer
-DO|1|musique|Première note
-DU|1||De le, contracté
-EN|1||Dans
-ES|1||Tu … (être)
-ET|1||Il relie deux mots
-EU|1||Participe d'avoir
-FA|1|musique|Note entre mi et sol
-IF|2|nature|Conifère des cimetières
-IL|1||Pronom masculin
-JE|1||Moi, sujet
-LA|1|musique|Note du diapason
-LE|1||Article masculin
-LU|1||Parcouru des yeux
-MA|1||À moi, au féminin
-MI|1|musique|Note après ré
-NÉ|1||Venu au monde
-NI|1||Négation répétée
-NU|1||Sans vêtement
-ON|1||Pronom indéfini
-OR|1||Métal précieux
-OS|1||Le chien le ronge
-OU|1||Il marque le choix
+AI|1||J'… (avoir) ; J'… faim
+AN|1||Douze mois ; Jour de l'…
+AS|1||Carte maîtresse ; Champion
+AU|1||À le, contracté ; … revoir
+BU|1||Avalé, pour un liquide ; Participe de boire
+CE|1||Démonstratif ; Est-… possible ?
+DÉ|1||Cube à jouer ; Il protège le doigt
+DO|1|musique|Première note ; Ut moderne
+DU|1||De le, contracté ; … tac au tac
+EN|1||Dans ; … avant !
+ES|1||Tu … (être) ; Tu … là ?
+ET|1||Il relie deux mots ; Deux … deux font quatre
+EU|1||Participe d'avoir ; J'ai … de la chance
+FA|1|musique|Note entre mi et sol ; Note après mi
+IF|2|nature|Conifère des cimetières ; Château d'… (Marseille)
+IL|1||Pronom sujet masculin ; … pleut
+JE|1||Moi, sujet ; … t'aime
+LA|1|musique|Note du diapason ; Article féminin
+LE|1||Article défini masculin ; … Petit Prince
+LU|1||Parcouru des yeux ; Participe de lire
+MA|1||À moi, au féminin ; … chérie
+MI|1|musique|Note après ré ; À … chemin
+NÉ|1||Venu au monde ; Mort-…
+NI|1||Négation répétée ; … vu ni connu
+NU|1||Sans vêtement ; À l'œil …
+ON|1||Pronom indéfini ; … ne sait jamais
+OR|1||Métal précieux ; Cœur d'…
+OS|1||Le chien le ronge ; Pièce du squelette
+OU|1||Il marque le choix ; Tout … rien
 PI|2|sciences|3,14 et des poussières
-PU|1||Participe de pouvoir
-RÉ|1|musique|Note après do
-RI|1||Pouffé
-SI|1|musique|Note avant do
-SU|1||Appris
-TU|1||Pronom du tutoiement
-UN|1||Premier nombre
-US|2||Vieilles coutumes
+PU|1||Participe de pouvoir ; J'ai … venir
+RÉ|1|musique|Note après do ; Île de … (Charente)
+RI|1||Pouffé ; Il a … aux éclats
+SI|1|musique|Note avant do ; … j'étais riche
+SU|1||Participe de savoir ; Au vu et au …
+TU|1||Pronom du tutoiement ; Toi, sujet
+UN|1||Article indéfini ; … pour tous
+US|2||Vieilles coutumes ; … et coutumes
 UT|2|musique|Ancien nom du do
-VA|1||Ordre de partir
-VU|1||Aperçu
+VA|1||Ordre de partir ; Ça … bien ?
+VU|1||Aperçu ; Ni … ni connu
 
 # ---- 3 lettres ----
 ÂGE|1||Nombre d'années
@@ -117,7 +117,7 @@ NIL|2|geo|Fleuve d'Égypte|propre
 NOM|1||Patronyme
 NON|1||Refus
 NUL|1||Sans valeur
-ODE|2|musique|Poème chanté
+ODE|2|musique|Poème lyrique
 OIE|1|nature|Elle cacarde
 OUI|1||Contraire de non
 PAS|1||Enjambée
@@ -149,7 +149,7 @@ TIC|1||Geste nerveux
 TIR|1|sport|Sport à la cible
 TON|1||Nuance de couleur
 TÔT|1||De bonne heure
-TRI|1||Classement
+TRI|1||Séparation des déchets
 UNE|1||Première page du journal
 UNI|1||Sans motif
 VER|1|nature|Il vit dans la terre
@@ -506,7 +506,7 @@ ALERTE|1||Signal de danger
 AMANDE|1|cuisine|Fruit de la frangipane
 ÂNESSE|2|nature|Femelle de l'âne
 ANIMAL|1|nature|Bête
-ARTÈRE|2|sciences|Vaisseau du cœur
+ARTÈRE|2|sciences|Vaisseau sanguin
 AVENIR|1||Temps futur
 BATEAU|1||Il navigue
 CERISE|1|cuisine|Fruit rouge à noyau
@@ -612,7 +612,7 @@ HORLOGE|1||Elle sonne les heures
 INSECTE|1|nature|La fourmi en est un
 JOURNAL|1||Quotidien
 LAITIER|1||Il livrait le lait
-LECTURE|1||Passe-temps du lecteur
+LECTURE|1||Action de lire
 LESSIVE|1||Elle lave le linge
 LUMIÈRE|1||Elle chasse l'obscurité
 MANTEAU|1||Vêtement d'hiver
@@ -624,7 +624,7 @@ MOUETTE|1|nature|Oiseau du port
 MUSIQUE|1|musique|Art des sons
 NATUREL|1||Sans artifice
 OREILLE|1||Organe de l'ouïe
-PASSAGE|1||Lieu où l'on passe
+PASSAGE|1||Extrait d'un texte
 PATIENT|1||Il attend le médecin
 PEINTRE|1||Artiste au pinceau
 PLATEAU|1||Il porte les verres
@@ -669,7 +669,7 @@ DÉS|1||Ils roulent au jeu
 DIX|1||Deux fois cinq
 DOT|2|histoire|Bien de la mariée
 DRU|2||Épais et serré
-DUC|1|histoire|Noble sous le prince
+DUC|1|histoire|Hibou ou noble
 EGO|2||Le moi
 EUX|1||Ces gens-là
 FIN|1||Conclusion
@@ -694,7 +694,7 @@ MOI|1||Ma personne
 MON|1||À moi, au masculin
 MUE|2|nature|Changement de peau
 NEF|2|histoire|Allée centrale d'église
-NIE|1||Dit que non (il)
+NIE|1||Conteste (il)
 NOS|1||À nous, au pluriel
 ONT|1||Ils … (avoir)
 OSE|1||Risque (il)
@@ -794,7 +794,7 @@ JADE|2||Pierre verte
 JAZZ|1|musique|Musique du swing
 JEAN|1||Pantalon en toile bleue
 JOLI|1||Mignon
-JOUE|1||Pommette
+JOUE|1||On y fait la bise
 JUGE|1||Il rend la justice
 JUIN|1||Mois de l'été
 JUPE|1||Elle tourne en dansant
@@ -810,7 +810,7 @@ LUXE|1||Grand confort
 LYRE|2|musique|Petite harpe antique
 MAÏS|1|cuisine|Céréale du pop-corn
 MÂLE|1|nature|Pas femelle
-MARS|1||Mois du printemps
+MARS|1||Planète rouge
 MÊME|1||Identique
 MERS|1|geo|Noire, Rouge ou Morte
 MIDI|1||Douze heures
@@ -1093,3 +1093,185 @@ SERPENT|1|nature|Reptile sans pattes
 TAVERNE|1|histoire|Auberge d'autrefois
 TERRAIN|1|sport|Pelouse du match
 TONNEAU|1||Barrique
+
+# ---- Supplément 2 : mots de 3 lettres ----
+DIT|1||Participe de dire
+FIT|1||Il … (faire, passé)
+GAG|1||Effet comique
+GIN|1||Alcool de genièvre
+HIC|2||Voilà le …
+IRA|1||Il … (aller, futur)
+KIR|1||Vin blanc au cassis
+LUE|1||Lettre … (lire)
+MIS|1||Participe de mettre
+NÉE|1||Venue au monde
+OUF|1||Soupir de soulagement
+PIF|1||Nez, familièrement
+POP|1||Musique des Beatles
+PUS|2||Il sort d'un abcès
+SIC|3||Ainsi, en latin
+TAC|1||Riposter du … au …
+TEL|1||Pareil
+TOP|1||Signal de départ
+TUÉ|1||Mis à mort
+VAS|1||Tu … (aller)
+VIL|2||À … prix
+AGI|1||Passé à l'action
+AIT|1||Qu'il … (avoir)
+BAR|1||Comptoir du café
+BEL|1||… et bien
+BOT|2||Pied …
+CET|1||… homme-là
+DIS|1||Je … (dire)
+DUE|1||Somme … (à payer)
+EUT|1||Il … (avoir, passé)
+FAX|1||Télécopie
+OSA|1||Il … (oser, passé)
+ÔTE|1||Enlève (il)
+RIA|3||Estuaire de Bretagne
+TUA|1||Il … (tuer, passé)
+LIS|1||Je … un livre
+SUÉ|1||Il a … sang et eau
+DAM|3||Au grand …
+OUT|1||Hors du court
+OLÉ|1||Cri de corrida
+PAF|1||Bruit d'une gifle
+HUE|2||… et dia !
+
+# ---- Supplément 3 : mots de 6 et 7 lettres ----
+BALADE|1||Promenade
+BARQUE|1||Petit bateau à rames
+BERGER|1||Gardien de moutons
+BISTRO|1||Petit café
+BOUCHE|1||Elle a des lèvres
+BOUTON|1||Il ferme la chemise
+BUREAU|1||Table de travail
+CADEAU|1||Présent offert
+CAHIER|1||Feuilles de l'écolier
+CANAPÉ|1||Siège du salon
+CARAFE|1||Pichet de table
+CASQUE|1||Il protège la tête
+CÉLERI|1||Légume à côtes
+CERCLE|1||Rond parfait
+CHAISE|1||Siège à dossier
+CORNET|1||Il porte la glace
+CRAYON|1||Il a une mine
+DÉSERT|1||Étendue de sable
+ENFANT|1||Petit d'homme
+FLEUVE|1||Il se jette dans la mer
+FUSEAU|1||… horaire
+GARAGE|1||Abri de la voiture
+GUÉRIR|1||Retrouver la santé
+HAMEAU|1||Petit village
+LIERRE|1||Plante grimpante
+MARRON|1||Châtaigne
+MENTON|1||Bas du visage
+MIMOSA|1||Fleur jaune d'hiver
+NAVIRE|1||Grand bateau
+NIVEAU|1||Degré atteint
+PALAIS|1||Demeure royale
+PANIER|1||Corbeille
+PARENT|1||Père ou mère
+PATRON|1||Chef d'entreprise
+PEIGNE|1||Il démêle les cheveux
+PERRON|1||Escalier d'entrée
+PIERRE|1||Caillou
+PIRATE|1||Bandit des mers
+RÂTEAU|1||Outil du jardinier
+RETARD|1||Contraire d'avance
+RÉVEIL|1||Il sonne le matin
+ROSEAU|1||Il plie et ne rompt pas
+SOLIDE|1||Robuste
+SOMMET|1||Haut de la montagne
+SOUPER|1||Repas de la nuit
+TORTUE|1||Lente à carapace
+TOUPIE|1||Jouet qui tourne
+TRESSE|1||Cheveux entrelacés
+TRICOT|1||Ouvrage en laine
+VALEUR|1||Mérite
+VERGER|1||Jardin fruitier
+VIOLON|1||Instrument à archet
+VOLANT|1||Il dirige la voiture
+AUTEUR|1||Il écrit des livres
+AVOCAT|1||Il plaide
+BOUCLE|1||… d'oreille
+DOUCHE|1||Toilette debout
+ENVERS|1||Opposé de l'endroit
+LIMACE|1||Escargot sans coquille
+LIONNE|1||Femelle du lion
+NATION|1||Peuple et pays
+PAILLE|1||Tige de blé séchée
+PARADE|1||Défilé
+PÉPITE|1||Grain d'or
+POTION|1||Breuvage magique
+RÉSINE|1||Sève du pin
+SALUER|1||Dire bonjour
+SÉANCE|1||Projection au cinéma
+SIGNAL|1||Signe convenu
+SONNET|1||Poème de quatorze vers
+ÉCHARPE|1||Elle réchauffe le cou
+MÉLODIE|1||Air de musique
+OLIVIER|1||Arbre de Provence
+RÉCOLTE|1||Moisson
+VERTIGE|1||Peur du vide
+PRAIRIE|1||Grand pré
+MOINEAU|1||Piaf des toits
+
+# ---- Supplément 4 : mots de 2 lettres ----
+SA|1||À elle ; … Majesté
+TA|1||À toi, au féminin ; … mère
+TE|1||Je … vois ; Je … l'avais dit
+SE|1||Pronom réfléchi ; Il … lave
+ME|1||Il … voit ; Moi, complément
+ÇA|1||Cela ; … va ?
+OC|2||Langue d'…
+GO|2||Jeu de stratégie chinois
+OH|1||Cri de surprise
+AH|1||… bon ?
+EH|1||… bien !
+NÔ|3||Théâtre japonais
+MÛ|3||Participe de mouvoir
+EX|1||Ancien conjoint
+
+# ---- Supplément 5 : mots de 7 lettres ----
+ARTISAN|1||Travailleur manuel
+BANQUET|1||Grand repas de fête
+CAMPING|1||Vacances sous la tente
+CANTINE|1||Restaurant scolaire
+CAPRICE|1||Envie soudaine
+CASERNE|1||Logement des soldats
+CENTIME|1||Centième d'euro
+CLAIRON|1||Trompette militaire
+DOCTEUR|1||Médecin
+ÉPICIER|1||Commerçant du coin
+FERMIER|1||Il cultive la terre
+GRENIER|1||Pièce sous le toit
+HORAIRE|1||Heures d'ouverture
+LIQUIDE|1||Ni solide ni gazeux
+MÉTÉORE|2||Étoile filante
+NOTAIRE|1||Il rédige les actes
+PARASOL|1||Ombre de plage
+PLANÈTE|1||Mars en est une
+POMPIER|1||Soldat du feu
+PRÉSENT|1||Temps actuel
+RÉPONSE|1||Elle suit la question
+SEMELLE|1||Dessous de chaussure
+SOURIRE|1||Il éclaire le visage
+TABLIER|1||Il protège les habits
+TENTURE|1||Rideau épais
+VOILIER|1||Bateau à voiles
+ÉTALAGE|1||Vitrine du marchand
+BIBERON|1||Bouteille du bébé
+BRIOCHE|1||Viennoiserie dorée
+CHAMEAU|1||Il a deux bosses
+DAUPHIN|1||Mammifère marin
+ÉLÉMENT|1||Composant
+ÉPISODE|1||Partie d'une série
+FANFARE|1||Orchestre de cuivres
+HARICOT|1||Flageolet en est un
+PARRAIN|1||Il a un filleul
+POIREAU|1||Asperge du pauvre
+POUSSIN|1||Petit de la poule
+VAMPIRE|1||Il boit le sang
+VILLAGE|1||Petite commune
+ENTRAIN|1||Bonne humeur active

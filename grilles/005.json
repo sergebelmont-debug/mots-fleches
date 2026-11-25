@@ -6,17 +6,17 @@
   "largeur": 5,
   "hauteur": 7,
   "mots": [
-    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "On y soigne", "reponse": "HOPITAL", "affichage": "HÔPITAL" },
-    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Voisin du poivre", "reponse": "SEL", "affichage": "SEL" },
-    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Inscrire", "reponse": "NOTER", "affichage": "NOTER" },
-    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Sport à la cible", "reponse": "TIR", "affichage": "TIR" },
-    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Ne pas partir", "reponse": "RESTER", "affichage": "RESTER" },
-    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Opposé de face", "reponse": "PILE", "affichage": "PILE" },
-    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "On le respire", "reponse": "AIR", "affichage": "AIR" },
-    { "caseDefinition": [4,2], "fleche": "droite", "definition": "Il relie deux mots", "reponse": "ET", "affichage": "ET" },
-    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Saison chaude", "reponse": "ETE", "affichage": "ÉTÉ" },
-    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Pâtisserie aux fruits", "reponse": "TARTE", "affichage": "TARTE" },
-    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Pouffé", "reponse": "RI", "affichage": "RI" },
-    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Attacher", "reponse": "LIER", "affichage": "LIER" }
+    { "caseDefinition": [0,0], "fleche": "droite-puis-bas", "definition": "Elle expose des tableaux", "reponse": "GALERIE", "affichage": "GALERIE" },
+    { "caseDefinition": [0,2], "fleche": "droite-puis-bas", "definition": "Choisi par le vote", "reponse": "ELU", "affichage": "ÉLU" },
+    { "caseDefinition": [0,0], "fleche": "bas-puis-droite", "definition": "Récit de La Fontaine", "reponse": "FABLE", "affichage": "FABLE" },
+    { "caseDefinition": [0,2], "fleche": "bas", "definition": "Tasse sans anse", "reponse": "BOL", "affichage": "BOL" },
+    { "caseDefinition": [0,4], "fleche": "bas", "definition": "Haut du bras", "reponse": "EPAULE", "affichage": "ÉPAULE" },
+    { "caseDefinition": [2,0], "fleche": "droite", "definition": "Il hurle à la lune", "reponse": "LOUP", "affichage": "LOUP" },
+    { "caseDefinition": [2,0], "fleche": "bas-puis-droite", "definition": "Voisin du poivre", "reponse": "SEL", "affichage": "SEL" },
+    { "caseDefinition": [4,2], "fleche": "droite", "definition": "De le, contracté", "reponse": "DU", "affichage": "DU" },
+    { "caseDefinition": [3,3], "fleche": "bas", "definition": "Pas mou", "reponse": "DUR", "affichage": "DUR" },
+    { "caseDefinition": [4,0], "fleche": "bas-puis-droite", "definition": "Grand-père", "reponse": "AIEUL", "affichage": "AÏEUL" },
+    { "caseDefinition": [4,2], "fleche": "bas", "definition": "Il relie deux mots", "reponse": "ET", "affichage": "ET" },
+    { "caseDefinition": [6,0], "fleche": "droite", "definition": "Exister", "reponse": "ETRE", "affichage": "ÊTRE" }
   ]
 }

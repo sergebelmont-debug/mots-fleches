@@ -11,7 +11,8 @@
     "verifier": "node outils/verifier.ts",
     "generer": "node outils/generer.ts",
     "lexique": "node outils/controler-lexique.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "alterner": "node outils/alterner-definitions.ts"
   },
   "dependencies": {
     "@fontsource/kaushan-script": "^5.3.0",
