@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { BELMONT, GRILLES, IDS, IDS_BELMONT, POCHETTES } from '../grilles';
 import { partieCompatible, type Partie } from '../engine/partie';
 import { cleDefi, grilleDuDefi, terminerGrille } from '../progression/defi';
@@ -7,6 +7,7 @@ import { nouvellesRecompenses, recompenses } from '../progression/recompenses';
 import { dateDuJour, enregistrerJour } from '../progression/statistiques';
 import { charger, enregistrer, sauvegardeVide, stockageNavigateur, type Sauvegarde } from '../storage/sauvegarde';
 import { synchroniser } from '../en-ligne/classement';
+import { statistiques } from '../en-ligne/statistiques';
 import { Accueil } from './Accueil';
 import { Classement } from './Classement';
 import { Collection } from './Collection';
@@ -45,8 +46,27 @@ export function App() {
     definir(suivante);
   };
 
+  // Statistiques anonymes : démarrage une seule fois.
+  useEffect(() => statistiques.demarrer(), []);
+
+  /** Numéro mesuré : 1 à 99 = parcours, 100 + n = univers Serge Belmont, 0 = défi du jour. */
+  const numeroMesure = (e: Ecran): number | null => {
+    if (e.nom === 'defi') return 0;
+    if (e.nom !== 'jeu') return null;
+    const i = IDS.indexOf(e.id);
+    if (i >= 0) return i + 1;
+    const b = IDS_BELMONT.indexOf(e.id);
+    return b >= 0 ? 100 + b + 1 : null;
+  };
+
   const aller = (e: Ecran) => {
     setNouvelles([]);
+    // Grille quittée avant la fin : comptée comme abandonnée.
+    statistiques.finGrille('quit');
+    const n = numeroMesure(e);
+    if (n !== null) statistiques.debutGrille(n);
+    if (e.nom === 'collection' || e.nom === 'stats' || e.nom === 'univers') statistiques.noter(e.nom);
+    if (e.nom === 'classement') statistiques.noter('board');
     setEcran(e);
   };
   const accueil = () => aller({ nom: 'accueil' });
@@ -76,6 +96,7 @@ export function App() {
         surPartie={(p: Partie) => setSauvegarde((s) => ({ ...s, enCours: { ...s.enCours, [cle]: p } }))}
         surTerminee={(indices, secondes) => {
           const fin = { cle, idGrille: id, defiDuJour: enDefi ? aujourdhui : null, indices, secondes };
+          statistiques.finGrille('won', indices, secondes);
           const avant = courante.current;
           setNouvelles(
             nouvellesRecompenses(recompenses(avant, GRILLES, aujourdhui, IDS_BELMONT), recompenses(terminerGrille(avant, fin), GRILLES, aujourdhui, IDS_BELMONT)),

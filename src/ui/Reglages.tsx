@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { statistiques } from '../en-ligne/statistiques';
 import type { Reglages as TypeReglages } from '../storage/sauvegarde';
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 
 export function Reglages({ reglages, surChange, surReinitialiser, surFermer }: Props) {
   const [confirmer, setConfirmer] = useState(false);
+  const [mesure, setMesure] = useState(() => !statistiques.refusees);
   return (
     <div className="voile" role="dialog" aria-label="Réglages" onClick={surFermer}>
       <div className="carte reglages" onClick={(e) => e.stopPropagation()}>
@@ -34,6 +36,22 @@ export function Reglages({ reglages, surChange, surReinitialiser, surFermer }: P
             <small>Cases plus grandes et définitions plus lisibles, mais la grille défile.</small>
           </span>
           <input type="checkbox" checked={reglages.agrandirGrilles} onChange={(e) => surChange({ ...reglages, agrandirGrilles: e.target.checked })} />
+          <i className="interrupteur" aria-hidden="true" />
+        </label>
+
+        <label className="reglage">
+          <span>
+            <strong>Statistiques anonymes</strong>
+            <small>Aident à améliorer le jeu (grilles jouées, durée). Aucun nom, aucune publicité.</small>
+          </span>
+          <input
+            type="checkbox"
+            checked={mesure}
+            onChange={(e) => {
+              setMesure(e.target.checked);
+              statistiques.refuser(!e.target.checked);
+            }}
+          />
           <i className="interrupteur" aria-hidden="true" />
         </label>
 

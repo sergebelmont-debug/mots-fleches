@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { chargerClassement, choisirPseudo, ErreurClassement, pseudoDuJoueur, type LigneClassement } from '../en-ligne/classement';
+import { statistiques } from '../en-ligne/statistiques';
 import type { Progression } from '../progression/progression';
 import { formaterDuree } from '../progression/statistiques';
 
@@ -68,6 +69,7 @@ export function Classement({ progression, surRetour }: Props) {
         setEnvoi(false);
         setMessage('');
         setPseudo(enregistre);
+        statistiques.noter('pseudo');
         setModifier(false);
         setVersion((v) => v + 1);
       },

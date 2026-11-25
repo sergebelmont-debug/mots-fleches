@@ -30,3 +30,18 @@ describe('classement en ligne', () => {
     expect(resultatsAEnvoyer(p, {})).toEqual([{ grille: '001', etoiles: 3, secondes: null }]);
   });
 });
+
+import { provenance } from '../src/en-ligne/statistiques';
+
+describe('statistiques : provenance', () => {
+  it('lit ?src= dans le lien en priorité', () => {
+    expect(provenance('?src=SubmitHub', 'https://www.facebook.com/', 'sergebelmont.com')).toBe('submithub');
+  });
+  it('reconnaît les grands sites et le site lui-même', () => {
+    expect(provenance('', 'https://m.youtube.com/watch', 'sergebelmont.com')).toBe('youtube');
+    expect(provenance('', 'https://www.submithub.com/x', 'sergebelmont.com')).toBe('submithub');
+    expect(provenance('', 'https://sergebelmont.com/', 'sergebelmont.com')).toBe('site');
+    expect(provenance('', '', 'sergebelmont.com')).toBe('direct');
+    expect(provenance('', 'https://exemple.org/', 'sergebelmont.com')).toBe('autre');
+  });
+});
