@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -39,5 +40,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+      # Avec la musique, le paquet pèse environ 55 Mo : GitHub met un moment à le référencer.
+      - name: Attendre que le paquet soit disponible
+        run: sleep 45
       - id: deploiement
         uses: actions/deploy-pages@v4
