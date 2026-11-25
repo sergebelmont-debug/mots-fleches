@@ -56,6 +56,9 @@ export function surveiller(page: Page): string[] {
     // le moteur de Safari l'écrit dans la console, sans conséquence pour le jeu.
     const surMusique = /\/musique\//.test(m.text()) || /\/musique\//.test(m.location().url ?? '');
     if (surMusique) return;
+    // Le moteur de Safari utilisé pour les tests ne sait lire aucun MP3 (vérifié : même un MP3 ordinaire
+    // est refusé). L'échec de lecture du morceau déchiffré, à une adresse « blob: », y est donc attendu.
+    if (/^blob:/.test(m.location().url ?? '')) return;
     erreurs.push(m.text());
   });
   return erreurs;
