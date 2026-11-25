@@ -12,6 +12,7 @@ interface Props {
   surDefi: () => void;
   surParcours: () => void;
   surStats: () => void;
+  surClassement: () => void;
   surCollection: () => void;
   surReglages: () => void;
 }
@@ -71,13 +72,16 @@ export function Accueil(p: Props) {
           </button>
         </div>
         <div className="rangee-boutons">
+          <button className="bouton-sombre" onClick={p.surClassement}>
+            Classement
+          </button>
           <button className="bouton-sombre" onClick={p.surStats}>
             Statistiques
           </button>
-          <button className="bouton-sombre" onClick={p.surReglages}>
-            Réglages
-          </button>
         </div>
+        <button className="bouton-sombre reglages-accueil" onClick={p.surReglages}>
+          Réglages
+        </button>
       </div>
     </div>
   );

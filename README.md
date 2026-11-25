@@ -1,10 +1,21 @@
 # Les Mots Fléchés
 
-Jeu de mots fléchés français pour mobile. Les sept phases sont réalisées, à l'exception des classements en ligne. 
+Jeu de mots fléchés français pour mobile. Les sept phases sont réalisées, classement en ligne compris. 
 
 **Jouer en ligne : https://sergebelmont.com/mots-fleches/**
 
 Documents : [rapport de tests](docs/rapport-de-tests.md) · [ajouter des grilles](docs/ajouter-des-grilles.md) · [mise en ligne](docs/deploiement.md)
+
+## Classement en ligne
+
+Anonyme (pas de compte, un pseudo au choix), partagé avec Bubble Nostalgia : même
+base Supabase, même pseudo. Classement : étoiles, puis grilles terminées, puis temps total.
+
+- Base : [supabase/classement.sql](supabase/classement.sql), à lancer dans Supabase après
+  celui de Bubble Nostalgia (il réutilise ses joueurs).
+- Code : `src/en-ligne/classement.ts` et l’écran `src/ui/Classement.tsx`.
+
+Mentions légales et confidentialité : liens dans les Réglages, vers sergebelmont.com.
 
 ## Lancer le jeu
 

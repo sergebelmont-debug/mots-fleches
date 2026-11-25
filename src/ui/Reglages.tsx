@@ -58,6 +58,16 @@ export function Reglages({ reglages, surChange, surReinitialiser, surFermer }: P
           )}
         </div>
 
+        <p className="liens-legaux">
+          <a href="https://sergebelmont.com/mentions-legales/" target="_blank" rel="noopener">
+            Mentions légales
+          </a>
+          {' · '}
+          <a href="https://sergebelmont.com/confidentialite/" target="_blank" rel="noopener">
+            Confidentialité
+          </a>
+        </p>
+
         <button className="bouton-or" onClick={surFermer}>
           Fermer
         </button>

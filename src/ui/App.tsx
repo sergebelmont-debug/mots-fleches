@@ -6,14 +6,16 @@ import { grilleAJouer, grilleSuivante } from '../progression/progression';
 import { nouvellesRecompenses, recompenses } from '../progression/recompenses';
 import { dateDuJour, enregistrerJour } from '../progression/statistiques';
 import { charger, enregistrer, sauvegardeVide, stockageNavigateur, type Sauvegarde } from '../storage/sauvegarde';
+import { synchroniser } from '../en-ligne/classement';
 import { Accueil } from './Accueil';
+import { Classement } from './Classement';
 import { Collection } from './Collection';
 import { Jeu } from './Jeu';
 import { Parcours } from './Parcours';
 import { Reglages } from './Reglages';
 import { Statistiques } from './Statistiques';
 
-type Ecran = { nom: 'accueil' } | { nom: 'parcours' } | { nom: 'univers' } | { nom: 'stats' } | { nom: 'collection' } | { nom: 'jeu'; id: string } | { nom: 'defi' };
+type Ecran = { nom: 'accueil' } | { nom: 'parcours' } | { nom: 'univers' } | { nom: 'stats' } | { nom: 'collection' } | { nom: 'jeu'; id: string } | { nom: 'defi' } | { nom: 'classement' };
 
 export function App() {
   const stockage = useMemo(stockageNavigateur, []);
@@ -79,6 +81,8 @@ export function App() {
             nouvellesRecompenses(recompenses(avant, GRILLES, aujourdhui, IDS_BELMONT), recompenses(terminerGrille(avant, fin), GRILLES, aujourdhui, IDS_BELMONT)),
           );
           setSauvegarde((s) => terminerGrille(s, fin));
+          // Envoi au classement en ligne (si un pseudo a été choisi), sans bloquer le jeu.
+          void synchroniser(courante.current.progression);
         }}
         surRetour={() => aller(enDefi ? { nom: 'accueil' } : special ? { nom: 'univers' } : { nom: 'parcours' })}
         surSuivante={() => suivante && aller({ nom: 'jeu', id: suivante })}
@@ -110,6 +114,8 @@ export function App() {
         surRetour={accueil}
       />
     );
+  } else if (ecran.nom === 'classement') {
+    contenu = <Classement progression={sauvegarde.progression} surRetour={accueil} />;
   } else if (ecran.nom === 'stats') {
     contenu = <Statistiques sauvegarde={sauvegarde} ids={IDS} aujourdhui={aujourdhui} surRetour={accueil} />;
   } else if (ecran.nom === 'collection') {
@@ -127,6 +133,7 @@ export function App() {
         surDefi={() => aller({ nom: 'defi' })}
         surParcours={() => aller({ nom: 'parcours' })}
         surStats={() => aller({ nom: 'stats' })}
+        surClassement={() => aller({ nom: 'classement' })}
         surCollection={() => aller({ nom: 'collection' })}
         surReglages={() => setReglagesOuverts(true)}
       />

@@ -1145,3 +1145,161 @@ p {
   line-height: 1.02;
   padding: 0 1px;
 }
+
+/* ───────── Classement en ligne ───────── */
+.reglages-accueil {
+  width: 100%;
+}
+
+.carte-pseudo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(232, 196, 128, 0.45);
+}
+
+.carte-pseudo label {
+  font-weight: 600;
+  text-align: center;
+}
+
+.carte-pseudo.moi {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carte-pseudo.moi strong {
+  display: block;
+  font-size: 1.2em;
+}
+
+.carte-pseudo.moi span {
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+.rangee-pseudo {
+  display: flex;
+  gap: 8px;
+}
+
+.rangee-pseudo input {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 17px;
+  color: inherit;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(232, 196, 128, 0.6);
+  border-radius: 12px;
+}
+
+.rangee-pseudo .bouton-or {
+  flex: none;
+}
+
+.message-pseudo {
+  min-height: 1.2em;
+  margin: 0;
+  font-size: 0.9em;
+  color: #ffb4a8;
+  text-align: center;
+}
+
+.aide-pseudo {
+  margin: 0;
+  font-size: 0.85em;
+  opacity: 0.75;
+  text-align: center;
+}
+
+.lien {
+  flex: none;
+  padding: 8px;
+  font: inherit;
+  font-weight: 700;
+  color: #f3c766;
+  text-decoration: underline;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.liste-classement {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ligne-classement {
+  display: grid;
+  grid-template-columns: 2.2em 1fr auto;
+  grid-template-areas: 'rang nom score' 'rang detail score';
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ligne-classement.moi {
+  background: rgba(243, 199, 102, 0.18);
+  border: 1px solid rgba(243, 199, 102, 0.75);
+}
+
+.ligne-classement .rang {
+  grid-area: rang;
+  font-size: 1.4em;
+  font-weight: 800;
+  text-align: center;
+}
+
+.podium-1 .rang { color: #f3c766; }
+.podium-2 .rang { color: #dfe6ee; }
+.podium-3 .rang { color: #e0a46a; }
+
+.ligne-classement .nom {
+  grid-area: nom;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.ligne-classement .detail {
+  grid-area: detail;
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+
+.ligne-classement .score {
+  grid-area: score;
+  font-size: 1.15em;
+  font-weight: 800;
+}
+
+.liste-classement .ellipse {
+  text-align: center;
+  opacity: 0.6;
+}
+
+.liens-legaux {
+  margin: 4px 0 0;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.liens-legaux a {
+  color: #7a4512;
+  font-weight: 700;
+}
