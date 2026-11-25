@@ -46,7 +46,10 @@ export async function avecSauvegarde(page: Page, terminees: string[], reglages: 
 /** Relève les erreurs JavaScript de la page ; à vérifier en fin de test. */
 export function surveiller(page: Page): string[] {
   const erreurs: string[] = [];
-  page.on('pageerror', (e) => erreurs.push(String(e)));
+  page.on('pageerror', (e) => {
+    if (/\/musique\/.*\.bin/.test(String(e))) return; // même cas que ci-dessous, signalé autrement par Safari
+    erreurs.push(String(e));
+  });
   page.on('console', (m) => {
     if (m.type() !== 'error') return;
     // Téléchargement d'une musique interrompu par un rechargement ou un changement de page :
